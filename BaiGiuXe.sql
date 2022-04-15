@@ -65,4 +65,6 @@ insert into users values
 	('NV001',N'Đinh Văn Huy','huy','12345','Nam',N'Đà Nẵng',null,'admin'),
 	('NV002',N'Lê Đức Duy','duy','12345','Nam',N'Đà Nẵng',2050531200123,'admin'),
 	('NV003',N'Nguyễn Trí Đức','duc','12345','Nam',N'Đà Nẵng',null,'admin')
-	
+
+insert into users values
+	('NV004',N'abc','abc','12345','Nam',N'Đà Nẵng',null,'user')
