@@ -48,4 +48,21 @@ values	('XE00001','78-S18569','2020/9/8 7:8:00','2020/9/8 7:8:00',3000,N'Đã r�
 		('XE00012','43-U555555',GETDATE(),null,0,N'Đang đậu','BANTAI'),
 		('XE00013','43-R99999',GETDATE(),null,0,N'Đang đậu','MOTO'),
 		('XE00014','79-N78356',GETDATE(),null,0,N'Đang đậu','MOTO')
+----------
+create table users
+(
+	idNV char(5),
+	tenNV nvarchar(30),
+	tenTK varchar(30),
+	matKhau char(5),
+	gioiTinh nvarchar(3),
+	queQuan nvarchar(30),
+	CMND char(13),
+	chucVu nvarchar(20)
+	constraint PK_users_idNV primary key (idNV)
+)
+insert into users values
+	('NV001',N'Đinh Văn Huy','huy','12345','Nam',N'Đà Nẵng',null,'admin'),
+	('NV002',N'Lê Đức Duy','duy','12345','Nam',N'Đà Nẵng',2050531200123,'admin'),
+	('NV003',N'Nguyễn Trí Đức','duc','12345','Nam',N'Đà Nẵng',null,'admin')
 	
