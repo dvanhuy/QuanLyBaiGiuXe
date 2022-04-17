@@ -20,6 +20,7 @@ public class LogInFrame extends javax.swing.JFrame {
     public LogInFrame() {
         initComponents();
         setSize(380, 330);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -47,14 +48,14 @@ public class LogInFrame extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 10, 310, 27);
+        jLabel1.setBounds(30, 10, 310, 32);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Username", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel1.setOpaque(false);
 
         txtUsername.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -87,9 +88,9 @@ public class LogInFrame extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 60, 330, 70);
+        jPanel1.setBounds(20, 50, 330, 70);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Password", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel2.setOpaque(false);
 
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -121,14 +122,14 @@ public class LogInFrame extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(20, 150, 330, 78);
+        jPanel2.setBounds(20, 130, 330, 74);
 
         btLogin.setBackground(new java.awt.Color(204, 204, 204));
-        btLogin.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btLogin.setText("Login");
         btLogin.setOpaque(false);
         getContentPane().add(btLogin);
-        btLogin.setBounds(20, 260, 330, 29);
+        btLogin.setBounds(20, 240, 330, 33);
 
         lbForgotPass.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lbForgotPass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -140,7 +141,7 @@ public class LogInFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lbForgotPass);
-        lbForgotPass.setBounds(20, 230, 142, 18);
+        lbForgotPass.setBounds(20, 210, 142, 18);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(20, 44, 330, 2);
 
