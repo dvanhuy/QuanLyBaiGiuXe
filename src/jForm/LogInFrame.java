@@ -40,7 +40,6 @@ public class LogInFrame extends javax.swing.JFrame {
         lbForgotPass = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login ");
@@ -143,17 +142,12 @@ public class LogInFrame extends javax.swing.JFrame {
         getContentPane().add(lbForgotPass);
         lbForgotPass.setBounds(20, 230, 142, 18);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(20, 44, 330, 10);
+        jSeparator1.setBounds(20, 44, 330, 2);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login_bgrbasic.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 370, 300);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login_viewPass.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(307, 120, 20, 50);
 
         pack();
         setLocationRelativeTo(null);
@@ -233,7 +227,6 @@ public class LogInFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
