@@ -15,12 +15,14 @@ import quanlybaigiuxe.QuanLyNguoiDung;
 public class LogInFrame extends javax.swing.JFrame {
     
     QuanLyNguoiDung quanLyNguoiDung;
-            
+    User user;        
+    
     public LogInFrame() {
         initComponents();
         setSize(380, 330);
         setLocationRelativeTo(null);
         quanLyNguoiDung= new QuanLyNguoiDung();
+        user= new User();
     }
 
     /**
@@ -36,6 +38,8 @@ public class LogInFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtUsername = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
+        hidepass = new javax.swing.JLabel();
+        showpass = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
         btLogin = new javax.swing.JButton();
         lbForgotPass = new javax.swing.JLabel();
@@ -92,6 +96,25 @@ public class LogInFrame extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Password", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel2.setOpaque(false);
+        jPanel2.setLayout(null);
+
+        hidepass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hidepass.png"))); // NOI18N
+        hidepass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hidepassMouseClicked(evt);
+            }
+        });
+        jPanel2.add(hidepass);
+        hidepass.setBounds(280, 30, 30, 30);
+
+        showpass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/showpass.png"))); // NOI18N
+        showpass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showpassMouseClicked(evt);
+            }
+        });
+        jPanel2.add(showpass);
+        showpass.setBounds(280, 30, 30, 30);
 
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtPass.setText("password");
@@ -108,23 +131,8 @@ public class LogInFrame extends javax.swing.JFrame {
                 txtPassActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel2.add(txtPass);
+        txtPass.setBounds(16, 33, 296, 24);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(20, 130, 330, 74);
@@ -201,7 +209,6 @@ public class LogInFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassFocusLost
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
-        User user = new User();
         String username=txtUsername.getText();
         String password=String.valueOf(txtPass.getPassword());
         user=quanLyNguoiDung.checkUser(username, password);
@@ -217,6 +224,16 @@ public class LogInFrame extends javax.swing.JFrame {
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
         btLoginActionPerformed(evt);
     }//GEN-LAST:event_txtPassActionPerformed
+
+    private void hidepassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hidepassMouseClicked
+        hidepass.setVisible(false);
+        txtPass.setEchoChar((char)0);
+    }//GEN-LAST:event_hidepassMouseClicked
+
+    private void showpassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showpassMouseClicked
+        hidepass.setVisible(true);
+        txtPass.setEchoChar('*');
+    }//GEN-LAST:event_showpassMouseClicked
 
     /**
      * @param args the command line arguments
@@ -255,12 +272,14 @@ public class LogInFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;
+    private javax.swing.JLabel hidepass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbForgotPass;
+    private javax.swing.JLabel showpass;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
