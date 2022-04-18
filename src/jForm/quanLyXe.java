@@ -5,6 +5,8 @@
  */
 package jForm;
 
+import define.User;
+
 /**
  *
  * @author ADMIN
@@ -16,6 +18,13 @@ public class quanLyXe extends javax.swing.JFrame {
      */
     public quanLyXe() {
         initComponents();
+    }
+    
+    public quanLyXe(User user) {
+        initComponents();
+        txtmanv.setText("Mã NV: "+user.getIdUser());
+        txttennv.setText("Tên NV: "+user.getHoTen());
+        txtrole.setText("Chức vụ: "+user.getChucVu());
     }
 
     /**
@@ -47,6 +56,10 @@ public class quanLyXe extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        txttennv = new javax.swing.JLabel();
+        txtmanv = new javax.swing.JLabel();
+        txtrole = new javax.swing.JLabel();
+        btnlogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -206,7 +219,7 @@ public class quanLyXe extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 109, Short.MAX_VALUE))
+                .addGap(0, 119, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
@@ -249,6 +262,25 @@ public class quanLyXe extends javax.swing.JFrame {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
         jButton5.setText("Thêm");
 
+        txttennv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txttennv.setText("Tên nhân viên: ");
+
+        txtmanv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtmanv.setText("Mã NV: AA00000");
+
+        txtrole.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtrole.setText("Chức vụ: User");
+
+        btnlogout.setBackground(new java.awt.Color(51, 204, 0));
+        btnlogout.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnlogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logout.png"))); // NOI18N
+        btnlogout.setText("Đăng xuất");
+        btnlogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -256,7 +288,7 @@ public class quanLyXe extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -271,13 +303,27 @@ public class quanLyXe extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)))))
+                                .addComponent(jButton2))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtmanv)
+                        .addGap(33, 33, 33)
+                        .addComponent(txttennv)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtrole)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnlogout)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txttennv)
+                    .addComponent(txtmanv)
+                    .addComponent(txtrole)
+                    .addComponent(btnlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -311,6 +357,11 @@ public class quanLyXe extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
+        new LogInFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnlogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,6 +399,7 @@ public class quanLyXe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnlogout;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -368,5 +420,8 @@ public class quanLyXe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel txtmanv;
+    private javax.swing.JLabel txtrole;
+    private javax.swing.JLabel txttennv;
     // End of variables declaration//GEN-END:variables
 }

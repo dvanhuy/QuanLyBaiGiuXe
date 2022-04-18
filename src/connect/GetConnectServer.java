@@ -3,8 +3,6 @@ package connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GetConnectServer {
@@ -25,7 +23,7 @@ public class GetConnectServer {
     
     public static Connection getConnection()
     {
-        return GetConnectServer.Connectionn("LAPTOP-ATNHOQI8"," sa","12345");
+        return GetConnectServer.Connectionn("LAPTOP-ATNHOQI8","sa","12345");
     }
 //    public static void main(String[] args) throws SQLException {
 //        Connection connection = GetConnectServer.getConnection();

@@ -9,23 +9,23 @@ package define;
  *
  * @author ADMIN
  */
-public class users {
-    private String idNV, tenNV, tenTK, matKhau, gioiTinh, queQuan, CMND, chucVu;
+public class User {
+    private String idUser, hoTen, tenTK, matKhau, gioiTinh, queQuan, dinhDanh, chucVu;
 
-    public String getIdNV() {
-        return idNV;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setIdNV(String idNV) {
-        this.idNV = idNV;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
-    public String getTenNV() {
-        return tenNV;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public void setTenNV(String tenNV) {
-        this.tenNV = tenNV;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
     public String getTenTK() {
@@ -60,12 +60,12 @@ public class users {
         this.queQuan = queQuan;
     }
 
-    public String getCMND() {
-        return CMND;
+    public String getDinhDanh() {
+        return dinhDanh;
     }
 
-    public void setCMND(String CMND) {
-        this.CMND = CMND;
+    public void setDinhDanh(String dinhDanh) {
+        this.dinhDanh = dinhDanh;
     }
 
     public String getChucVu() {

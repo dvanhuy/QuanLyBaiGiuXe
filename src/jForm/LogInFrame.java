@@ -4,23 +4,23 @@
  */
 package jForm;
 
+import define.User;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import quanlybaigiuxe.QuanLyNguoiDung;
 
 
 
-/**
- *
- * @author pc
- */
+
 public class LogInFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form LogInFrame
-     */
+    
+    QuanLyNguoiDung quanLyNguoiDung;
+            
     public LogInFrame() {
         initComponents();
         setSize(380, 330);
         setLocationRelativeTo(null);
+        quanLyNguoiDung= new QuanLyNguoiDung();
     }
 
     /**
@@ -103,6 +103,11 @@ public class LogInFrame extends javax.swing.JFrame {
                 txtPassFocusLost(evt);
             }
         });
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,6 +133,11 @@ public class LogInFrame extends javax.swing.JFrame {
         btLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btLogin.setText("Login");
         btLogin.setOpaque(false);
+        btLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(btLogin);
         btLogin.setBounds(20, 240, 330, 33);
 
@@ -159,7 +169,7 @@ public class LogInFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lbForgotPassMouseClicked
 
     private void txtUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusGained
-        if(txtUsername.getText().equals("Enter the username"));
+        if(txtUsername.getText().equals("Enter the username"))
         {
             txtUsername.setText("");
             txtUsername.setForeground(new Color(0,0,0));
@@ -167,7 +177,7 @@ public class LogInFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameFocusGained
 
     private void txtUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusLost
-         if(txtUsername.getText().equals(""));
+        if(txtUsername.getText().equals(""))
         {
             txtUsername.setText("Enter the username");
             txtUsername.setForeground(new Color(153,153,153));
@@ -175,7 +185,7 @@ public class LogInFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameFocusLost
 
     private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
-        if(txtPass.getText().equals("password"))
+        if(String.valueOf(txtPass.getPassword()).equals("password"))
         {
             txtPass.setText("");
             txtPass.setForeground(new Color(0,0,0));
@@ -183,12 +193,30 @@ public class LogInFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassFocusGained
 
     private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
-        if(txtPass.getText().equals(""))
+        if(String.valueOf(txtPass.getPassword()).equals(""))
         {
             txtPass.setText("password");
             txtPass.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_txtPassFocusLost
+
+    private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
+        User user = new User();
+        String username=txtUsername.getText();
+        String password=String.valueOf(txtPass.getPassword());
+        user=quanLyNguoiDung.checkUser(username, password);
+        if (user == null) 
+            JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu sai", "Sai", JOptionPane.ERROR_MESSAGE);
+        else 
+        {
+            new quanLyXe(user).setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btLoginActionPerformed
+
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+        btLoginActionPerformed(evt);
+    }//GEN-LAST:event_txtPassActionPerformed
 
     /**
      * @param args the command line arguments
