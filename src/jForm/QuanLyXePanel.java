@@ -6,27 +6,54 @@
 package jForm;
 
 import define.User;
+import define.Xe;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import quanlybaigiuxe.QuanLyBaiGiuXe;
 
 /**
  *
  * @author ADMIN
  */
 public class QuanLyXePanel extends javax.swing.JPanel {
-
-    /**
+    QuanLyBaiGiuXe quanLyXe;
+    Xe xe;
+    DefaultTableModel defaultTableModel;
+   /**
      * Creates new form QuanLyXePanel
      */
     public QuanLyXePanel() {
         initComponents();
     }
     
+    
     public QuanLyXePanel(User user) {
         initComponents();
         txtmanv.setText("Mã NV: "+user.getIdUser());
         txttennv.setText("Tên NV: "+user.getHoTen());
         txtrole.setText("Chức vụ: "+user.getChucVu());
+        
+        defaultTableModel = new DefaultTableModel();
+        quanLyXe = new QuanLyBaiGiuXe();
+        
+        tbXe.setModel(defaultTableModel);
+        
+        defaultTableModel.addColumn("idXe");
+        defaultTableModel.addColumn("Biển Số");
+        defaultTableModel.addColumn("Loại xe");
+        defaultTableModel.addColumn("Trạng thái");
+        defaultTableModel.addColumn("Tiền đã thu");
+        
+        setDataTable(quanLyXe.getAllXe());
     }
 
+    public void setDataTable(List<Xe> listXe){
+        for(Xe x : listXe)
+        {
+            defaultTableModel.addRow(new Object[]{x.getIdXe(),x.getBienSo(),x.getLoaiXe(),
+                x.getTrangThai(),x.getTienDaThu()});
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,7 +73,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         txtmanv = new javax.swing.JLabel();
         txtrole = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbXe = new javax.swing.JTable();
         btnlogout = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 51));
@@ -85,7 +112,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         txtrole.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtrole.setText("Chức vụ: User");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbXe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -96,7 +123,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbXe);
 
         btnlogout.setBackground(new java.awt.Color(51, 204, 0));
         btnlogout.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -180,8 +207,8 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbXe;
     private javax.swing.JLabel txtmanv;
     private javax.swing.JLabel txtrole;
     private javax.swing.JLabel txttennv;

@@ -10,7 +10,7 @@ package define;
  * @author ADMIN
  */
 public class Xe {
-    private String idXe, bienSo, timeVao, timeRa, trangThai, loaiXe;
+    private String idXe, bienSo, timeVao, timeRa, trangThai, loaiXe,nvThucHien;
     private float tienDaThu;
 
     public String getIdXe() {
@@ -45,6 +45,14 @@ public class Xe {
         this.timeRa = timeRa;
     }
 
+    public String getNvThucHien() {
+        return nvThucHien;
+    }
+
+    public void setNvThucHien(String nvThucHien) {
+        this.nvThucHien = nvThucHien;
+    }
+    
     public String getTrangThai() {
         return trangThai;
     }
