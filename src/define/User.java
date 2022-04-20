@@ -10,7 +10,7 @@ package define;
  * @author ADMIN
  */
 public class User {
-    private String idUser, hoTen, tenTK, matKhau, gioiTinh, queQuan, dinhDanh, chucVu;
+    private String idUser, hoTen, tenTK, matKhau, gioiTinh, queQuan, dinhDanh, chucVu, sdt;
 
     public User()
     {
@@ -26,6 +26,7 @@ public class User {
         this.queQuan = user.queQuan;
         this.dinhDanh = user.dinhDanh;
         this.chucVu = user.chucVu;
+        this.sdt = user.sdt;
     }
 
     public String getIdUser() {
@@ -90,6 +91,14 @@ public class User {
 
     public void setChucVu(String chucVu) {
         this.chucVu = chucVu;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
     
     
