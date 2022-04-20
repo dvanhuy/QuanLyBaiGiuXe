@@ -21,7 +21,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         user= new User();
         container.setLayout(new CardLayout());
-        container.add(new QuanLyXePanel());
+        container.add(new QuanLyXePanel(user));
     }
     
     public Main(User userkh) {
@@ -290,7 +290,7 @@ public class Main extends javax.swing.JFrame {
         container.setLayout(containerLayout);
         containerLayout.setHorizontalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

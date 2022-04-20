@@ -30,8 +30,9 @@ public class QuanLyNguoiDung {
             user.setMatKhau(rs.getString(4));
             user.setGioiTinh(rs.getString(5));
             user.setQueQuan(rs.getString(6));
-            user.setDinhDanh(rs.getString(7));
-            user.setChucVu(rs.getString(8));
+            user.setSdt(rs.getString(7));
+            user.setDinhDanh(rs.getString(8));
+            user.setChucVu(rs.getString(9));
             
             return user;
         } catch(SQLException e){

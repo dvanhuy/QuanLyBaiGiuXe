@@ -19,6 +19,7 @@ create table NguoiDung
 	matKhau char(5),
 	gioiTinh nvarchar(3),
 	queQuan nvarchar(30),
+	soDT varchar(15),
 	dinhDanh varchar(15),
 	chucVu nvarchar(20),
 	constraint PK_NguoiDung_idNV primary key (idUser),
@@ -50,11 +51,12 @@ values	('DAP',N'Xe đạp',200),
 
 --------------------------------------------------
 insert into NguoiDung values
-	('AD00001',N'Đinh Văn Huy','huy','12345','Nam',N'Đà Nẵng',null,'Admin'),
-	('AD00002',N'Lê Đức Duy','duy','12345','Nam',N'Đà Nẵng','2050531200123','Admin'),
-	('AD00003',N'Nguyễn Trí Đức','duc','12345','Nam',N'Đà Nẵng',null,'Admin'),
-	('NV00001',N'tester 1','a1','1','Nam',N'Đà Nẵng',null,'User'),
-	('NV00002',N'tester 2','a2','1','Nam',N'Đà Nẵng',null,'User')
+	('AD00001',N'Đinh Văn Huy','huy','12345','Nam',N'Đà Nẵng','0932222222','201850000','Admin'),
+	('AD00002',N'Lê Đức Duy','duy','12345','Nam',N'Đà Nẵng','0833333333','2050531200123','Admin'),
+	('AD00003',N'Nguyễn Trí Đức','duc','12345','Nam',N'Đà Nẵng','0999999999',null,'Admin'),
+	('NV00001',N'Nhân viên 1','a1','1','Nam',N'Đà Nẵng','0987654321',null,'User'),
+	('NV00002',N'Nhân viên 2','a2','1','Nam',N'Quảng Nam','0733554466',null,'User'),
+	('NV00003',N'Nhân viên 3','a3','1','Nam',N'Quảng Nam','0733554466',null,'User')
 
 insert into Xe(idXe,bienSo, timeVao,timeRa,tienDaThu,trangThai,loaiXe,nvThucHien)
 values	('XE00001','78-S18569','2020/9/8 7:8:00','2020/9/8 7:8:00',3000,N'Đã rời','OTO','AD00001'),
