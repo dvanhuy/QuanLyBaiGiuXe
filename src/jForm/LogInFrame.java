@@ -35,12 +35,12 @@ public class LogInFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        txtUsername = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         hidepass = new javax.swing.JLabel();
         showpass = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
+        jPanel1 = new javax.swing.JPanel();
+        txtUsername = new javax.swing.JTextField();
         btLogin = new javax.swing.JButton();
         lbForgotPass = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -58,41 +58,6 @@ public class LogInFrame extends javax.swing.JFrame {
         jLabel1.setText("Welcome ");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 10, 310, 32);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Username", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        jPanel1.setOpaque(false);
-
-        txtUsername.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtUsername.setText("Enter the username");
-        txtUsername.setPreferredSize(new java.awt.Dimension(127, 22));
-        txtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtUsernameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUsernameFocusLost(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 50, 330, 70);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Password", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel2.setOpaque(false);
@@ -135,7 +100,42 @@ public class LogInFrame extends javax.swing.JFrame {
         txtPass.setBounds(16, 33, 296, 24);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(20, 130, 330, 74);
+        jPanel2.setBounds(20, 130, 330, 80);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Username", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        jPanel1.setOpaque(false);
+
+        txtUsername.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtUsername.setText("Enter the username");
+        txtUsername.setPreferredSize(new java.awt.Dimension(127, 22));
+        txtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsernameFocusLost(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(20, 50, 330, 70);
 
         btLogin.setBackground(new java.awt.Color(204, 204, 204));
         btLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -216,7 +216,7 @@ public class LogInFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu sai", "Sai", JOptionPane.ERROR_MESSAGE);
         else 
         {
-            new quanLyXe(user).setVisible(true);
+            new Main(user).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btLoginActionPerformed

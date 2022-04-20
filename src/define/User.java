@@ -12,6 +12,22 @@ package define;
 public class User {
     private String idUser, hoTen, tenTK, matKhau, gioiTinh, queQuan, dinhDanh, chucVu;
 
+    public User()
+    {
+        
+    }
+    
+    public User(User user) {
+        this.idUser = user.idUser;
+        this.hoTen = user.hoTen;
+        this.tenTK = user.tenTK;
+        this.matKhau = user.matKhau;
+        this.gioiTinh = user.gioiTinh;
+        this.queQuan = user.queQuan;
+        this.dinhDanh = user.dinhDanh;
+        this.chucVu = user.chucVu;
+    }
+
     public String getIdUser() {
         return idUser;
     }
