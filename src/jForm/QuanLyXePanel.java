@@ -6,27 +6,54 @@
 package jForm;
 
 import define.User;
+import define.Xe;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import quanlybaigiuxe.QuanLyBaiGiuXe;
 
 /**
  *
  * @author ADMIN
  */
 public class QuanLyXePanel extends javax.swing.JPanel {
-
-    /**
+    QuanLyBaiGiuXe quanLyXe;
+    Xe xe;
+    DefaultTableModel defaultTableModel;
+   /**
      * Creates new form QuanLyXePanel
      */
     public QuanLyXePanel() {
         initComponents();
     }
     
+    
     public QuanLyXePanel(User user) {
         initComponents();
         txtmanv.setText("Mã NV: "+user.getIdUser());
         txttennv.setText("Tên NV: "+user.getHoTen());
         txtrole.setText("Chức vụ: "+user.getChucVu());
+        
+        defaultTableModel = new DefaultTableModel();
+        quanLyXe = new QuanLyBaiGiuXe();
+        
+        tbXe.setModel(defaultTableModel);
+        
+        defaultTableModel.addColumn("idXe");
+        defaultTableModel.addColumn("Biển Số");
+        defaultTableModel.addColumn("Loại xe");
+        defaultTableModel.addColumn("Trạng thái");
+        defaultTableModel.addColumn("Tiền đã thu");
+        
+        setDataTable(quanLyXe.getAllXe());
     }
 
+    public void setDataTable(List<Xe> listXe){
+        for(Xe x : listXe)
+        {
+            defaultTableModel.addRow(new Object[]{x.getIdXe(),x.getBienSo(),x.getLoaiXe(),
+                x.getTrangThai(),x.getTienDaThu()});
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,8 +70,12 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
+<<<<<<< HEAD
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+=======
+        tbXe = new javax.swing.JTable();
+>>>>>>> eeb40bf8a5763b3343b9e4983ad26edb33880edd
         btnlogout = new javax.swing.JButton();
         txtrole = new javax.swing.JLabel();
         txtmanv = new javax.swing.JLabel();
@@ -77,7 +108,20 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
         jButton5.setText("Thêm");
 
+<<<<<<< HEAD
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
+=======
+        txttennv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txttennv.setText("Tên nhân viên: ");
+
+        txtmanv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtmanv.setText("Mã NV: AA00000");
+
+        txtrole.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtrole.setText("Chức vụ: User");
+
+        tbXe.setModel(new javax.swing.table.DefaultTableModel(
+>>>>>>> eeb40bf8a5763b3343b9e4983ad26edb33880edd
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -88,7 +132,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbXe);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thông tin nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -201,8 +245,8 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbXe;
     private javax.swing.JLabel txtmanv;
     private javax.swing.JLabel txtrole;
     private javax.swing.JLabel txttennv;
