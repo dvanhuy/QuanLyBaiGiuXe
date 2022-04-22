@@ -7,7 +7,9 @@ package jForm;
 
 import define.User;
 import define.Xe;
+import java.awt.Color;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.swing.table.DefaultTableModel;
 import quanlybaigiuxe.QuanLyBaiGiuXe;
 
@@ -32,6 +34,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         txtmanv.setText("Mã NV: "+user.getIdUser());
         txttennv.setText("Tên NV: "+user.getHoTen());
         txtrole.setText("Chức vụ: "+user.getChucVu());
+        txtdinhdanh.setText("Định danh: "+user.getDinhDanh());
         
         defaultTableModel = new DefaultTableModel(){
             @Override
@@ -69,33 +72,59 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtsearch = new javax.swing.JTextField();
+        btsearch = new javax.swing.JButton();
+        btdatlai = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbXe = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        btnlogout = new javax.swing.JButton();
         txtrole = new javax.swing.JLabel();
         txtmanv = new javax.swing.JLabel();
         txttennv = new javax.swing.JLabel();
+        txtdinhdanh = new javax.swing.JLabel();
+        ckboxdaroi = new javax.swing.JCheckBox();
+        ckboxdangdo = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(255, 204, 51));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtsearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtsearch.setText("Tìm mã xe ...");
+        txtsearch.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtsearchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtsearchFocusLost(evt);
+            }
+        });
+        txtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsearchActionPerformed(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(51, 204, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
-        jButton1.setText("Tìm kiếm");
+        btsearch.setBackground(new java.awt.Color(51, 204, 0));
+        btsearch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        btsearch.setText("Tìm kiếm");
+        btsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btsearchActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 0));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/refresh.png"))); // NOI18N
-        jButton2.setText("Đặt lại");
+        btdatlai.setBackground(new java.awt.Color(0, 204, 0));
+        btdatlai.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btdatlai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/refresh.png"))); // NOI18N
+        btdatlai.setText("Đặt lại");
+        btdatlai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btdatlaiActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(0, 204, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -130,16 +159,6 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 204, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thông tin nhân viên", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        btnlogout.setBackground(new java.awt.Color(51, 204, 0));
-        btnlogout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnlogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logout.png"))); // NOI18N
-        btnlogout.setText("Đăng xuất");
-        btnlogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnlogoutActionPerformed(evt);
-            }
-        });
-
         txtrole.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtrole.setText("Chức vụ: User");
 
@@ -148,6 +167,9 @@ public class QuanLyXePanel extends javax.swing.JPanel {
 
         txttennv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txttennv.setText("Tên nhân viên: ");
+
+        txtdinhdanh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtdinhdanh.setText("Định danh: ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,10 +180,10 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 .addComponent(txtmanv)
                 .addGap(33, 33, 33)
                 .addComponent(txttennv)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtdinhdanh)
+                .addGap(33, 33, 33)
                 .addComponent(txtrole)
-                .addGap(26, 26, 26)
-                .addComponent(btnlogout)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -172,9 +194,27 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                     .addComponent(txttennv)
                     .addComponent(txtmanv)
                     .addComponent(txtrole)
-                    .addComponent(btnlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(txtdinhdanh))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        ckboxdaroi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ckboxdaroi.setSelected(true);
+        ckboxdaroi.setText("Xe đã rời");
+        ckboxdaroi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ckboxdaroiItemStateChanged(evt);
+            }
+        });
+
+        ckboxdangdo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ckboxdangdo.setSelected(true);
+        ckboxdangdo.setText("Xe đang đỗ");
+        ckboxdangdo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ckboxdangdoItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -182,24 +222,26 @@ public class QuanLyXePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btdatlai))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ckboxdaroi)
+                        .addGap(61, 61, 61)
+                        .addComponent(ckboxdangdo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(btsearch)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -208,42 +250,105 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ckboxdangdo)
+                        .addComponent(ckboxdaroi)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btdatlai, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
-//        new LogInFrame().setVisible(true);
-        new Main().setVisible(true);
-//        System.exit(0);
-//        super.setVisible(false);
-    }//GEN-LAST:event_btnlogoutActionPerformed
+    private void btdatlaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btdatlaiActionPerformed
+        defaultTableModel.setRowCount(0);
+        setDataTable(quanLyXe.getAllXe());  
+    }//GEN-LAST:event_btdatlaiActionPerformed
 
+    private void ckboxdangdoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckboxdangdoItemStateChanged
+
+        settabledataif();
+    }//GEN-LAST:event_ckboxdangdoItemStateChanged
+
+    private void ckboxdaroiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckboxdaroiItemStateChanged
+        // TODO add your handling code here:
+        settabledataif();
+    }//GEN-LAST:event_ckboxdaroiItemStateChanged
+
+    private void txtsearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsearchFocusGained
+        // TODO add your handling code here:
+        if (txtsearch.getText().equals("Tìm mã xe ..."))
+        {
+            txtsearch.setText("");
+            txtsearch.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtsearchFocusGained
+
+    private void txtsearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsearchFocusLost
+        // TODO add your handling code here:
+        if(txtsearch.getText().equals(""))
+        {
+            txtsearch.setText("Tìm mã xe ...");
+            txtsearch.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_txtsearchFocusLost
+
+    private void btsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsearchActionPerformed
+        // TODO add your handling code here:
+        defaultTableModel.setRowCount(0);
+        setDataTable(quanLyXe.getAllXe(txtsearch.getText()));
+    }//GEN-LAST:event_btsearchActionPerformed
+
+    private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
+        // TODO add your handling code here:
+        btsearchActionPerformed(evt);
+    }//GEN-LAST:event_txtsearchActionPerformed
+
+    public void settabledataif(){
+        if (ckboxdaroi.isSelected() && ckboxdangdo.isSelected())
+        {
+            defaultTableModel.setRowCount(0);
+            setDataTable(quanLyXe.getAllXe());
+        }
+        else if (ckboxdaroi.isSelected() && ckboxdangdo.isSelected()==false)
+        {
+            defaultTableModel.setRowCount(0);
+            setDataTable(quanLyXe.getAllXe(0));
+        }
+        else if (ckboxdaroi.isSelected()==false && ckboxdangdo.isSelected())
+        {
+            defaultTableModel.setRowCount(0);
+            setDataTable(quanLyXe.getAllXe(1));
+        }
+        else 
+            defaultTableModel.setRowCount(0);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnlogout;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btdatlai;
+    private javax.swing.JButton btsearch;
+    private javax.swing.JCheckBox ckboxdangdo;
+    private javax.swing.JCheckBox ckboxdaroi;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbXe;
+    private javax.swing.JLabel txtdinhdanh;
     private javax.swing.JLabel txtmanv;
     private javax.swing.JLabel txtrole;
+    private javax.swing.JTextField txtsearch;
     private javax.swing.JLabel txttennv;
     // End of variables declaration//GEN-END:variables
 }

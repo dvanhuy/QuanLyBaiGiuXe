@@ -39,10 +39,76 @@ public class QuanLyBaiGiuXe {
                listXe.add(newXe);
            }
        } catch (SQLException e) {
-           e.printStackTrace();
+           System.out.println("Lỗi tại lấy toàn bộ xe");
        }
        return listXe;
    }
+   
+   public List<Xe> getAllXe(int trangthai){
+       List<Xe> listXe = new ArrayList<Xe>();
+       Connection con = GetConnectServer.getConnection();
+       String sql="";
+       if (trangthai==0) 
+       {
+           sql = "Select * from Xe where trangThai=N'Đã rời'";
+       }
+       else
+       {
+           sql = "Select * from Xe where trangThai=N'Đang đậu'";
+       }
+       try {
+           PreparedStatement preparedStatement = con.prepareStatement(sql);
+           ResultSet rs = preparedStatement.executeQuery();
+           while(rs.next())
+           {
+               Xe newXe = new Xe();
+               
+               newXe.setIdXe(rs.getString("idXe"));
+               newXe.setBienSo(rs.getString("bienSo"));
+               newXe.setLoaiXe(rs.getString("loaiXe"));
+               newXe.setTimeVao(rs.getString("timeVao"));
+               newXe.setTimeRa(rs.getString("timeRa"));
+               newXe.setTrangThai(rs.getString("trangThai"));
+               newXe.setTienDaThu(rs.getFloat("tienDaThu"));
+               newXe.setNvThucHien(rs.getString("nvThucHien"));
+               
+               listXe.add(newXe);
+           }
+       } catch (SQLException e) {
+           System.out.println("Lỗi tại lấy xe theo điều kiện");
+       }
+       return listXe;
+   }
+   
+   public List<Xe> getAllXe(String idxe){
+       List<Xe> listXe = new ArrayList<Xe>();
+       Connection con = GetConnectServer.getConnection();
+       String sql="Select * from Xe where idXe like '%" + idxe + "%'";
+
+       try {
+           PreparedStatement preparedStatement = con.prepareStatement(sql);
+           ResultSet rs = preparedStatement.executeQuery();
+           while(rs.next())
+           {
+               Xe newXe = new Xe();
+               
+               newXe.setIdXe(rs.getString("idXe"));
+               newXe.setBienSo(rs.getString("bienSo"));
+               newXe.setLoaiXe(rs.getString("loaiXe"));
+               newXe.setTimeVao(rs.getString("timeVao"));
+               newXe.setTimeRa(rs.getString("timeRa"));
+               newXe.setTrangThai(rs.getString("trangThai"));
+               newXe.setTienDaThu(rs.getFloat("tienDaThu"));
+               newXe.setNvThucHien(rs.getString("nvThucHien"));
+               
+               listXe.add(newXe);
+           }
+       } catch (SQLException e) {
+           System.out.println("Lỗi tại lấy xe idXe");
+       }
+       return listXe;
+   }
+   
    
     public  void AddXe(Xe xe){
        Connection con = GetConnectServer.getConnection();
