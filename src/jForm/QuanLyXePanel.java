@@ -91,7 +91,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 204, 51));
 
         txtsearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtsearch.setText("Tìm mã xe ...");
+        txtsearch.setText("Tìm mã xe, biển số, loại xe ...");
         txtsearch.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtsearchFocusGained(evt);
@@ -286,7 +286,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
 
     private void txtsearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsearchFocusGained
         // TODO add your handling code here:
-        if (txtsearch.getText().equals("Tìm mã xe ..."))
+        if (txtsearch.getText().equals("Tìm mã xe, biển số, loại xe ..."))
         {
             txtsearch.setText("");
             txtsearch.setForeground(new Color(0,0,0));
@@ -297,15 +297,23 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(txtsearch.getText().equals(""))
         {
-            txtsearch.setText("Tìm mã xe ...");
+            txtsearch.setText("Tìm mã xe, biển số, loại xe ...");
             txtsearch.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_txtsearchFocusLost
 
     private void btsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsearchActionPerformed
-        // TODO add your handling code here:
-        defaultTableModel.setRowCount(0);
-        setDataTable(quanLyXe.getAllXe(txtsearch.getText()));
+        if (txtsearch.getText().equals(""))
+        {
+            defaultTableModel.setRowCount(0);
+            setDataTable(quanLyXe.getAllXe());
+        }
+        else 
+        {
+            defaultTableModel.setRowCount(0);
+            setDataTable(quanLyXe.getAllXeid_bien_loai(txtsearch.getText()));
+        }
+        
     }//GEN-LAST:event_btsearchActionPerformed
 
     private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed

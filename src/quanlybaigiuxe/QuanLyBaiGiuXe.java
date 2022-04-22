@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class QuanLyBaiGiuXe {
 
    public List<Xe> getAllXe(){
-       List<Xe> listXe = new ArrayList<Xe>();
+       List<Xe> listXe = new ArrayList<>();
        Connection con = GetConnectServer.getConnection();
        String sql = "Select * from Xe";
        try {
@@ -45,7 +45,7 @@ public class QuanLyBaiGiuXe {
    }
    
    public List<Xe> getAllXe(int trangthai){
-       List<Xe> listXe = new ArrayList<Xe>();
+       List<Xe> listXe = new ArrayList<>();
        Connection con = GetConnectServer.getConnection();
        String sql="";
        if (trangthai==0) 
@@ -80,10 +80,11 @@ public class QuanLyBaiGiuXe {
        return listXe;
    }
    
-   public List<Xe> getAllXe(String idxe){
-       List<Xe> listXe = new ArrayList<Xe>();
+   public List<Xe> getAllXeid_bien_loai(String tim){
+       List<Xe> listXe = new ArrayList<>();
        Connection con = GetConnectServer.getConnection();
-       String sql="Select * from Xe where idXe like '%" + idxe + "%'";
+       String sql="Select * from Xe where (idXe like '%" + tim + "%') "
+               + "or (bienSo like '%" + tim + "%') or (loaiXe like '%" + tim + "%') ";
 
        try {
            PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -108,8 +109,7 @@ public class QuanLyBaiGiuXe {
        }
        return listXe;
    }
-   
-   
+ 
     public  void AddXe(Xe xe){
        Connection con = GetConnectServer.getConnection();
        String sql = "Insert into Xe (idXe,bienSo,loaiXe,timeVao,timeRa,trangThai,TienDaThu,nvThucHien)"

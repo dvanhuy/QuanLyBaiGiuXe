@@ -59,10 +59,12 @@ public class Main extends javax.swing.JFrame {
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản lý bãi giữ xe");
 
         menuPanel.setBackground(new java.awt.Color(102, 102, 102));
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel3.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

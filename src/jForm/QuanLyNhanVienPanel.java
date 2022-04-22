@@ -5,17 +5,45 @@
  */
 package jForm;
 
-/**
- *
- * @author ADMIN
- */
+import define.User;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import quanlybaigiuxe.QuanLyNguoiDung;
+
+
 public class QuanLyNhanVienPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form QuanLyNhanVien
-     */
+    DefaultTableModel defaultTableModel;
+    QuanLyNguoiDung quanLyNguoiDung;
+    
     public QuanLyNhanVienPanel() {
         initComponents();
+        quanLyNguoiDung = new QuanLyNguoiDung();
+        defaultTableModel = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }   
+        };
+        tabledata.setModel(defaultTableModel);
+        
+        defaultTableModel.addColumn("Mã NV");
+        defaultTableModel.addColumn("Tên NV");
+        defaultTableModel.addColumn("Tên TK");
+        defaultTableModel.addColumn("Số điện thoại");
+        defaultTableModel.addColumn("Chức vụ");
+        
+        setDataTable(quanLyNguoiDung.getAllNguoiDung());
+        
+    }
+    
+    public void setDataTable(List<User> listusUser){
+        for(User x : listusUser)
+        {
+            defaultTableModel.addRow(new Object[]{x.getIdUser(),x.getHoTen(),x.getTenTK(),
+                x.getSdt(),x.getChucVu()});
+        }
     }
 
     /**
@@ -45,13 +73,13 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabledata = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
+        txtsearch = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
@@ -175,8 +203,8 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabledata.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabledata.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -187,8 +215,8 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        tabledata.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(tabledata);
 
         jButton1.setBackground(new java.awt.Color(255, 51, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -211,8 +239,27 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jButton5.setText("Tìm kiếm");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtsearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtsearch.setText("Tìm mã, tên, chức vụ...");
+        txtsearch.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtsearchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtsearchFocusLost(evt);
+            }
+        });
+        txtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsearchActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -242,10 +289,10 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
                         .addGap(0, 14, Short.MAX_VALUE))
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtsearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton5)
-                        .addGap(78, 78, 78)
+                        .addGap(51, 51, 51)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
@@ -273,12 +320,49 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7))
+                    .addComponent(txtsearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if (txtsearch.getText().equals(""))
+        {
+            defaultTableModel.setRowCount(0);
+            setDataTable(quanLyNguoiDung.getAllNguoiDung());
+        }
+        else 
+        {
+            defaultTableModel.setRowCount(0);
+            setDataTable(quanLyNguoiDung.getAllNguoiDungid_name_username(txtsearch.getText()));
+        }
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txtsearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsearchFocusGained
+        // TODO add your handling code here:
+        if (txtsearch.getText().equals("Tìm mã, tên, chức vụ..."))
+        {
+            txtsearch.setText("");
+            txtsearch.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtsearchFocusGained
+
+    private void txtsearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsearchFocusLost
+        // TODO add your handling code here:
+        if(txtsearch.getText().equals(""))
+        {
+            txtsearch.setText("Tìm mã, tên, chức vụ...");
+            txtsearch.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_txtsearchFocusLost
+
+    private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
+        // TODO add your handling code here:
+        jButton5ActionPerformed(evt);
+    }//GEN-LAST:event_txtsearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -298,7 +382,6 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -307,7 +390,8 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tabledata;
+    private javax.swing.JTextField txtsearch;
     // End of variables declaration//GEN-END:variables
 }
