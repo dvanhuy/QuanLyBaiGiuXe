@@ -468,7 +468,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_helpPanelMouseReleased
 
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
-        new LogInFrame().setVisible(true);
+        new LogInFrameTest().setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_btnlogoutActionPerformed
