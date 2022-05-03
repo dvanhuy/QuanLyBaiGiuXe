@@ -98,20 +98,23 @@ public class ThongKePanel extends javax.swing.JPanel {
         panelRound2.setRoundBottomRight(50);
         panelRound2.setRoundTopLeft(50);
         panelRound2.setRoundTopRight(50);
-        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRound2.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("56");
-        panelRound2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 23, -1, -1));
+        panelRound2.add(jLabel3);
+        jLabel3.setBounds(10, 23, 30, 29);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tổng xe ra vào trong quý");
-        panelRound2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 58, -1, -1));
+        panelRound2.add(jLabel4);
+        jLabel4.setBounds(10, 58, 190, 17);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/motor.png"))); // NOI18N
-        panelRound2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        panelRound2.add(jLabel10);
+        jLabel10.setBounds(140, 10, 72, 72);
 
         jPanel1.add(panelRound2);
 
@@ -120,20 +123,23 @@ public class ThongKePanel extends javax.swing.JPanel {
         panelRound3.setRoundBottomRight(50);
         panelRound3.setRoundTopLeft(50);
         panelRound3.setRoundTopRight(50);
-        panelRound3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRound3.setLayout(null);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("6");
-        panelRound3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 23, -1, -1));
+        panelRound3.add(jLabel5);
+        jLabel5.setBounds(10, 23, 15, 29);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nhân viên");
-        panelRound3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 58, -1, -1));
+        panelRound3.add(jLabel6);
+        jLabel6.setBounds(10, 58, 80, 17);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/vector.png"))); // NOI18N
-        panelRound3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        panelRound3.add(jLabel9);
+        jLabel9.setBounds(140, 10, 72, 72);
 
         jPanel1.add(panelRound3);
 
@@ -142,20 +148,23 @@ public class ThongKePanel extends javax.swing.JPanel {
         panelRound1.setRoundBottomRight(50);
         panelRound1.setRoundTopLeft(50);
         panelRound1.setRoundTopRight(50);
-        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRound1.setLayout(null);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("24,430,000");
-        panelRound1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 23, -1, -1));
+        panelRound1.add(jLabel7);
+        jLabel7.setBounds(10, 23, 136, 29);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Tổng doanh thu trong quý");
-        panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 58, -1, -1));
+        panelRound1.add(jLabel8);
+        jLabel8.setBounds(10, 58, 190, 17);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/creditcard.png"))); // NOI18N
-        panelRound1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        panelRound1.add(jLabel11);
+        jLabel11.setBounds(140, 10, 72, 72);
 
         jPanel1.add(panelRound1);
 
