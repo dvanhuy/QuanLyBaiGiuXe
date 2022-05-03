@@ -5,15 +5,11 @@
  */
 package jForm;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.LayoutManager;
+import java.awt.CardLayout;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
-import test.PanelRoundMod;
 
 /**
  *
@@ -26,39 +22,19 @@ public class ThongKePanel extends javax.swing.JPanel {
      */
     public ThongKePanel() {
         initComponents();
-        setSize(1030, 844);
-        showPieChart();
-    }
-    
-    public void showPieChart(){
-        //create dataset
-      DefaultPieDataset barDataset = new DefaultPieDataset( );
-      barDataset.setValue( "Quý 1" , 20 );  
-      barDataset.setValue( "Quý 2" , 20 );   
-      barDataset.setValue( "Quý 3" , 40 );    
-      barDataset.setValue( "Quý 4" , 10 );  
-      
-      //create chart
-       JFreeChart piechart = ChartFactory.createPieChart("Thống kê doanh thu",barDataset, false,true,false);//explain
-      
-        PiePlot piePlot =(PiePlot) piechart.getPlot();
-      
-       //changing pie chart blocks colors
-       piePlot.setSectionPaint("Quý 1", new Color(255,255,102));
-        piePlot.setSectionPaint("Quý 2", new Color(102,255,102));
-        piePlot.setSectionPaint("Quý 3", new Color(255,102,153));
-        piePlot.setSectionPaint("Quý 4", new Color(0,204,204));
-      
-       
-        piePlot.setBackgroundPaint(Color.white);
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("Xe ô tô", 25.0);
+        dataset.setValue("Xe máy", 57.0);
+        dataset.setValue("Xe bán tải", 9.0);
+        dataset.setValue("Xe đạp", 9.0);
         
-        //create chartPanel to display chart(graph)
-        ChartPanel barChartPanel = new ChartPanel(piechart);
-        jPanelPieChart.removeAll();
-        jPanelPieChart.add(barChartPanel, BorderLayout.CENTER);
-        jPanelPieChart.validate();
-
+        JFreeChart chart = ChartFactory.createPieChart(
+                "CƠ CẤU XE THEO TIỀN", dataset, true, true, true);
+        ChartPanel chartPanel = new ChartPanel(chart);
+        mypn.setLayout(new CardLayout());
+        mypn.add(chartPanel);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,9 +61,8 @@ public class ThongKePanel extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        panelBarChart = new javax.swing.JPanel();
-        jPanelPieChart = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        mypn = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
@@ -115,7 +90,7 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/motor.png"))); // NOI18N
         panelRound2.add(jLabel10);
-        jLabel10.setBounds(140, 10, 72, 72);
+        jLabel10.setBounds(130, 30, 80, 50);
 
         jPanel1.add(panelRound2);
 
@@ -140,7 +115,7 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/vector.png"))); // NOI18N
         panelRound3.add(jLabel9);
-        jLabel9.setBounds(140, 10, 72, 72);
+        jLabel9.setBounds(130, 10, 72, 72);
 
         jPanel1.add(panelRound3);
 
@@ -165,7 +140,7 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/creditcard.png"))); // NOI18N
         panelRound1.add(jLabel11);
-        jLabel11.setBounds(140, 10, 72, 72);
+        jLabel11.setBounds(130, 10, 72, 72);
 
         jPanel1.add(panelRound1);
 
@@ -177,38 +152,23 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Năm:");
 
-        panelBarChart.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout panelBarChartLayout = new javax.swing.GroupLayout(panelBarChart);
-        panelBarChart.setLayout(panelBarChartLayout);
-        panelBarChartLayout.setHorizontalGroup(
-            panelBarChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
-        );
-        panelBarChartLayout.setVerticalGroup(
-            panelBarChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 238, Short.MAX_VALUE)
-        );
-
-        jPanelPieChart.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout jPanelPieChartLayout = new javax.swing.GroupLayout(jPanelPieChart);
-        jPanelPieChart.setLayout(jPanelPieChartLayout);
-        jPanelPieChartLayout.setHorizontalGroup(
-            jPanelPieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanelPieChartLayout.setVerticalGroup(
-            jPanelPieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("THỐNG KÊ TỔNG QUÁT");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout mypnLayout = new javax.swing.GroupLayout(mypn);
+        mypn.setLayout(mypnLayout);
+        mypnLayout.setHorizontalGroup(
+            mypnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        mypnLayout.setVerticalGroup(
+            mypnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 405, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -226,14 +186,11 @@ public class ThongKePanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(panelBarChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanelPieChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(mypn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE))
                         .addGap(100, 100, 100)))
                 .addContainerGap())
         );
@@ -249,11 +206,9 @@ public class ThongKePanel extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelPieChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBarChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(mypn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -273,8 +228,7 @@ public class ThongKePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanelPieChart;
-    private javax.swing.JPanel panelBarChart;
+    private javax.swing.JPanel mypn;
     private test.PanelRoundMod panelRound1;
     private test.PanelRoundMod panelRound2;
     private test.PanelRoundMod panelRound3;
