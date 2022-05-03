@@ -16,12 +16,12 @@ import java.awt.Color;
 public class MainTest extends javax.swing.JFrame {
 
     User user;
-    /**
-     * Creates new form MainTest
-     */
+    int luuchon;
     public MainTest() {
         initComponents();
         user= new User();
+        user.setChucVu("Admin");
+        user.setHoTen("Admin");
         container.setLayout(new CardLayout());
         container.add(new QuanLyXePanel(user));
     }
@@ -32,9 +32,12 @@ public class MainTest extends javax.swing.JFrame {
         container.setLayout(new CardLayout());
         container.add(new QuanLyXePanel(user));
         
-//        txtmanv.setText("Mã NV: "+user.getIdUser());
-//        txttennv.setText("Tên NV: "+user.getHoTen());
-//        txtrole.setText("Chức vụ: "+user.getChucVu());
+        if (userkh.getChucVu().equals("User"))
+        {
+            quanLyNhanVienLabel.setText("Quản lý thông tin");
+        }
+        luuchon=1;
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,12 +101,6 @@ public class MainTest extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 quanLyXePanelMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                quanLyXePanelMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                quanLyXePanelMouseReleased(evt);
-            }
         });
 
         quanLyXeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -123,10 +120,10 @@ public class MainTest extends javax.swing.JFrame {
         );
         quanLyXePanelLayout.setVerticalGroup(
             quanLyXePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(quanLyXePanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quanLyXePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(quanLyXeLabel)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         quanLyNhanVienPanel.setBackground(new java.awt.Color(102, 102, 102));
@@ -140,12 +137,6 @@ public class MainTest extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 quanLyNhanVienPanelMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                quanLyNhanVienPanelMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                quanLyNhanVienPanelMouseReleased(evt);
             }
         });
 
@@ -169,7 +160,7 @@ public class MainTest extends javax.swing.JFrame {
             .addGroup(quanLyNhanVienPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(quanLyNhanVienLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         thongKePanel.setBackground(new java.awt.Color(102, 102, 102));
@@ -185,12 +176,6 @@ public class MainTest extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 thongKePanelMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                thongKePanelMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                thongKePanelMouseReleased(evt);
-            }
         });
 
         thongKeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -204,16 +189,16 @@ public class MainTest extends javax.swing.JFrame {
         thongKePanelLayout.setHorizontalGroup(
             thongKePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(thongKePanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(20, 20, 20)
                 .addComponent(thongKeLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         thongKePanelLayout.setVerticalGroup(
             thongKePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(thongKePanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, thongKePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(thongKeLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         helpPanel.setBackground(new java.awt.Color(102, 102, 102));
@@ -227,12 +212,6 @@ public class MainTest extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 helpPanelMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                helpPanelMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                helpPanelMouseReleased(evt);
             }
         });
 
@@ -323,7 +302,7 @@ public class MainTest extends javax.swing.JFrame {
                 .addComponent(thongKePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(helpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(btnlogout)
                 .addGap(21, 21, 21))
         );
@@ -359,65 +338,66 @@ public class MainTest extends javax.swing.JFrame {
         container.add(new QuanLyXePanel(user));
         container.validate();
         container.repaint();
+        
+        //chuyen mau
+        luuchon=1;
+        quanLyXePanel.setBackground(new Color(0,204,204));
+        quanLyNhanVienPanel.setBackground(new Color(102,102,102));
+        helpPanel.setBackground(new Color(102,102,102));
+        thongKePanel.setBackground(new Color(102,102,102));
 
     }//GEN-LAST:event_quanLyXePanelMouseClicked
 
     private void quanLyXePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyXePanelMouseEntered
         // TODO add your handling code here:
         quanLyXePanel.setBackground(new Color(0,204,204));
-        quanLyXeLabel.setBackground(Color.WHITE);
     }//GEN-LAST:event_quanLyXePanelMouseEntered
 
     private void quanLyXePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyXePanelMouseExited
         // TODO add your handling code here:
-        quanLyXePanel.setBackground(new Color(102,102,102));
-        quanLyXeLabel.setBackground(Color.WHITE);
+        if (luuchon != 1)
+        {
+            quanLyXePanel.setBackground(new Color(102,102,102));
+        }
     }//GEN-LAST:event_quanLyXePanelMouseExited
-
-    private void quanLyXePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyXePanelMousePressed
-        // TODO add your handling code here:
-        quanLyXePanel.setBackground(new Color(0,204,204));
-        quanLyXeLabel.setBackground(Color.WHITE);
-    }//GEN-LAST:event_quanLyXePanelMousePressed
-
-    private void quanLyXePanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyXePanelMouseReleased
-        // TODO add your handling code here:
-        quanLyXePanel.setBackground(new Color(102,102,102));
-        quanLyXeLabel.setBackground(Color.WHITE);
-    }//GEN-LAST:event_quanLyXePanelMouseReleased
 
     private void quanLyNhanVienPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyNhanVienPanelMouseClicked
         // TODO add your handling code here:
         container.removeAll();
         container.setLayout(new CardLayout());
-        container.add(new QuanLyNhanVienPanel());
+        if (user.getChucVu().equals("Admin"))
+        {
+            container.add(new QuanLyNhanVienPanel());
+        }
+        else 
+        {
+            container.add(new QuanLyThongTinPanel());
+        }
         container.validate();
         container.repaint();
+        //chuyen mau
+        
+        luuchon=2;
+        quanLyXePanel.setBackground(new Color(102,102,102));
+        quanLyNhanVienPanel.setBackground(new Color(0,204,204));
+        helpPanel.setBackground(new Color(102,102,102));
+        thongKePanel.setBackground(new Color(102,102,102));
+        
+        
     }//GEN-LAST:event_quanLyNhanVienPanelMouseClicked
 
     private void quanLyNhanVienPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyNhanVienPanelMouseEntered
         // TODO add your handling code here:
         quanLyNhanVienPanel.setBackground(new Color(0,204,204));
-        quanLyNhanVienLabel.setBackground(Color.WHITE);
     }//GEN-LAST:event_quanLyNhanVienPanelMouseEntered
 
     private void quanLyNhanVienPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyNhanVienPanelMouseExited
         // TODO add your handling code here:
-        quanLyNhanVienPanel.setBackground(new Color(102,102,102));
-        quanLyNhanVienLabel.setBackground(Color.WHITE);
+        if (luuchon != 2)
+        {
+            quanLyNhanVienPanel.setBackground(new Color(102,102,102));
+        }
     }//GEN-LAST:event_quanLyNhanVienPanelMouseExited
-
-    private void quanLyNhanVienPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyNhanVienPanelMousePressed
-        // TODO add your handling code here:
-        quanLyNhanVienPanel.setBackground(new Color(0,204,204));
-        quanLyNhanVienLabel.setBackground(Color.WHITE);
-    }//GEN-LAST:event_quanLyNhanVienPanelMousePressed
-
-    private void quanLyNhanVienPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanLyNhanVienPanelMouseReleased
-        // TODO add your handling code here:
-        quanLyNhanVienPanel.setBackground(new Color(102,102,102));
-        quanLyNhanVienLabel.setBackground(Color.WHITE);
-    }//GEN-LAST:event_quanLyNhanVienPanelMouseReleased
 
     private void thongKePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongKePanelMouseClicked
         // TODO add your handling code here:
@@ -426,31 +406,28 @@ public class MainTest extends javax.swing.JFrame {
         container.add(new ThongKePanel());
         container.validate();
         container.repaint();
+        
+        //chuyen mau
+        luuchon=3;
+        quanLyXePanel.setBackground(new Color(102,102,102));
+        quanLyNhanVienPanel.setBackground(new Color(102,102,102));
+        helpPanel.setBackground(new Color(102,102,102));
+        thongKePanel.setBackground(new Color(0,204,204));
+        
     }//GEN-LAST:event_thongKePanelMouseClicked
 
     private void thongKePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongKePanelMouseEntered
         // TODO add your handling code here:
         thongKePanel.setBackground(new Color(0,204,204));
-        thongKeLabel.setBackground(Color.WHITE);
     }//GEN-LAST:event_thongKePanelMouseEntered
 
     private void thongKePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongKePanelMouseExited
         // TODO add your handling code here:
-        thongKePanel.setBackground(new Color(102,102,102));
-        thongKeLabel.setBackground(Color.WHITE);
+        if (luuchon != 3)
+        {
+            thongKePanel.setBackground(new Color(102,102,102));
+        }
     }//GEN-LAST:event_thongKePanelMouseExited
-
-    private void thongKePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongKePanelMousePressed
-        // TODO add your handling code here:
-        thongKePanel.setBackground(new Color(0,204,204));
-        thongKeLabel.setBackground(Color.WHITE);
-    }//GEN-LAST:event_thongKePanelMousePressed
-
-    private void thongKePanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongKePanelMouseReleased
-        // TODO add your handling code here:
-        thongKePanel.setBackground(new Color(102,102,102));
-        thongKeLabel.setBackground(Color.WHITE);
-    }//GEN-LAST:event_thongKePanelMouseReleased
 
     private void helpPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpPanelMouseClicked
         // TODO add your handling code here:
@@ -459,31 +436,28 @@ public class MainTest extends javax.swing.JFrame {
         container.add(new HelpPanel());
         container.validate();
         container.repaint();
+        
+        //chuỵenmau
+        luuchon=4;
+        quanLyXePanel.setBackground(new Color(102,102,102));
+        quanLyNhanVienPanel.setBackground(new Color(102,102,102));
+        helpPanel.setBackground(new Color(0,204,204));
+        thongKePanel.setBackground(new Color(102,102,102));
     }//GEN-LAST:event_helpPanelMouseClicked
 
     private void helpPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpPanelMouseEntered
         // TODO add your handling code here:
         helpPanel.setBackground(new Color(0,204,204));
-        helpLabel.setBackground(Color.WHITE);
     }//GEN-LAST:event_helpPanelMouseEntered
 
     private void helpPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpPanelMouseExited
         // TODO add your handling code here:
-        helpPanel.setBackground(new Color(102,102,102));
-        helpLabel.setBackground(Color.WHITE);
+        if (luuchon != 4)
+        {
+            helpPanel.setBackground(new Color(102,102,102));
+        }
+        
     }//GEN-LAST:event_helpPanelMouseExited
-
-    private void helpPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpPanelMousePressed
-        // TODO add your handling code here:
-        helpPanel.setBackground(new Color(0,204,204));
-        helpLabel.setBackground(Color.WHITE);
-    }//GEN-LAST:event_helpPanelMousePressed
-
-    private void helpPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpPanelMouseReleased
-        // TODO add your handling code here:
-        helpPanel.setBackground(new Color(102,102,102));
-        helpLabel.setBackground(Color.WHITE);
-    }//GEN-LAST:event_helpPanelMouseReleased
 
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
         // TODO add your handling code here:
