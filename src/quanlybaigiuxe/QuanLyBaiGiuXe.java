@@ -132,4 +132,20 @@ public class QuanLyBaiGiuXe {
        }
     }
     
+    public List<String> getTenLoaiXe(){
+        List<String> allTenXe = new ArrayList<>();
+        Connection con = GetConnectServer.getConnection();
+        String sql = "select tenxe from LoaiXe";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            ResultSet rs =  preparedStatement.executeQuery();
+            while(rs.next())
+            {
+                allTenXe.add(rs.getString("tenXe"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi tại lấy tên loại xe");
+        }
+        return allTenXe;
+    }
 }

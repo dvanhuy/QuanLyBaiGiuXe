@@ -32,7 +32,7 @@
                   <Component id="jPanel5" max="32767" attributes="0"/>
                   <Component id="jPanel4" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="11" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -276,12 +276,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x2022; xxxxxxx@gmail.com"/>
+            <Property name="text" type="java.lang.String" value="&#x2022; ricenguyen2310@gmail.com"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x2022; 0xxx xxx xxx"/>
+            <Property name="text" type="java.lang.String" value="&#x2022; 0906 231 002"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">

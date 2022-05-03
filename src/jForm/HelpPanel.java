@@ -167,9 +167,9 @@ public class HelpPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Lê Đức Duy");
 
-        jLabel9.setText("• xxxxxxx@gmail.com");
+        jLabel9.setText("• ricenguyen2310@gmail.com");
 
-        jLabel10.setText("• 0xxx xxx xxx");
+        jLabel10.setText("• 0906 231 002");
 
         jLabel11.setText("Nguyễn Trí  Đức");
 
@@ -469,7 +469,7 @@ public class HelpPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
