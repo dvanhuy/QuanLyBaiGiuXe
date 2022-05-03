@@ -14,7 +14,7 @@ import quanlybaigiuxe.QuanLyNguoiDung;
  *
  * @author ADMIN
  */
-public class LogInFrameTest extends javax.swing.JFrame {
+public class LogInFrame extends javax.swing.JFrame {
 
         QuanLyNguoiDung quanLyNguoiDung;
     User user;        
@@ -22,7 +22,7 @@ public class LogInFrameTest extends javax.swing.JFrame {
     /**
      * Creates new form LogInFrameTest
      */
-    public LogInFrameTest() {
+    public LogInFrame() {
         initComponents();
         setSize(700, 449);
         setLocationRelativeTo(null);
@@ -321,7 +321,7 @@ public class LogInFrameTest extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu sai", "Sai", JOptionPane.ERROR_MESSAGE);
         else
         {
-            new MainTest(user).setVisible(true);
+            new Main(user).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btLoginActionPerformed
@@ -389,21 +389,23 @@ public class LogInFrameTest extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogInFrameTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogInFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogInFrameTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogInFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogInFrameTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogInFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogInFrameTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogInFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogInFrameTest().setVisible(true);
+                new LogInFrame().setVisible(true);
             }
         });
     }
