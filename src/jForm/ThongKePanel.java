@@ -13,6 +13,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
+import test.PanelRoundMod;
 
 /**
  *
@@ -69,15 +70,15 @@ public class ThongKePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panelRound2 = new test.PanelRound();
+        panelRound2 = new test.PanelRoundMod();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        panelRound3 = new test.PanelRound();
+        panelRound3 = new test.PanelRoundMod();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        panelRound1 = new test.PanelRound();
+        panelRound1 = new test.PanelRoundMod();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -274,8 +275,8 @@ public class ThongKePanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelPieChart;
     private javax.swing.JPanel panelBarChart;
-    private test.PanelRound panelRound1;
-    private test.PanelRound panelRound2;
-    private test.PanelRound panelRound3;
+    private test.PanelRoundMod panelRound1;
+    private test.PanelRoundMod panelRound2;
+    private test.PanelRoundMod panelRound3;
     // End of variables declaration//GEN-END:variables
 }

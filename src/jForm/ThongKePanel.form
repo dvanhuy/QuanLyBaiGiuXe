@@ -89,7 +89,7 @@
         <Property name="verticalGap" type="int" value="50"/>
       </Layout>
       <SubComponents>
-        <Container class="test.PanelRound" name="panelRound2">
+        <Container class="test.PanelRoundMod" name="panelRound2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="33" red="ff" type="rgb"/>
@@ -150,7 +150,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="test.PanelRound" name="panelRound3">
+        <Container class="test.PanelRoundMod" name="panelRound3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="cc" type="rgb"/>
@@ -211,7 +211,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="test.PanelRound" name="panelRound1">
+        <Container class="test.PanelRoundMod" name="panelRound1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="99" red="0" type="rgb"/>

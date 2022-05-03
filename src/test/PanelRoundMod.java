@@ -9,7 +9,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JPanel;
 
-public class PanelRound extends JPanel {
+public class PanelRoundMod extends JPanel {
 
     public int getRoundTopLeft() {
         return roundTopLeft;
@@ -52,7 +52,7 @@ public class PanelRound extends JPanel {
     private int roundBottomLeft = 0;
     private int roundBottomRight = 0;
 
-    public PanelRound() {
+    public PanelRoundMod() {
         setOpaque(false);
     }
 
