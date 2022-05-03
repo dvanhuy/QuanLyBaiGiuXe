@@ -27,6 +27,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
      */
     public QuanLyXePanel() {
         initComponents();
+        setSize(1030, 844);
     }
     
     

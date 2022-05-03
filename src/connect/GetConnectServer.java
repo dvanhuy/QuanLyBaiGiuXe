@@ -23,9 +23,9 @@ public class GetConnectServer {
     
     public static Connection getConnection()
     {
-        return GetConnectServer.Connectionn("LAPTOP-ATNHOQI8","sa","12345");
+//        return GetConnectServer.Connectionn("LAPTOP-ATNHOQI8","sa","12345");
 //        return GetConnectServer.Connectionn("DESKTOP-T6COLHJ","sa","popdaica123");
-//        return GetConnectServer.Connectionn("MSI","sa","blackace71202");
+        return GetConnectServer.Connectionn("MSI","sa","blackace71202");
     }
 //    public static void main(String[] args) throws SQLException {
 //        Connection connection = GetConnectServer.getConnection();
