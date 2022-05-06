@@ -130,7 +130,9 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(255, 204, 51));
-        setPreferredSize(new java.awt.Dimension(965, 833));
+        setMaximumSize(new java.awt.Dimension(947, 680));
+        setMinimumSize(new java.awt.Dimension(947, 680));
+        setPreferredSize(new java.awt.Dimension(947, 680));
 
         txtsearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtsearch.setText("Tìm mã xe, biển số, loại xe ...");
@@ -362,7 +364,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

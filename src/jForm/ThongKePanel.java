@@ -46,15 +46,15 @@ public class ThongKePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panelRound2 = new test.PanelRoundMod();
+        panelRound2 = new customcp.PanelRoundMod();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        panelRound3 = new test.PanelRoundMod();
+        panelRound3 = new customcp.PanelRoundMod();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        panelRound1 = new test.PanelRoundMod();
+        panelRound1 = new customcp.PanelRoundMod();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -64,9 +64,11 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         mypn = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(51, 51, 51));
+        setBackground(new java.awt.Color(70, 70, 70));
+        setMinimumSize(new java.awt.Dimension(947, 680));
+        setPreferredSize(new java.awt.Dimension(947, 680));
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(70, 70, 70));
         jPanel1.setLayout(new java.awt.GridLayout(1, 3, 50, 50));
 
         panelRound2.setBackground(new java.awt.Color(255, 51, 0));
@@ -229,8 +231,8 @@ public class ThongKePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mypn;
-    private test.PanelRoundMod panelRound1;
-    private test.PanelRoundMod panelRound2;
-    private test.PanelRoundMod panelRound3;
+    private customcp.PanelRoundMod panelRound1;
+    private customcp.PanelRoundMod panelRound2;
+    private customcp.PanelRoundMod panelRound3;
     // End of variables declaration//GEN-END:variables
 }

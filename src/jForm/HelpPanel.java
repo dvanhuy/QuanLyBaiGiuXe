@@ -8,8 +8,8 @@ package jForm;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import customcp.ScrollBarCustom;
 
 /**
  *
@@ -22,7 +22,6 @@ public class HelpPanel extends javax.swing.JPanel {
      */
     public HelpPanel() {
         initComponents();
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         
         Map<String, JPanel> tlcauhoi = new HashMap<>();
         tlcauhoi.put("tlcauhoi1", tlcauhoi1);
@@ -32,6 +31,9 @@ public class HelpPanel extends javax.swing.JPanel {
         };
         tlcauhoi.get(bientlcauhoi[0]).setVisible(false);
         tlcauhoi.get(bientlcauhoi[1]).setVisible(false);
+        ScrollPane.setVerticalScrollBar(new ScrollBarCustom());
+        ScrollPane.getVerticalScrollBar().setValue(1);
+        ScrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 
     /**
@@ -60,7 +62,7 @@ public class HelpPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        ScrollPane = new javax.swing.JScrollPane();
         listcauhoi = new javax.swing.JPanel();
         cauhoi1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -85,7 +87,9 @@ public class HelpPanel extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 102, 102));
+        setBackground(new java.awt.Color(70, 70, 70));
+        setMinimumSize(new java.awt.Dimension(947, 680));
+        setPreferredSize(new java.awt.Dimension(947, 680));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Help Search", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -220,10 +224,10 @@ public class HelpPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Question", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        ScrollPane.setBackground(new java.awt.Color(255, 255, 255));
+        ScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Question", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        ScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        ScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         listcauhoi.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -438,22 +442,22 @@ public class HelpPanel extends javax.swing.JPanel {
                 .addComponent(cauhoi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cauhoi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(801, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setViewportView(listcauhoi);
+        ScrollPane.setViewportView(listcauhoi);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+            .addComponent(ScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -522,6 +526,7 @@ public class HelpPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JPanel cauhoi1;
     private javax.swing.JPanel cauhoi2;
     private javax.swing.JLabel jLabel1;
@@ -558,7 +563,6 @@ public class HelpPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel listcauhoi;
     private javax.swing.JPanel tlcauhoi1;
     private javax.swing.JPanel tlcauhoi2;

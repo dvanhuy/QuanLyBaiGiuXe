@@ -70,6 +70,8 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 255));
+        setMinimumSize(new java.awt.Dimension(947, 680));
+        setPreferredSize(new java.awt.Dimension(947, 680));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Quản lý thông tin", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
