@@ -28,6 +28,8 @@ public class LogInFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         quanLyNguoiDung= new QuanLyNguoiDung();
         user= new User();
+        wrusername.setText(" ");
+        wrpass.setText(" ");
 
     }
 
@@ -40,7 +42,7 @@ public class LogInFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
+        labelBanner = new keeptoo.KGradientPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,24 +53,26 @@ public class LogInFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        kGradientPanel2 = new keeptoo.KGradientPanel();
+        labelLogin = new keeptoo.KGradientPanel();
         jLabel10 = new javax.swing.JLabel();
-        txtusername = new customcp.TextField();
-        password = new customcp.PasswordField();
+        txtusername = new customcp.TextFieldCustom();
+        txtpassword = new customcp.PasswordFieldCustom();
         jSeparator1 = new javax.swing.JSeparator();
-        loginbt = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
-        quenmkbt = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        btlogiin = new customcp.Buttonshine();
+        buttonshine1 = new customcp.Buttonshine();
+        wrusername = new javax.swing.JLabel();
+        wrpass = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Log In");
         setResizable(false);
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(204, 204, 204));
-        kGradientPanel1.setkStartColor(new java.awt.Color(51, 102, 255));
+        labelBanner.setkEndColor(new java.awt.Color(204, 204, 204));
+        labelBanner.setkStartColor(new java.awt.Color(51, 102, 255));
 
         jPanel2.setLayout(null);
 
@@ -102,37 +106,39 @@ public class LogInFrame extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Copyright by WeePoo");
 
-        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
-        kGradientPanel1.setLayout(kGradientPanel1Layout);
-        kGradientPanel1Layout.setHorizontalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout labelBannerLayout = new javax.swing.GroupLayout(labelBanner);
+        labelBanner.setLayout(labelBannerLayout);
+        labelBannerLayout.setHorizontalGroup(
+            labelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labelBannerLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                .addGroup(labelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(labelBannerLayout.createSequentialGroup()
+                        .addGroup(labelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addGroup(labelBannerLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9))
+                            .addComponent(jLabel1))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9))
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
-        kGradientPanel1Layout.setVerticalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+        labelBannerLayout.setVerticalGroup(
+            labelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labelBannerLayout.createSequentialGroup()
+                .addGroup(labelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(labelBannerLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                    .addGroup(labelBannerLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,7 +150,7 @@ public class LogInFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(labelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9))
@@ -153,8 +159,8 @@ public class LogInFrame extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        kGradientPanel2.setkEndColor(new java.awt.Color(204, 204, 255));
-        kGradientPanel2.setkStartColor(new java.awt.Color(240, 240, 240));
+        labelLogin.setkEndColor(new java.awt.Color(204, 204, 255));
+        labelLogin.setkStartColor(new java.awt.Color(240, 240, 240));
 
         jLabel10.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 51, 51));
@@ -165,104 +171,113 @@ public class LogInFrame extends javax.swing.JFrame {
         txtusername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtusername.setLabelText("User name");
         txtusername.setName(""); // NOI18N
-
-        password.setToolTipText("Nhập mật khẩu");
-        password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        password.setLabelText("Password");
-        password.setShowAndHide(true);
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+        txtusername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtusernameKeyTyped(evt);
             }
         });
 
-        loginbt.setBackground(new java.awt.Color(255, 255, 255));
-        loginbt.setFont(new java.awt.Font("STXinwei", 1, 20)); // NOI18N
-        loginbt.setText("Login");
-        loginbt.setBorder(null);
-        loginbt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                loginbtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                loginbtMouseExited(evt);
+        txtpassword.setToolTipText("Nhập mật khẩu");
+        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtpassword.setLabelText("Password");
+        txtpassword.setShowAndHide(true);
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
             }
         });
-        loginbt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginbtActionPerformed(evt);
+        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtpasswordKeyTyped(evt);
             }
         });
 
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jCheckBox1.setText("Nhớ mật khẩu");
 
-        quenmkbt.setBackground(new java.awt.Color(255, 255, 255));
-        quenmkbt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        quenmkbt.setText("Quên mật khẩu");
-        quenmkbt.setBorder(null);
-        quenmkbt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                quenmkbtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                quenmkbtMouseExited(evt);
-            }
-        });
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("or");
 
-        javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
-        kGradientPanel2.setLayout(kGradientPanel2Layout);
-        kGradientPanel2Layout.setHorizontalGroup(
-            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+        btlogiin.setBackground(new java.awt.Color(51, 153, 255));
+        btlogiin.setForeground(new java.awt.Color(255, 255, 255));
+        btlogiin.setText("Login");
+        btlogiin.setEffectColor(new java.awt.Color(51, 209, 249));
+        btlogiin.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
+        btlogiin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlogiinActionPerformed(evt);
+            }
+        });
+
+        buttonshine1.setText("Quên mật khẩu");
+        buttonshine1.setEffectColor(new java.awt.Color(230, 230, 230));
+        buttonshine1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        wrusername.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        wrusername.setForeground(new java.awt.Color(255, 0, 51));
+        wrusername.setText("Nhập tên tài khoản !");
+
+        wrpass.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        wrpass.setForeground(new java.awt.Color(255, 0, 51));
+        wrpass.setText("Nhập mật khẩu !");
+
+        javax.swing.GroupLayout labelLoginLayout = new javax.swing.GroupLayout(labelLogin);
+        labelLogin.setLayout(labelLoginLayout);
+        labelLoginLayout.setHorizontalGroup(
+            labelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labelLoginLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
+                .addGroup(labelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelLoginLayout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelLoginLayout.createSequentialGroup()
                         .addGap(0, 49, Short.MAX_VALUE)
-                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtusername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator1)
-                            .addComponent(loginbt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(quenmkbt, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                            .addComponent(jCheckBox1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
-                                .addComponent(jSeparator3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator4)))
+                        .addGroup(labelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(labelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtusername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSeparator1)
+                                .addComponent(jCheckBox1)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelLoginLayout.createSequentialGroup()
+                                    .addComponent(jSeparator3)
+                                    .addGap(0, 0, 0)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, 0)
+                                    .addComponent(jSeparator4))
+                                .addComponent(btlogiin, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                .addComponent(buttonshine1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(wrusername, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(wrpass, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47))))
         );
-        kGradientPanel2Layout.setVerticalGroup(
-            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+        labelLoginLayout.setVerticalGroup(
+            labelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labelLoginLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
                 .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(5, 5, 5)
+                .addComponent(wrusername)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(wrpass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox1)
                 .addGap(18, 18, 18)
-                .addComponent(loginbt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(btlogiin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addGroup(labelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(quenmkbt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonshine1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -273,17 +288,17 @@ public class LogInFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(kGradientPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelBanner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -291,48 +306,66 @@ public class LogInFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginbtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtMouseEntered
+    private void btlogiinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlogiinActionPerformed
         // TODO add your handling code here:
-        loginbt.setBackground(new Color(255,153,153));
-        loginbt.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_loginbtMouseEntered
-
-    private void loginbtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtMouseExited
-        // TODO add your handling code here:
-        loginbt.setBackground(new Color(255,255,255));
-        loginbt.setForeground(new Color(0,0,0));
-    }//GEN-LAST:event_loginbtMouseExited
-
-    private void quenmkbtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quenmkbtMouseEntered
-        // TODO add your handling code here:
-        quenmkbt.setBackground(new Color(255,153,153));
-        quenmkbt.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_quenmkbtMouseEntered
-
-    private void quenmkbtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quenmkbtMouseExited
-        // TODO add your handling code here:
-        quenmkbt.setBackground(new Color(255,255,255));
-        quenmkbt.setForeground(new Color(0,0,0));
-    }//GEN-LAST:event_quenmkbtMouseExited
-
-    private void loginbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtActionPerformed
-        // TODO add your handling code here:
-        String username=txtusername.getText();
-        String password=String.valueOf(this.password.getPassword());
-        user=quanLyNguoiDung.checkUser(username, password);
-        if (user == null)
-        JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu sai", "Sai", JOptionPane.ERROR_MESSAGE);
-        else
+        boolean duocchay=true;
+        if (String.valueOf(txtpassword.getPassword()).equals(""))
         {
-            new Main(user).setVisible(true);
-            this.dispose();
+            wrpass.setText("Nhập mật khẩu !");
+            duocchay=false;
+            txtpassword.requestFocus(true);
         }
-    }//GEN-LAST:event_loginbtActionPerformed
+        
+        if (txtusername.getText().equals(""))
+        {
+            wrusername.setText("Nhập tên tài khoản !");
+            duocchay=false;
+            txtusername.requestFocus(true);
+        }
+        
+        if (duocchay){
+            String username=txtusername.getText();
+            String password=String.valueOf(this.txtpassword.getPassword());
+            user=quanLyNguoiDung.checkUser(username, password);
+            if (user == null)
+            {
+                if (quanLyNguoiDung.checkUserName(username)==null)
+                {
+                    wrusername.setText("Tài khoản không tồn tại!");
+                    txtusername.requestFocus(true);
+                    wrpass.setText(" ");
+                }
+                else 
+                {
+                    wrpass.setText("Sai mật khẩu");
+                    
+                    txtpassword.requestFocus(true);
+                    wrusername.setText(" ");
+                }
+            }
+            else
+            {
+                new Main(user).setVisible(true);
+                this.dispose();
+            }
+        }   
+    }//GEN-LAST:event_btlogiinActionPerformed
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+    private void txtusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyTyped
         // TODO add your handling code here:
-        loginbtActionPerformed(evt);
-    }//GEN-LAST:event_passwordActionPerformed
+        wrusername.setText(" ");
+
+    }//GEN-LAST:event_txtusernameKeyTyped
+
+    private void txtpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyTyped
+        // TODO add your handling code here:
+        wrpass.setText(" ");
+    }//GEN-LAST:event_txtpasswordKeyTyped
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+        btlogiinActionPerformed(evt);
+    }//GEN-LAST:event_txtpasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,6 +406,8 @@ public class LogInFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customcp.Buttonshine btlogiin;
+    private customcp.Buttonshine buttonshine1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -389,11 +424,11 @@ public class LogInFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private keeptoo.KGradientPanel kGradientPanel1;
-    private keeptoo.KGradientPanel kGradientPanel2;
-    private javax.swing.JButton loginbt;
-    private customcp.PasswordField password;
-    private javax.swing.JButton quenmkbt;
-    private customcp.TextField txtusername;
+    private keeptoo.KGradientPanel labelBanner;
+    private keeptoo.KGradientPanel labelLogin;
+    private customcp.PasswordFieldCustom txtpassword;
+    private customcp.TextFieldCustom txtusername;
+    private javax.swing.JLabel wrpass;
+    private javax.swing.JLabel wrusername;
     // End of variables declaration//GEN-END:variables
 }

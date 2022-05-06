@@ -44,6 +44,37 @@ public class QuanLyNguoiDung {
         }
     }
     
+    public User checkUserName(String username)
+    {
+        User user= new User();
+        Connection connection = GetConnectServer.getConnection();
+        
+        String sql = "SELECT * FROM NguoiDung "
+                + "WHERE tenTK=? ";
+        try {
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();      
+            user.setIdUser(rs.getString(1));// tên cột
+            user.setHoTen(rs.getString(2));
+            user.setTenTK(rs.getString(3));
+            user.setMatKhau(rs.getString(4));
+            user.setGioiTinh(rs.getString(5));
+            user.setQueQuan(rs.getString(6));
+            user.setSdt(rs.getString(7));
+            user.setDinhDanh(rs.getString(8));
+            user.setChucVu(rs.getString(9));
+            
+            return user;
+        } catch(SQLException e){
+//            System.out.println("Sai tài khoản mật khẩu");
+            return null;
+        }
+    }
+    
     public List<User> getAllNguoiDung(){
        List<User> listXe = new ArrayList<>();
        Connection con = GetConnectServer.getConnection();
