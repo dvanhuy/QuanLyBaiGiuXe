@@ -9,8 +9,6 @@ import define.User;
 import define.Xe;
 import java.awt.Color;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import quanlybaigiuxe.QuanLyBaiGiuXe;
 
@@ -26,8 +24,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
      * Creates new form QuanLyXePanel
      */
     public QuanLyXePanel() {
-        initComponents();
-        setSize(1030, 844);
+        initComponents();     
     }
     
     
@@ -58,6 +55,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         defaultTableModel.addColumn("Tiền đã thu");
         
         setDataTable(quanLyXe.getAllXe());
+        
     }
 
     public void setDataTable(List<Xe> listXe){

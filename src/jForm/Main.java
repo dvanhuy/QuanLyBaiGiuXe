@@ -402,7 +402,7 @@ public class Main extends javax.swing.JFrame {
         {
             container.removeAll();
             container.setLayout(new CardLayout());
-            container.add(new QuanLyThongTinPanel());
+            container.add(new QuanLyThongTinPanel(user));
             container.revalidate();
             container.repaint();
             
@@ -477,7 +477,7 @@ public class Main extends javax.swing.JFrame {
         });
     }
     
-    public void resetMau(){
+    public final void resetMau(){
         
         sidepn1.setBackground(new Color(102,102,102));
         sidepn2.setBackground(new Color(102,102,102));
@@ -494,25 +494,25 @@ public class Main extends javax.swing.JFrame {
         lbtrogiup.setForeground(new Color(230,230,230));      
     }
     
-    public void chonQLXe(){
+    public final void chonQLXe(){
         sidepn1.setBackground(Color.white);
         quanlyxepn.setBackground(new Color(70,70,70));
         lbquanlyxe.setForeground(Color.white);
     }
     
-    public void chonQLNV(){
+    public final void chonQLNV(){
         sidepn2.setBackground(Color.white);
         quanlynvpn.setBackground(new Color(70,70,70));
         lbquanlynv.setForeground(Color.white);
     }
     
-    public void chonThongKe(){
+    public final void chonThongKe(){
         sidepn3.setBackground(Color.white);
         thongkepn.setBackground(new Color(70,70,70));
         lbthongke.setForeground(Color.white);
     }
     
-    public void chonTroGiup(){
+    public final void chonTroGiup(){
         sidepn4.setBackground(Color.white);
         trogiuppn.setBackground(new Color(70,70,70));
         lbtrogiup.setForeground(Color.white);

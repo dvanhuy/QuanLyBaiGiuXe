@@ -248,7 +248,7 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         });
 
         txtsearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtsearch.setText("Tìm mã, tên, chức vụ...");
+        txtsearch.setText("Tìm mã, tên, tên tài khoản...");
         txtsearch.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtsearchFocusGained(evt);
@@ -348,7 +348,7 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
 
     private void txtsearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsearchFocusGained
         // TODO add your handling code here:
-        if (txtsearch.getText().equals("Tìm mã, tên, chức vụ..."))
+        if (txtsearch.getText().equals("Tìm mã, tên, tên tài khoản..."))
         {
             txtsearch.setText("");
             txtsearch.setForeground(new Color(0,0,0));
@@ -359,7 +359,7 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(txtsearch.getText().equals(""))
         {
-            txtsearch.setText("Tìm mã, tên, chức vụ...");
+            txtsearch.setText("Tìm mã, tên, tên tài khoản...");
             txtsearch.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_txtsearchFocusLost
