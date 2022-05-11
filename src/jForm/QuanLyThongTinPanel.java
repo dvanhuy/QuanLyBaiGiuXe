@@ -77,7 +77,7 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         jTextField6 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        buttonshine1 = new customcp.Buttonshine();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(344, 150));
         jDialog1.setModal(true);
@@ -301,6 +301,11 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         btreset.setText("Đặt lại dữ liệu");
         btreset.setEffectColor(new java.awt.Color(240, 240, 240));
         btreset.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btresetActionPerformed(evt);
+            }
+        });
         jPanel2.add(btreset);
 
         btreset1.setBackground(new java.awt.Color(51, 253, 15));
@@ -341,18 +346,21 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
 
         jTextField7.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
-        jButton6.setBackground(new java.awt.Color(51, 255, 51));
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton6.setText("Xác nhận đổi");
+        buttonshine1.setBackground(new java.awt.Color(51, 253, 15));
+        buttonshine1.setText("Xác nhận đổi");
+        buttonshine1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(buttonshine1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15)
                             .addComponent(jLabel14)
@@ -361,11 +369,8 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(161, 161, 161))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(189, 189, 189))))
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(161, 161, 161))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,8 +387,8 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                     .addComponent(jLabel16)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addGap(7, 7, 7))
+                .addComponent(buttonshine1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -420,8 +425,8 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(50, 50, 50))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -435,6 +440,11 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         jDialog1.setVisible(false);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void btresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btresetActionPerformed
+        // TODO add your handling code here:
+        resetInfo();
+    }//GEN-LAST:event_btresetActionPerformed
 
     public final void resetInfo(){
         txtmanv.setText(user.getIdUser());
@@ -458,9 +468,9 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
     private customcp.Buttonshine btreset1;
     private customcp.Buttonshine btreset2;
     private customcp.Buttonshine btreset3;
+    private customcp.Buttonshine buttonshine1;
     private javax.swing.ButtonGroup giolitinh;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;

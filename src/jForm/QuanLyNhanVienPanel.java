@@ -333,7 +333,7 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if (txtsearch.getText().equals(""))
+        if (txtsearch.getText().equals("") || txtsearch.getText().equals("Tìm mã, tên, tên tài khoản..."))
         {
             defaultTableModel.setRowCount(0);
             setDataTable(quanLyNguoiDung.getAllNguoiDung());
