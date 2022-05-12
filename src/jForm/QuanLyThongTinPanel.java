@@ -6,6 +6,7 @@
 package jForm;
 
 import define.User;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,8 +26,27 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
     public QuanLyThongTinPanel(User userkh) {
         initComponents();
         user= new User(userkh);
-        
         resetInfo();
+
+        try
+        {
+            String sourceImg="/img/"+user.getIdUser()+".png";
+            imageAvatar.setIcon(new ImageIcon(getClass().getResource(sourceImg)));
+            imageAvatar.setBorderSize(3);
+        }
+        catch(Exception e)
+        {
+            imageAvatar.setIcon(new ImageIcon(getClass().getResource("/img/quanlyuser.png")));
+        }
+        
+        //an mk
+        String chuoian="";
+        for (int i=0;i<user.getMatKhau().length();i++)
+        {
+            chuoian=chuoian+"*";
+        }
+        txtpass.setText(chuoian);
+        
     }
 
     /**
@@ -63,13 +83,11 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         txtpass = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtmadd = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btreset = new customcp.Buttonshine();
         btreset1 = new customcp.Buttonshine();
-        btreset2 = new customcp.Buttonshine();
-        btreset3 = new customcp.Buttonshine();
+        btmatkhau = new customcp.Buttonshine();
+        btchangeimg = new customcp.Buttonshine();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
@@ -78,6 +96,7 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         buttonshine1 = new customcp.Buttonshine();
+        imageAvatar = new customcp.ImageAvatar();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(344, 150));
         jDialog1.setModal(true);
@@ -281,18 +300,6 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/quanlyuserresize.png"))); // NOI18N
-
-        jButton1.setBackground(new java.awt.Color(255, 204, 204));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jButton1.setText("Đổi ảnh đại diện");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 40, 0));
 
@@ -315,19 +322,29 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         btreset1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel2.add(btreset1);
 
-        btreset2.setBackground(new java.awt.Color(51, 253, 15));
-        btreset2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/refresh.png"))); // NOI18N
-        btreset2.setText("Đặt lại dữ liệu");
-        btreset2.setEffectColor(new java.awt.Color(240, 240, 240));
-        btreset2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel2.add(btreset2);
+        btmatkhau.setBackground(new java.awt.Color(51, 253, 15));
+        btmatkhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bthienmk.png"))); // NOI18N
+        btmatkhau.setText("Hiện mật khẩu");
+        btmatkhau.setEffectColor(new java.awt.Color(240, 240, 240));
+        btmatkhau.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btmatkhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btmatkhauActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btmatkhau);
 
-        btreset3.setBackground(new java.awt.Color(51, 253, 15));
-        btreset3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logout.png"))); // NOI18N
-        btreset3.setText("Đăng xuất");
-        btreset3.setEffectColor(new java.awt.Color(240, 240, 240));
-        btreset3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel2.add(btreset3);
+        btchangeimg.setBackground(new java.awt.Color(51, 253, 15));
+        btchangeimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logout.png"))); // NOI18N
+        btchangeimg.setText("Đổi ảnh đại diện");
+        btchangeimg.setEffectColor(new java.awt.Color(240, 240, 240));
+        btchangeimg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btchangeimg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btchangeimgActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btchangeimg);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Đổi mật khẩu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
@@ -391,6 +408,9 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                 .addGap(6, 6, 6))
         );
 
+        imageAvatar.setForeground(new java.awt.Color(51, 255, 66));
+        imageAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/quanlyuser.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -401,12 +421,8 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(imageAvatar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -416,25 +432,18 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(imageAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        jDialog1.setLocationRelativeTo(null);
-        jDialog1.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -445,6 +454,37 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         resetInfo();
     }//GEN-LAST:event_btresetActionPerformed
+
+    private void btmatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmatkhauActionPerformed
+        // TODO add your handling code here:
+        
+        String matkhau=user.getMatKhau();
+        if (txtpass.getText().equals(matkhau))
+        {
+            String chuoian="";
+            for (int i=0;i<matkhau.length();i++)
+            {
+                chuoian=chuoian+"*";
+            }
+            txtpass.setText(chuoian);
+            btmatkhau.setText("Hiện mật khẩu");
+            btmatkhau.setIcon(new ImageIcon(getClass().getResource("/img/bthienmk.png")));
+        }
+        else 
+        {
+            txtpass.setText(matkhau);
+            btmatkhau.setText("Ẩn mật khẩu");
+            btmatkhau.setIcon(new ImageIcon(getClass().getResource("/img/btanmk.png")));
+        }
+        
+        
+    }//GEN-LAST:event_btmatkhauActionPerformed
+
+    private void btchangeimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btchangeimgActionPerformed
+        // TODO add your handling code here:
+        jDialog1.setLocationRelativeTo(null);
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_btchangeimgActionPerformed
 
     public final void resetInfo(){
         txtmanv.setText(user.getIdUser());
@@ -464,16 +504,15 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customcp.Buttonshine btchangeimg;
+    private customcp.Buttonshine btmatkhau;
     private customcp.Buttonshine btreset;
     private customcp.Buttonshine btreset1;
-    private customcp.Buttonshine btreset2;
-    private customcp.Buttonshine btreset3;
     private customcp.Buttonshine buttonshine1;
     private javax.swing.ButtonGroup giolitinh;
-    private javax.swing.JButton jButton1;
+    private customcp.ImageAvatar imageAvatar;
     private javax.swing.JButton jButton7;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
