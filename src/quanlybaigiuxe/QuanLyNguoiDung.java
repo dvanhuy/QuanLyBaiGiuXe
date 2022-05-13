@@ -119,4 +119,48 @@ public class QuanLyNguoiDung {
        return listXe;
    }
     
+   public void updateUser(User user)
+   {
+        Connection connection = GetConnectServer.getConnection();
+        
+        String sql = "UPDATE NguoiDung "
+                +"SET hoTen=?,gioiTinh=?,soDT=?,dinhDanh=?,chucVu=? "
+                + "WHERE idUser=? ";
+        try {
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user.getHoTen());
+            preparedStatement.setString(2, user.getGioiTinh());
+            preparedStatement.setString(3, user.getSdt());
+            preparedStatement.setString(4, user.getDinhDanh());
+            preparedStatement.setString(5, user.getChucVu());
+            preparedStatement.setString(6, user.getIdUser());
+            
+            preparedStatement.execute();
+
+            
+        } catch(SQLException e){
+            System.out.println("Sai tại cập nhật dữ liệu");
+        }
+   }
+   
+   public void updatePassword(String manv,String matkhau)
+   {
+        Connection connection = GetConnectServer.getConnection();
+        
+        String sql = "UPDATE NguoiDung "
+                +"SET matKhau=? "
+                + "WHERE idUser=? ";
+        try {
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, manv);
+            preparedStatement.setString(2, matkhau);
+            
+            preparedStatement.execute();
+        } catch(SQLException e){
+            System.out.println("Sai tại cập nhật mật khẩu");
+        }
+   }
+    
 }
