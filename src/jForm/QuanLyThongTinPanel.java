@@ -47,6 +47,9 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         }
         txtnhacnho.setText("");
         imgkhoc.setVisible(false);
+        
+        lbdangthuchien.setText(" ");
+        progressBarCustom.setVisible(false);
     }
 
     /**
@@ -463,6 +466,10 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         pndangthuhien.setMaximumSize(new java.awt.Dimension(100, 46));
         pndangthuhien.setMinimumSize(new java.awt.Dimension(100, 46));
 
+        progressBarCustom.setForeground(new java.awt.Color(51, 253, 15));
+        progressBarCustom.setColorString(new java.awt.Color(0, 0, 0));
+        progressBarCustom.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         lbdangthuchien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbdangthuchien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbdangthuchien.setText("Đang thực hiện");
@@ -529,7 +536,7 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(imageAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7)
-                        .addComponent(pndangthuhien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pndangthuhien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -565,7 +572,6 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
             btmatkhau.setIcon(new ImageIcon(getClass().getResource("/img/btanmk.png")));
         }
         
-        
     }//GEN-LAST:event_btmatkhauActionPerformed
 
     private void btchangeimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btchangeimgActionPerformed
@@ -588,15 +594,14 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         user.setDinhDanh(txtmadd.getText());
         
         quanLyNguoiDung.updateUser(user);
+             
+        try {
+            runProgressBar();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(QuanLyThongTinPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-//        lbdangthuchien.setText(" ");
-//        progressBarCustom.setVisible(false);
         
-//        try {
-//            runProgressBar();
-//        } catch (InterruptedException ex) {
-//            System.out.println("lỗi chạy progress");;
-//        }
         
     }//GEN-LAST:event_btreset1ActionPerformed
 
@@ -634,7 +639,9 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
             txtnhacnho.setText("Xác nhận sai !!!");
             imgkhoc.setVisible(true);
             dcphepchay=false;
-        } 
+    
+            quanLyNguoiDung.updatePassword(user.getIdUser(),txtmatkhaumoi.getText());
+            user.setMatKhau(txtmatkhaumoi.getText());    } 
         
         if (dcphepchay)
         {
@@ -644,6 +651,9 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                     
             quanLyNguoiDung.updatePassword(user.getIdUser(),txtmatkhaumoi.getText());
             user.setMatKhau(txtmatkhaumoi.getText());
+            txtmatkhaucu.setText("");
+            txtmatkhaumoi.setText("");
+            txtxacnhanmatkhau.setText("");
         } 
         
         
@@ -666,26 +676,41 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         txtmadd.setText(user.getDinhDanh());
         
         txtpass.setText("******");
+        
+        
     }
-//    
-//    public final void runProgressBar() throws InterruptedException
-//    {
-//        int pgrbar = 0;
-//        while (pgrbar<=100)
-//        {
-//            int ramdom =(int)(10*Math.random()+1);
-//            System.out.println(ramdom);
-//            pgrbar+=ramdom;
-//            if(pgrbar>100)
-//            {
-//                progressBarCustom.setValue(100);
-//                break;
-//            }
-//            else
-//                progressBarCustom.setValue(pgrbar);
-//            Thread.sleep(100);
-//        }
-//    }
+    
+    public final void runProgressBar() throws InterruptedException
+    {
+        Thread progress = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                lbdangthuchien.setText("Đang thực hiện");
+                progressBarCustom.setVisible(true);
+                int pgrbar = 0;
+                while (pgrbar<100)
+                {
+                    int ramdom =(int)(10*Math.random()+1);
+                    pgrbar+=ramdom;
+                    if(pgrbar>100)
+                    {
+                        pgrbar=100;
+                    }
+                    progressBarCustom.setValue(pgrbar);
+                    try {
+                        Thread.sleep(70);
+                    } catch (InterruptedException ex) {
+                        System.out.println("Chay progress sai");;
+                    }
+                    System.out.println(pgrbar);
+                }
+                
+                lbdangthuchien.setText(" ");
+                progressBarCustom.setVisible(false);
+            }
+        });
+        progress.start();
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
