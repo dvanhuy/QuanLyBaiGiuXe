@@ -8,6 +8,7 @@ package jForm;
 import define.User;
 import java.awt.CardLayout;
 import java.awt.Color;
+import quanlybaigiuxe.QuanLyNguoiDung;
 
 /**
  *
@@ -19,10 +20,12 @@ public class Main extends javax.swing.JFrame {
      * Creates new form newmain
      */
     User user;
+    QuanLyNguoiDung quanLyNguoiDung;
 //    int luuchon;
     
     public Main() {
         initComponents();
+        quanLyNguoiDung= new QuanLyNguoiDung();
         user= new User();
         user.setChucVu("Admin");
         user.setHoTen("Admin");
@@ -34,6 +37,8 @@ public class Main extends javax.swing.JFrame {
     
     public Main(User userkh) {
         initComponents();
+        
+        quanLyNguoiDung= new QuanLyNguoiDung();
         user= new User(userkh);
         container.setLayout(new CardLayout());
         container.add(new QuanLyXePanel(user));
@@ -377,15 +382,19 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void quanlyxepnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlyxepnMouseClicked
-        // TODO add your handling code here:
-        resetMau();
-        chonQLXe();
+
+        // update user
+        user=quanLyNguoiDung.getUserbyId(user.getIdUser());
         
         container.removeAll();
         container.setLayout(new CardLayout());
         container.add(new QuanLyXePanel(user));
         container.revalidate();
         container.repaint();
+        
+        resetMau();
+        chonQLXe();
+        
     }//GEN-LAST:event_quanlyxepnMouseClicked
 
     private void quanlynvpnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlynvpnMouseClicked
@@ -414,6 +423,9 @@ public class Main extends javax.swing.JFrame {
 
     private void thongkepnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongkepnMouseClicked
         // TODO add your handling code here:
+        // update user
+        user=quanLyNguoiDung.getUserbyId(user.getIdUser());
+        
         container.removeAll();
         container.setLayout(new CardLayout());
         container.add(new ThongKePanel());
@@ -425,6 +437,9 @@ public class Main extends javax.swing.JFrame {
 
     private void trogiuppnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trogiuppnMouseClicked
         // TODO add your handling code here:
+        // update user
+        user=quanLyNguoiDung.getUserbyId(user.getIdUser());
+        
         container.removeAll();
         container.setLayout(new CardLayout());
         container.add(new HelpPanel());
@@ -432,6 +447,7 @@ public class Main extends javax.swing.JFrame {
         container.repaint();
         resetMau();
         chonTroGiup();
+
     }//GEN-LAST:event_trogiuppnMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -6,9 +6,15 @@
 package jForm;
 
 import define.User;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import quanlybaigiuxe.QuanLyNguoiDung;
 
 /**
@@ -22,6 +28,10 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
      */
     User user;
     QuanLyNguoiDung quanLyNguoiDung;
+    JFileChooser changeAvatar;
+    BufferedImage xulyanh;
+
+    
     
     public QuanLyThongTinPanel() {
         initComponents();
@@ -35,21 +45,22 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
 
         
         //set avatar
-        try
-        {
-            String sourceImg="/img/"+user.getIdUser()+".png";
-            imageAvatar.setIcon(new ImageIcon(getClass().getResource(sourceImg)));
-            imageAvatar.setBorderSize(3);
-        }
-        catch(Exception e)
-        {
-            imageAvatar.setIcon(new ImageIcon(getClass().getResource("/img/quanlyuser.png")));
-        }
+        setAvatar();
+        
+        
+        //set nhắc nhở
         txtnhacnho.setText("");
         imgkhoc.setVisible(false);
         
+        //set progress
         lbdangthuchien.setText(" ");
         progressBarCustom.setVisible(false);
+        
+        //set change avatar
+        changeAvatar = new JFileChooser();
+        changeAvatar.setDialogTitle("Chọn tấm ảnh bạn muốn");
+        changeAvatar.setCurrentDirectory(new File("./MotSoAvatar"));// ./ là thư mục hiện tại
+        changeAvatar.setFileFilter(new FileNameExtensionFilter("PNG images","png","jpg"));
     }
 
     /**
@@ -553,6 +564,7 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
     private void btresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btresetActionPerformed
         // TODO add your handling code here:
         resetInfo();
+//        setAvatar();
     }//GEN-LAST:event_btresetActionPerformed
 
     private void btmatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmatkhauActionPerformed
@@ -570,14 +582,55 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
             txtpass.setText(matkhau);
             btmatkhau.setText("Ẩn mật khẩu");
             btmatkhau.setIcon(new ImageIcon(getClass().getResource("/img/btanmk.png")));
+            
         }
-        
+
     }//GEN-LAST:event_btmatkhauActionPerformed
 
     private void btchangeimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btchangeimgActionPerformed
         // TODO add your handling code here:
-        jDialog1.setLocationRelativeTo(null);
-        jDialog1.setVisible(true);
+//        jDialog1.setLocationRelativeTo(null);
+//        jDialog1.setVisible(true);
+        int returnValue=changeAvatar.showDialog(this, "Chọn ảnh");
+        
+        if (returnValue == JFileChooser.APPROVE_OPTION)
+        {
+            try { 
+                xulyanh=ImageIO.read(changeAvatar.getSelectedFile());
+                System.out.println("load dc anh");
+            } 
+            catch (IOException ex) {
+                System.out.println("Load anh fail");
+            }
+            
+            File outputfile = new File("./src/img/"+user.getIdUser()+".png");
+            if (outputfile.exists())
+                outputfile.delete();
+            try 
+            {
+                ImageIO.write(xulyanh, "png", outputfile);
+                System.out.println("Tạo ảnh thành công");
+            }
+            catch (IOException ex)
+            {
+                System.out.println("Đéo dc");
+            }
+            
+        }
+        else
+        {
+            System.out.println("Khong chọn ảnh");
+        }
+        
+        
+//        try {
+//            runProgressBar();
+//        } catch (InterruptedException ex) {
+//            System.out.println("chay progress bar sai");
+//        }
+        
+        
+        
     }//GEN-LAST:event_btchangeimgActionPerformed
 
     private void btreset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btreset1ActionPerformed
@@ -702,7 +755,6 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
                     } catch (InterruptedException ex) {
                         System.out.println("Chay progress sai");;
                     }
-                    System.out.println(pgrbar);
                 }
                 
                 lbdangthuchien.setText(" ");
@@ -712,6 +764,28 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         progress.start();
     }
     
+    
+    public final void setAvatar()
+    {
+        try
+        {
+            
+            String sourceImg="./src/img/"+user.getIdUser()+".png";
+            
+            imageAvatar.setIcon(new ImageIcon(sourceImg));
+            
+            imageAvatar.setBorderSize(3);
+//            invalidate();
+//            validate();
+//            repaint();
+//            imageAvatar.repaint();
+//            imageAvatar.revalidate();
+        }
+        catch(Exception e)
+        {
+            imageAvatar.setIcon(new ImageIcon("./src/img/quanlyuser.png"));
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customcp.Buttonshine btchangeimg;

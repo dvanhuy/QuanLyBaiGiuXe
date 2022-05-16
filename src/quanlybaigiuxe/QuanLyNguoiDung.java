@@ -111,6 +111,33 @@ public class QuanLyNguoiDung {
        return listXe;
    }
     
+    public User getUserbyId(String id){
+        String sql="Select * from NguoiDung where idUser = ?";
+        User user= new User();
+        Connection connection = GetConnectServer.getConnection();
+        try {
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();      
+            user.setIdUser(rs.getString(1));// tên cột
+            user.setHoTen(rs.getString(2));
+            user.setTenTK(rs.getString(3));
+            user.setMatKhau(rs.getString(4));
+            user.setGioiTinh(rs.getString(5));
+            user.setQueQuan(rs.getString(6));
+            user.setSdt(rs.getString(7));
+            user.setDinhDanh(rs.getString(8));
+            user.setChucVu(rs.getString(9));
+            
+            return user;
+        } catch(SQLException e){
+            System.out.println("Sai lấy user theo mã ");
+            return null;
+        }
+   }
     
     public List<User> getAllNguoiDungid_name_username(String tim){
        String sql="Select * from NguoiDung where (idUser like '%" + tim + "%') "
@@ -118,6 +145,8 @@ public class QuanLyNguoiDung {
        List<User> listXe=makeSqladdReturnListUser(sql);
        return listXe;
    }
+    
+    
     
    public void updateUser(User user)
    {
