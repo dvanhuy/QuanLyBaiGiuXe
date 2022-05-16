@@ -45,7 +45,16 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
 
         
         //set avatar
-        setAvatar();
+        try
+        {
+            String sourceImg="./src/img/"+user.getIdUser()+".png";
+            imageAvatar.setIcon(new ImageIcon(sourceImg));
+            imageAvatar.setBorderSize(3);
+        }
+        catch(Exception e)
+        {
+            imageAvatar.setIcon(new ImageIcon("./src/img/quanlyuser.png"));
+        }
         
         
         //set nhắc nhở
@@ -564,7 +573,6 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
     private void btresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btresetActionPerformed
         // TODO add your handling code here:
         resetInfo();
-//        setAvatar();
     }//GEN-LAST:event_btresetActionPerformed
 
     private void btmatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmatkhauActionPerformed
@@ -610,6 +618,15 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
             {
                 ImageIO.write(xulyanh, "png", outputfile);
                 System.out.println("Tạo ảnh thành công");
+                
+                try {
+                    runProgressBar();
+                } catch (InterruptedException ex) {
+                    System.out.println("chay progress bar sai");
+                }
+                
+                ImageIcon imageIcon = new ImageIcon(xulyanh);
+                imageAvatar.setIcon(imageIcon);
             }
             catch (IOException ex)
             {
@@ -621,14 +638,6 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         {
             System.out.println("Khong chọn ảnh");
         }
-        
-        
-//        try {
-//            runProgressBar();
-//        } catch (InterruptedException ex) {
-//            System.out.println("chay progress bar sai");
-//        }
-        
         
         
     }//GEN-LAST:event_btchangeimgActionPerformed
@@ -763,29 +772,7 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         });
         progress.start();
     }
-    
-    
-    public final void setAvatar()
-    {
-        try
-        {
-            
-            String sourceImg="./src/img/"+user.getIdUser()+".png";
-            
-            imageAvatar.setIcon(new ImageIcon(sourceImg));
-            
-            imageAvatar.setBorderSize(3);
-//            invalidate();
-//            validate();
-//            repaint();
-//            imageAvatar.repaint();
-//            imageAvatar.revalidate();
-        }
-        catch(Exception e)
-        {
-            imageAvatar.setIcon(new ImageIcon("./src/img/quanlyuser.png"));
-        }
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customcp.Buttonshine btchangeimg;
