@@ -9,6 +9,8 @@ import define.User;
 import define.Xe;
 import java.awt.Color;
 import java.util.List;
+import java.util.Set;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import quanlybaigiuxe.QuanLyBaiGiuXe;
 
@@ -20,6 +22,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     QuanLyBaiGiuXe quanLyXe;
     Xe xe;
     DefaultTableModel defaultTableModel;
+    User user;
    /**
      * Creates new form QuanLyXePanel
      */
@@ -28,8 +31,9 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     }
     
     
-    public QuanLyXePanel(User user) {
+    public QuanLyXePanel(User userkh) {
         initComponents();
+        user = new User(userkh);
         txtmanv.setText("Mã NV: "+user.getIdUser());
         txttennv.setText("Tên NV: "+user.getHoTen());
         txtrole.setText("Chức vụ: "+user.getChucVu());
@@ -76,7 +80,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jLabel5 = new javax.swing.JLabel();
+        lbIdNext = new javax.swing.JLabel();
         txtsearch = new javax.swing.JTextField();
         btsearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -92,13 +96,13 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         lbnhanlb = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        txtBienSo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         cbbLoaiXe = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtTienDaThu = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btSubmit = new javax.swing.JButton();
         txtdinhdanh1 = new javax.swing.JLabel();
         ComboBoxsx = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
@@ -112,23 +116,23 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         jDialog1.setMinimumSize(new java.awt.Dimension(400, 300));
         jDialog1.setModal(true);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 80)); // NOI18N
-        jLabel5.setText("XE0020");
+        lbIdNext.setFont(new java.awt.Font("Segoe UI", 0, 80)); // NOI18N
+        lbIdNext.setText("XE00020");
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(lbIdNext, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addComponent(jLabel5)
+                .addComponent(lbIdNext)
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -253,12 +257,12 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Tiền đã thu:");
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton1.setText("CẤP MÃ GIỮ XE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btSubmit.setBackground(new java.awt.Color(255, 204, 204));
+        btSubmit.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btSubmit.setText("CẤP MÃ GIỮ XE");
+        btSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btSubmitActionPerformed(evt);
             }
         });
 
@@ -269,7 +273,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(0, 130, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .addComponent(btSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                     .addComponent(jSeparator2))
                 .addGap(128, 128, 128))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -280,9 +284,9 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                    .addComponent(txtBienSo, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                     .addComponent(cbbLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3))
+                    .addComponent(txtTienDaThu))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
@@ -297,17 +301,17 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBienSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cbbLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTienDaThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -475,10 +479,53 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         btsearchActionPerformed(evt);
     }//GEN-LAST:event_txtsearchActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jDialog1.setLocationRelativeTo(null);
-        jDialog1.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSubmitActionPerformed
+ 
+        boolean dcchay = true;
+        if(txtBienSo.getText().equals(""))
+        {
+            txtBienSo.requestFocus();
+            dcchay = false;
+        }
+        if(txtTienDaThu.getText().equals(""))
+        {
+            txtTienDaThu.requestFocus();
+            dcchay = false;
+        }
+
+        if(dcchay)
+        {   
+            xe = new Xe();
+            xe.setBienSo(txtBienSo.getText());
+            
+            switch (cbbLoaiXe.getSelectedIndex()) {
+                case 0 -> xe.setLoaiXe("BANTAI");
+                case 1 -> xe.setLoaiXe("DAP");
+                case 2 -> xe.setLoaiXe("GANMAY");
+                case 3 -> xe.setLoaiXe("MOTO");
+                case 4 -> xe.setLoaiXe("OTOO");
+                default -> {
+                }
+            }
+            xe.setTienDaThu(Float.valueOf(txtTienDaThu.getText()));
+            xe.setNvThucHien(user.getIdUser());
+            if(btSubmit.getText().equals("CẤP MÃ GIỮ XE"))
+            {  
+                lbIdNext.setText(quanLyXe.getIdXeNext());
+                jDialog1.setLocationRelativeTo(null);
+                jDialog1.setVisible(true);
+                xe.setIdXe(quanLyXe.getIdXeNext());
+                quanLyXe.AddXe(xe);
+            }
+            else if (btSubmit.getText().equals("XÁC NHẬN THAY ĐỔI"))
+            {
+                int row = tbXe.getSelectedRow();
+                xe.setIdXe(String.valueOf(tbXe.getValueAt(row, 0)));              
+                quanLyXe.updateXe(xe);
+                JOptionPane.showMessageDialog(this, "Cập nhập thành công!");
+            }
+        }
+    }//GEN-LAST:event_btSubmitActionPerformed
 
     private void ComboBoxsxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBoxsxItemStateChanged
         // TODO add your handling code here:
@@ -494,12 +541,47 @@ public class QuanLyXePanel extends javax.swing.JPanel {
 
     private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
         // TODO add your handling code here:
+        int row = tbXe.getSelectedRow();
+            if(row == -1)
+            {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn xe trước!","Lỗi",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                txtBienSo.setText(String.valueOf(tbXe.getValueAt(row, 1)));//Lấy dữ liệu cột bienso
+                if(String.valueOf(tbXe.getValueAt(row, 2)).equals("BANTAI"))
+                {
+                    cbbLoaiXe.setSelectedIndex(0);
+                }
+                else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("DAP"))
+                {
+                    cbbLoaiXe.setSelectedIndex(1);
+                }
+                else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("GANMAY"))
+                {
+                    cbbLoaiXe.setSelectedIndex(2);
+                }
+                else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("MOTO"))
+                {
+                    cbbLoaiXe.setSelectedIndex(3);
+                }
+                else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("OTOO"))
+                {
+                    cbbLoaiXe.setSelectedIndex(4);
+                }
+                txtTienDaThu.setText(String.valueOf(tbXe.getValueAt(row, 4)));//lấy cột tiền
+            }    
         lbnhanlb.setText("SỬA THÔNG TIN XE");
+        btSubmit.setText("XÁC NHẬN THAY ĐỔI");
     }//GEN-LAST:event_btsuaActionPerformed
 
     private void btthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemActionPerformed
         // TODO add your handling code here:
         lbnhanlb.setText("ĐĂNG KÍ ĐỖ XE");
+        btSubmit.setText("CẤP MÃ GIỮ XE");
+        txtBienSo.setText("");
+        cbbLoaiXe.setSelectedIndex(0);
+        txtTienDaThu.setText("");
     }//GEN-LAST:event_btthemActionPerformed
 
     public void settabledataif(){
@@ -548,6 +630,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxsx;
+    private javax.swing.JButton btSubmit;
     private javax.swing.JButton btsearch;
     private customcp.Buttonshine btsua;
     private customcp.Buttonshine btthem;
@@ -557,22 +640,21 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbbLoaiXe;
     private javax.swing.JCheckBox ckboxdangdo;
     private javax.swing.JCheckBox ckboxdaroi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lbIdNext;
     private javax.swing.JLabel lbnhanlb;
     private javax.swing.JTable tbXe;
+    private javax.swing.JTextField txtBienSo;
+    private javax.swing.JTextField txtTienDaThu;
     private javax.swing.JLabel txtdinhdanh;
     private javax.swing.JLabel txtdinhdanh1;
     private javax.swing.JLabel txtmanv;

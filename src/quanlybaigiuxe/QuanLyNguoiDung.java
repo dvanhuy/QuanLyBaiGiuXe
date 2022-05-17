@@ -183,8 +183,8 @@ public class QuanLyNguoiDung {
         try {
             
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, manv);
-            preparedStatement.setString(2, matkhau);
+            preparedStatement.setString(1, matkhau);
+            preparedStatement.setString(2, manv);
             
             preparedStatement.execute();
         } catch(SQLException e){

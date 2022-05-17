@@ -27,6 +27,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         quanLyNguoiDung= new QuanLyNguoiDung();
         user= new User();
+        user.setIdUser("NV00001");
         user.setChucVu("Admin");
         user.setHoTen("Admin");
         container.setLayout(new CardLayout());

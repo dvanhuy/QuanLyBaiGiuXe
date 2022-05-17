@@ -48,7 +48,10 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
         try
         {
             String sourceImg="./src/img/"+user.getIdUser()+".png";
-            imageAvatar.setIcon(new ImageIcon(sourceImg));
+            File newFile = new File(sourceImg);
+            xulyanh=ImageIO.read(newFile);
+            ImageIcon imageIcon = new ImageIcon(xulyanh);
+            imageAvatar.setIcon(imageIcon);
             imageAvatar.setBorderSize(3);
         }
         catch(Exception e)
@@ -630,7 +633,7 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
             }
             catch (IOException ex)
             {
-                System.out.println("Đéo dc");
+                System.out.println("Không dc");
             }
             
         }
@@ -703,7 +706,8 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
             dcphepchay=false;
     
             quanLyNguoiDung.updatePassword(user.getIdUser(),txtmatkhaumoi.getText());
-            user.setMatKhau(txtmatkhaumoi.getText());    } 
+            user.setMatKhau(txtmatkhaumoi.getText());    
+        } 
         
         if (dcphepchay)
         {

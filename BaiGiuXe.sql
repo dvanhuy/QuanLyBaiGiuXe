@@ -118,3 +118,20 @@ values	('XE00001','78-S18569','2020/9/8 7:8:00','2020/9/8 7:8:00',3000,N'Đã r�
 Select * 
 from Xe 
 where (idXe like '%4%') or (bienSo like '%4%') or (loaiXe like '%4%')
+
+go
+create function getIdXeNext
+(
+)
+returns char(7)
+as
+begin
+	declare @idNextInt int;
+	select @idNextInt = max(right(iDXe,5))+1
+	from Xe
+	declare @idNextChar char(7);
+	select @idNextChar = CONCAT('XE',FORMAT(@idNextInt,'D5'))
+	return @idNextChar
+end
+go
+select dbo.getIdXeNext()

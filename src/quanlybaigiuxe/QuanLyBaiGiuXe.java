@@ -89,18 +89,15 @@ public class QuanLyBaiGiuXe {
  
     public  void AddXe(Xe xe){
        Connection con = GetConnectServer.getConnection();
-       String sql = "Insert into Xe (idXe,bienSo,loaiXe,timeVao,timeRa,trangThai,TienDaThu,nvThucHien)"
-               + "Values(?,?,?,?,?,?,?,?)";
+       String sql = "insert into Xe(idXe,bienSo, timeVao,timeRa,tienDaThu,trangThai,loaiXe,nvThucHien)"
+               + "Values(?,?,GETDATE(),null,?,N'Đang đậu',?,?)";
        try {
            PreparedStatement preparedStatement = con.prepareStatement(sql);
            preparedStatement.setString(1, xe.getIdXe());
            preparedStatement.setString(2, xe.getBienSo());
-           preparedStatement.setString(3, xe.getLoaiXe());
-           preparedStatement.setString(4, xe.getTimeVao());
-           preparedStatement.setString(5, xe.getTimeRa());
-           preparedStatement.setString(6, xe.getTrangThai());
-           preparedStatement.setFloat(7, xe.getTienDaThu());
-           preparedStatement.setString(8, xe.getNvThucHien());
+           preparedStatement.setFloat(3, xe.getTienDaThu());
+           preparedStatement.setString(4, xe.getLoaiXe());
+           preparedStatement.setString(5, xe.getNvThucHien());
            
            preparedStatement.execute();
            
@@ -124,5 +121,38 @@ public class QuanLyBaiGiuXe {
             System.out.println("Lỗi tại lấy tên loại xe");
         }
         return allTenXe;
+    }
+    
+    public void updateXe(Xe xe){
+        Connection con = GetConnectServer.getConnection();
+        String sql = "update XE set bienSo = ?, loaiXe = ?, tienDaThu = ?, timeVao = getDate(), timeRa = null where idXe = ?";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, xe.getBienSo());
+            preparedStatement.setString(2, xe.getLoaiXe());
+            preparedStatement.setFloat(3, xe.getTienDaThu());
+            preparedStatement.setString(4, xe.getIdXe());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println("Lỗi tại update");
+        }
+    }
+    
+    public String getIdXeNext(){
+        Connection con = GetConnectServer.getConnection();
+        String sql = "select dbo.getIdXeNext()";
+        String idNext = "";
+        try{
+            PreparedStatement preparedStatement = con.prepareCall(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                idNext = rs.getString("");
+            }
+            return idNext;
+        }
+        catch(SQLException e){
+            System.out.println("lỗi tại lấy idNext");
+        }
+        return idNext;
     }
 }
