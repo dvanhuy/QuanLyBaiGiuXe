@@ -410,6 +410,8 @@ public class Main extends javax.swing.JFrame {
         }
         else 
         {
+            
+            user=quanLyNguoiDung.getUserbyId(user.getIdUser());
             container.removeAll();
             container.setLayout(new CardLayout());
             container.add(new QuanLyThongTinPanel(user));

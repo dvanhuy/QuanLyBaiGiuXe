@@ -143,7 +143,7 @@ public class QuanLyBaiGiuXe {
         String sql = "select dbo.getIdXeNext()";
         String idNext = "";
         try{
-            PreparedStatement preparedStatement = con.prepareCall(sql);
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
                 idNext = rs.getString("");
@@ -154,5 +154,20 @@ public class QuanLyBaiGiuXe {
             System.out.println("lỗi tại lấy idNext");
         }
         return idNext;
+    }
+    
+    public void delXe(String id)
+    {
+        Connection con = GetConnectServer.getConnection();
+        String sql = "DELETE Xe "
+                + "where idXe=?";
+        try{
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+        }
+        catch(SQLException e){
+            System.out.println("lỗi tại xóa theo id");
+        }
     }
 }

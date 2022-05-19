@@ -17,7 +17,7 @@ create table NguoiDung
 	hoTen nvarchar(30),
 	tenTK varchar(30),
 	matKhau varchar(30),
-	gioiTinh nvarchar(3),
+	gioiTinh nvarchar(5),
 	queQuan nvarchar(30),
 	soDT varchar(15),
 	dinhDanh varchar(15),

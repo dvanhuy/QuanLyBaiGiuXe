@@ -5,12 +5,22 @@
  */
 package jForm;
 
+import customcp.ScrollBarCustom;
 import define.User;
 import define.Xe;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.util.List;
-import java.util.Set;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import quanlybaigiuxe.QuanLyBaiGiuXe;
 
@@ -52,14 +62,20 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         
         tbXe.setModel(defaultTableModel);
         
-        defaultTableModel.addColumn("Mã Xe");
-        defaultTableModel.addColumn("Biển Số");
+        defaultTableModel.addColumn("Mã xe");
+        defaultTableModel.addColumn("Biển số");
         defaultTableModel.addColumn("Loại xe");
         defaultTableModel.addColumn("Trạng thái");
         defaultTableModel.addColumn("Tiền đã thu");
         defaultTableModel.addColumn("Thời gian vào");
         
         setDataTable(quanLyXe.getAllXe());
+        
+        ComboBoxsx.setSelectedIndex(2);
+
+        
+        
+        customTable(jScrollPane1,tbXe);
         
     }
 
@@ -115,25 +131,26 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         jDialog1.setTitle("Mã xe");
         jDialog1.setMinimumSize(new java.awt.Dimension(400, 300));
         jDialog1.setModal(true);
+        jDialog1.setUndecorated(true);
 
         lbIdNext.setFont(new java.awt.Font("Segoe UI", 0, 80)); // NOI18N
+        lbIdNext.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbIdNext.setText("XE00020");
+        lbIdNext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbIdNextMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(lbIdNext, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addComponent(lbIdNext, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(lbIdNext)
-                .addContainerGap(87, Short.MAX_VALUE))
+            .addComponent(lbIdNext, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
         );
 
         setBackground(new java.awt.Color(255, 204, 51));
@@ -353,6 +370,11 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         buttonshine2.setText("Xóa");
         buttonshine2.setEffectColor(new java.awt.Color(240, 240, 240));
         buttonshine2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buttonshine2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonshine2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(buttonshine2);
 
         btsua.setBackground(new java.awt.Color(51, 253, 15));
@@ -464,7 +486,8 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         if (txtsearch.getText().equals("") || txtsearch.getText().equals("Tìm mã xe, biển số, loại xe ..."))
         {
             defaultTableModel.setRowCount(0);
-            setDataTable(quanLyXe.getAllXe());
+            ComboBoxsx.setSelectedIndex(0);
+            ComboBoxsx.setSelectedIndex(2);
         }
         else 
         {
@@ -482,12 +505,13 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     private void btSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSubmitActionPerformed
  
         boolean dcchay = true;
-        if(txtBienSo.getText().equals(""))
+        
+        if(txtBienSo.getText().equals("") && dcchay)
         {
             txtBienSo.requestFocus();
             dcchay = false;
         }
-        if(txtTienDaThu.getText().equals(""))
+        if(txtTienDaThu.getText().equals("") && dcchay)
         {
             txtTienDaThu.requestFocus();
             dcchay = false;
@@ -535,44 +559,48 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     private void buttonshine4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonshine4ActionPerformed
         // TODO add your handling code here:
         ComboBoxsx.setSelectedIndex(0);
+        ComboBoxsx.setSelectedIndex(2);
         ckboxdangdo.setSelected(true);
         ckboxdaroi.setSelected(true);
+        jScrollPane1.getVerticalScrollBar().setValue(0);
     }//GEN-LAST:event_buttonshine4ActionPerformed
 
     private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
         // TODO add your handling code here:
         int row = tbXe.getSelectedRow();
-            if(row == -1)
+        if(row == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn xe trước!","Lỗi",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            txtBienSo.setText(String.valueOf(tbXe.getValueAt(row, 1)));//Lấy dữ liệu cột bienso
+            lbnhanlb.setText("SỬA THÔNG TIN XE");
+            btSubmit.setText("XÁC NHẬN THAY ĐỔI");
+            
+            if(String.valueOf(tbXe.getValueAt(row, 2)).equals("BANTAI"))
             {
-                JOptionPane.showMessageDialog(this, "Vui lòng chọn xe trước!","Lỗi",JOptionPane.ERROR_MESSAGE);
+                cbbLoaiXe.setSelectedIndex(0);
             }
-            else
+            else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("DAP"))
             {
-                txtBienSo.setText(String.valueOf(tbXe.getValueAt(row, 1)));//Lấy dữ liệu cột bienso
-                if(String.valueOf(tbXe.getValueAt(row, 2)).equals("BANTAI"))
-                {
-                    cbbLoaiXe.setSelectedIndex(0);
-                }
-                else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("DAP"))
-                {
-                    cbbLoaiXe.setSelectedIndex(1);
-                }
-                else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("GANMAY"))
-                {
-                    cbbLoaiXe.setSelectedIndex(2);
-                }
-                else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("MOTO"))
-                {
-                    cbbLoaiXe.setSelectedIndex(3);
-                }
-                else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("OTOO"))
-                {
-                    cbbLoaiXe.setSelectedIndex(4);
-                }
-                txtTienDaThu.setText(String.valueOf(tbXe.getValueAt(row, 4)));//lấy cột tiền
-            }    
-        lbnhanlb.setText("SỬA THÔNG TIN XE");
-        btSubmit.setText("XÁC NHẬN THAY ĐỔI");
+                cbbLoaiXe.setSelectedIndex(1);
+            }
+            else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("GANMAY"))
+            {
+                cbbLoaiXe.setSelectedIndex(2);
+            }
+            else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("MOTO"))
+            {
+                cbbLoaiXe.setSelectedIndex(3);
+            }
+            else if(String.valueOf(tbXe.getValueAt(row, 2)).equals("OTOO"))
+            {
+                cbbLoaiXe.setSelectedIndex(4);
+            }
+            txtTienDaThu.setText(String.valueOf(tbXe.getValueAt(row, 4)));//lấy cột tiền
+        }    
+        
     }//GEN-LAST:event_btsuaActionPerformed
 
     private void btthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemActionPerformed
@@ -583,6 +611,27 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         cbbLoaiXe.setSelectedIndex(0);
         txtTienDaThu.setText("");
     }//GEN-LAST:event_btthemActionPerformed
+
+    private void buttonshine2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonshine2ActionPerformed
+        // TODO add your handling code here:
+        int row = tbXe.getSelectedRow();
+        if(row == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn xe trước!","Lỗi",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            String iddel =String.valueOf(defaultTableModel.getValueAt(row, 0));
+            quanLyXe.delXe(String.valueOf(iddel));
+            defaultTableModel.removeRow(row);
+        }    
+        
+    }//GEN-LAST:event_buttonshine2ActionPerformed
+
+    private void lbIdNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbIdNextMouseClicked
+        // TODO add your handling code here:
+        jDialog1.setVisible(false);
+    }//GEN-LAST:event_lbIdNextMouseClicked
 
     public void settabledataif(){
         if (ckboxdaroi.isSelected() && ckboxdangdo.isSelected())
@@ -626,6 +675,72 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         {
             cbbLoaiXe.addItem(x);
         }
+    }
+    
+    public final void customTable(JScrollPane scroll,JTable table)
+    {
+        scroll.getViewport().setOpaque(false);
+        scroll.setViewportBorder(null);
+        setBorder(null);
+        scroll.setBorder(null);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBar(new ScrollBarCustom(){
+            @Override
+            public void setForeground(Color fg) {
+                super.setForeground(new Color(51,253,15));
+            }
+            
+        });
+        scroll.getVerticalScrollBar().setUnitIncrement(30);
+        
+        JPanel panel=new JPanel();
+        panel.setBackground(new Color(255,204,51));
+        scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER,panel);
+        
+        table.setSelectionForeground(new Color(0,0,0));
+        table.setSelectionBackground(new Color(51,255,95));
+        table.setRowHeight(31);
+
+        setForeground(Color.red);
+
+//        table.setShowHorizontalLines(true);
+//        table.setShowVerticalLines(true);
+        table.setGridColor(Color.black);
+//        tbXe.setBackground(new Color(60,60,60));
+//        tbXe.setForeground(new Color(200,200,200));
+
+        DefaultTableCellRenderer tableheader = new DefaultTableCellRenderer(){
+            @Override
+            public void paint(Graphics g) {
+                super.paint(g); //To change body of generated methods, choose Tools | Templates.
+                g.setColor(Color.black);
+                g.drawLine(0,getHeight()-1,getWidth(),getHeight()-1);
+                g.drawLine(0,0,0,getHeight());
+            }
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected,
+                                                          hasFocus, row, column);
+                c.setFont(new Font("Serif", Font.BOLD, 16));
+                return c;
+            }
+            
+            
+            
+            
+            
+        };
+        tableheader.setPreferredSize(new Dimension(0,30)); // header table
+        tableheader.setForeground(Color.black);
+        tableheader.setBackground(new Color(51,253,15));
+        tableheader.setHorizontalAlignment(SwingConstants.CENTER);
+        tableheader.setFont(new Font("Segoe UI", 1, 30));
+        
+        
+        table.getTableHeader().setDefaultRenderer(tableheader);
+      
+//        table.getTableHeader().setFont(new Font("Segoe UI", 30, 30));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

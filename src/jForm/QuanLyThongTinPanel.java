@@ -654,6 +654,7 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
             user.setGioiTinh("Nữ");
         else 
             user.setGioiTinh("Khác");
+        
         user.setQueQuan(txtquequan.getText());
         user.setSdt(txtsodt.getText());
         user.setDinhDanh(txtmadd.getText());
