@@ -13,13 +13,17 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import quanlybaigiuxe.QuanLyBaiGiuXe;
@@ -83,7 +87,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         for(Xe x : listXe)
         {
             defaultTableModel.addRow(new Object[]{x.getIdXe(),x.getBienSo(),x.getLoaiXe(),
-                x.getTrangThai(),x.getTienDaThu(),x.getTimeVao()});
+                x.getTrangThai(),x.getTienDaThu(),stringToStringDate(x.getTimeVao())});
         }
     }
     /**
@@ -769,6 +773,19 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         table.getTableHeader().setDefaultRenderer(tableheader);
       
 //        table.getTableHeader().setFont(new Font("Segoe UI", 30, 30));
+    }
+    
+    public String stringToStringDate(String datetime){
+        Date date=null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(datetime);
+        } catch (ParseException ex) {
+            System.out.println("Lõi chuyển ngày tháng");
+        }
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm dd-mm-yyyy");
+        String strDate = formatter.format(date);  
+        return strDate;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
