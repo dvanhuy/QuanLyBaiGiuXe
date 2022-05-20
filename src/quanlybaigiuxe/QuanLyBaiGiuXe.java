@@ -195,17 +195,7 @@ public class QuanLyBaiGiuXe {
             return null;
         }
     }
-    public void updateTimeRa(String id){
-        Connection con = GetConnectServer.getConnection();
-        String sql = "update Xe set timeRa = getdate() where idXe = ?";
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, id);
-            preparedStatement.execute();
-        } catch (SQLException e) {
-            System.out.println("Lỗi tại update time ra");
-        }
-    }
+
     public float getPaymentById(String id)
     {
         Connection con = GetConnectServer.getConnection();
@@ -226,16 +216,17 @@ public class QuanLyBaiGiuXe {
         }
     }
     
-    public void updateXeDaRoiVaTienThu(String id, float tien){
+    public void updateXeDaRoi_Tien_Time(String id, float tien){
         Connection con = GetConnectServer.getConnection();
-        String sql = "update Xe set trangThai = N'Đã rời', tienDaThu = ? where idXe = ?";
+        String sql = "update Xe set trangThai = N'Đã rời', tienDaThu = ?, timeRa = getdate() where idXe = ?";
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setFloat(1, tien);
             preparedStatement.setString(2, id);
             preparedStatement.execute();
         } catch (SQLException e) {
-            System.out.println("Lỗi tại update time ra");
+            System.out.println("Lỗi tại update XeDaRoi_Tien_Time ra");
         }
     }
+    
 }

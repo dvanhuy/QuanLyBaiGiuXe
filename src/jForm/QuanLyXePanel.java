@@ -657,11 +657,19 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         }
         else
         {
-            String idXe = String.valueOf(tbXe.getValueAt(row, 0));
-            xe = new Xe();
-            quanLyXe.updateTimeRa(xe.getIdXe());
-            xe = quanLyXe.getXeById(idXe);
-            new ThanhToanFrame(xe).setVisible(true);
+            String trangthai = String.valueOf(tbXe.getValueAt(row, 3));
+            if (trangthai.equals("Đang đậu"))
+            {
+                String idXe = String.valueOf(tbXe.getValueAt(row, 0));
+                xe = new Xe();
+                xe = quanLyXe.getXeById(idXe);
+                new ThanhToanFrame(xe).setVisible(true);
+//                this.setEnabled(false);
+            }
+            else 
+            {
+                JOptionPane.showMessageDialog(this, "Xe đã thanh toán rồi!","Thông báo",JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btThanhToanActionPerformed
 
@@ -758,17 +766,11 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 return c;
             }
             
-            
-            
-            
-            
         };
         tableheader.setPreferredSize(new Dimension(0,30)); // header table
         tableheader.setForeground(Color.black);
         tableheader.setBackground(new Color(51,253,15));
         tableheader.setHorizontalAlignment(SwingConstants.CENTER);
-        tableheader.setFont(new Font("Segoe UI", 1, 30));
-        
         
         table.getTableHeader().setDefaultRenderer(tableheader);
       
@@ -783,7 +785,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
             System.out.println("Lõi chuyển ngày tháng");
         }
         
-        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm dd-mm-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd-MM-yyyy");
         String strDate = formatter.format(date);  
         return strDate;
     }
