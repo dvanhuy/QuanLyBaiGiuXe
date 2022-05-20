@@ -125,7 +125,7 @@ public class QuanLyBaiGiuXe {
     
     public void updateXe(Xe xe){
         Connection con = GetConnectServer.getConnection();
-        String sql = "update XE set bienSo = ?, loaiXe = ?, tienDaThu = ?, timeVao = getDate(), timeRa = null where idXe = ?";
+        String sql = "update XE set bienSo = ?, loaiXe = ?, tienDaThu = ? where idXe = ?";
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, xe.getBienSo());
@@ -168,6 +168,74 @@ public class QuanLyBaiGiuXe {
         }
         catch(SQLException e){
             System.out.println("lỗi tại xóa theo id");
+        }
+    }
+    
+    public Xe getXeById(String id){
+        Connection con = GetConnectServer.getConnection();
+        Xe newXe = new Xe();
+        String sql = "select * from xe where idXe = ?";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            newXe.setIdXe(id);
+            newXe.setBienSo(rs.getString("bienSo"));
+            newXe.setLoaiXe(rs.getString("loaiXe"));
+            newXe.setTimeVao(rs.getString("timeVao"));
+            newXe.setTimeRa(rs.getString("timeRa"));
+            newXe.setTrangThai(rs.getString("trangThai"));
+            newXe.setTienDaThu(rs.getFloat("tienDaThu"));
+            newXe.setNvThucHien(rs.getString("nvThucHien"));
+            return newXe;
+        } catch (SQLException e) {
+            System.out.println("Lỗi tại lấy Xe theo ID");
+            return null;
+        }
+    }
+    public void updateTimeRa(String id){
+        Connection con = GetConnectServer.getConnection();
+        String sql = "update Xe set timeRa = getdate() where idXe = ?";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println("Lỗi tại update time ra");
+        }
+    }
+    public float getPaymentById(String id)
+    {
+        Connection con = GetConnectServer.getConnection();
+        String sql = "select dbo.thanhToan(?)";
+        float tien = 0;
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            tien = Float.valueOf(rs.getString(""));
+            return tien;
+        } catch (SQLException e) {
+            System.out.println("Lỗi tại thanh toán theo id");
+            return tien;
+        }
+    }
+    
+    public void updateXeDaRoiVaTienThu(String id, float tien){
+        Connection con = GetConnectServer.getConnection();
+        String sql = "update Xe set trangThai = N'Đã rời', tienDaThu = ? where idXe = ?";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setFloat(1, tien);
+            preparedStatement.setString(2, id);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println("Lỗi tại update time ra");
         }
     }
 }

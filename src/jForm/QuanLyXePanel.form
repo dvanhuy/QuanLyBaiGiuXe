@@ -470,7 +470,7 @@
         <Property name="rows" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Component class="customcp.Buttonshine" name="buttonshine5">
+        <Component class="customcp.Buttonshine" name="btThanhToan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f" green="fd" red="33" type="rgb"/>
@@ -486,6 +486,9 @@
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btThanhToanActionPerformed"/>
+          </Events>
         </Component>
         <Component class="customcp.Buttonshine" name="btthem">
           <Properties>

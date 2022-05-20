@@ -122,7 +122,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         txtdinhdanh1 = new javax.swing.JLabel();
         ComboBoxsx = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        buttonshine5 = new customcp.Buttonshine();
+        btThanhToan = new customcp.Buttonshine();
         btthem = new customcp.Buttonshine();
         buttonshine2 = new customcp.Buttonshine();
         btsua = new customcp.Buttonshine();
@@ -346,12 +346,17 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 30, 0));
 
-        buttonshine5.setBackground(new java.awt.Color(51, 253, 15));
-        buttonshine5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pay.png"))); // NOI18N
-        buttonshine5.setText("Thanh toán");
-        buttonshine5.setEffectColor(new java.awt.Color(240, 240, 240));
-        buttonshine5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel2.add(buttonshine5);
+        btThanhToan.setBackground(new java.awt.Color(51, 253, 15));
+        btThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pay.png"))); // NOI18N
+        btThanhToan.setText("Thanh toán");
+        btThanhToan.setEffectColor(new java.awt.Color(240, 240, 240));
+        btThanhToan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThanhToanActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btThanhToan);
 
         btthem.setBackground(new java.awt.Color(51, 253, 15));
         btthem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
@@ -540,17 +545,25 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 jDialog1.setVisible(true);
                 xe.setIdXe(quanLyXe.getIdXeNext());
                 quanLyXe.AddXe(xe);
+                resetAdd();
+                
             }
             else if (btSubmit.getText().equals("XÁC NHẬN THAY ĐỔI"))
             {
                 int row = tbXe.getSelectedRow();
                 xe.setIdXe(String.valueOf(tbXe.getValueAt(row, 0)));              
                 quanLyXe.updateXe(xe);
+                resetAdd();
                 JOptionPane.showMessageDialog(this, "Cập nhập thành công!");
             }
         }
     }//GEN-LAST:event_btSubmitActionPerformed
 
+    public void resetAdd(){
+        txtBienSo.setText("");
+        cbbLoaiXe.setSelectedIndex(0);
+        txtTienDaThu.setText("0");
+    }
     private void ComboBoxsxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBoxsxItemStateChanged
         // TODO add your handling code here:
         settabledataif();
@@ -607,9 +620,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         lbnhanlb.setText("ĐĂNG KÍ ĐỖ XE");
         btSubmit.setText("CẤP MÃ GIỮ XE");
-        txtBienSo.setText("");
-        cbbLoaiXe.setSelectedIndex(0);
-        txtTienDaThu.setText("");
+        resetAdd();
     }//GEN-LAST:event_btthemActionPerformed
 
     private void buttonshine2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonshine2ActionPerformed
@@ -624,6 +635,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
             String iddel =String.valueOf(defaultTableModel.getValueAt(row, 0));
             quanLyXe.delXe(String.valueOf(iddel));
             defaultTableModel.removeRow(row);
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
         }    
         
     }//GEN-LAST:event_buttonshine2ActionPerformed
@@ -632,6 +644,22 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         jDialog1.setVisible(false);
     }//GEN-LAST:event_lbIdNextMouseClicked
+
+    private void btThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThanhToanActionPerformed
+        int row = tbXe.getSelectedRow();
+        if(row == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn xe trước!","Lỗi",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            String idXe = String.valueOf(tbXe.getValueAt(row, 0));
+            xe = new Xe();
+            quanLyXe.updateTimeRa(xe.getIdXe());
+            xe = quanLyXe.getXeById(idXe);
+            new ThanhToanFrame(xe).setVisible(true);
+        }
+    }//GEN-LAST:event_btThanhToanActionPerformed
 
     public void settabledataif(){
         if (ckboxdaroi.isSelected() && ckboxdangdo.isSelected())
@@ -746,12 +774,12 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxsx;
     private javax.swing.JButton btSubmit;
+    private customcp.Buttonshine btThanhToan;
     private javax.swing.JButton btsearch;
     private customcp.Buttonshine btsua;
     private customcp.Buttonshine btthem;
     private customcp.Buttonshine buttonshine2;
     private customcp.Buttonshine buttonshine4;
-    private customcp.Buttonshine buttonshine5;
     private javax.swing.JComboBox<String> cbbLoaiXe;
     private javax.swing.JCheckBox ckboxdangdo;
     private javax.swing.JCheckBox ckboxdaroi;

@@ -112,7 +112,8 @@ values	('XE00001','78-S18569','2020/9/8 7:8:00','2020/9/8 7:8:00',3000,N'Đã r�
 		('XE00043','43-V666666',GETDATE(),null,0,N'Đang đậu','OTOO','NV00002'),
 		('XE00044','43-U555555',GETDATE(),null,0,N'Đang đậu','BANTAI','NV00002'),
 		('XE00045','43-R99999',GETDATE(),null,0,N'Đang đậu','MOTO','NV00002'),
-		('XE00046','79-N78356',GETDATE(),null,0,N'Đang đậu','MOTO','NV00002')
+		('XE00046','79-N78356',GETDATE(),null,0,N'Đang đậu','MOTO','NV00002'),
+		('XE00052','43-N093214','2022/05/12 12:00:00',null,5000,N'Đang đậu','DAP','NV00002')
 ----------
 
 Select * 
@@ -135,3 +136,33 @@ begin
 end
 go
 select dbo.getIdXeNext()
+
+go
+/*set dateformat dmy
+select DATEDIFF(hour,timeVao,getdate())
+from Xe
+*/
+go
+create or alter function thanhToan
+(
+@id char(7)
+)
+returns money
+as
+begin
+	declare @timeTongCong int
+	select @timeTongCong = DATEDIFF(hour,timeVao,getdate())
+	from Xe
+	declare @tienLoaiXe money
+	select @tienLoaiXe = donGia
+	from Xe, LoaiXe
+	where @id = idXe
+		and loaiXe = idLoai
+	declare @tienDaThu money
+	select @tienDaThu = tienDaThu
+	from Xe
+	return @timeTongCong * @tienLoaiXe - @tienDaThu
+end
+
+go
+select dbo.thanhToan('XE00052')

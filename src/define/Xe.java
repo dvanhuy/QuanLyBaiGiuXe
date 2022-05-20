@@ -13,6 +13,23 @@ public class Xe {
     private String idXe, bienSo, timeVao, timeRa, trangThai, loaiXe,nvThucHien;
     private float tienDaThu;
 
+    public Xe() {
+    }
+
+    
+    public Xe(Xe xe) {
+        this.idXe = xe.idXe;
+        this.bienSo = xe.bienSo;
+        this.timeVao = xe.timeVao;
+        this.timeRa = xe.timeRa;
+        this.trangThai = xe.trangThai;
+        this.loaiXe = xe.loaiXe;
+        this.nvThucHien = xe.nvThucHien;
+        this.tienDaThu = xe.tienDaThu;
+    }
+
+
+    
     public String getIdXe() {
         return idXe;
     }
