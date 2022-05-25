@@ -252,12 +252,12 @@ public class ThongKePanel extends javax.swing.JPanel {
         );
 
         jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabel1.setText("Thống kê");
+        jLabel1.setText("THỐNG KÊ");
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel3.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabel3.setText("Biểu đồ");
+        jLabel3.setText("BIỂU ĐỒ");
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 

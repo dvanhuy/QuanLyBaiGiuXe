@@ -424,7 +424,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS Reference Sans Serif" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
+        <Property name="text" type="java.lang.String" value="TH&#x1ed0;NG K&#xca;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -439,7 +439,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS Reference Sans Serif" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Bi&#x1ec3;u &#x111;&#x1ed3;"/>
+        <Property name="text" type="java.lang.String" value="BI&#x1ec2;U &#x110;&#x1ed2;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator2">
