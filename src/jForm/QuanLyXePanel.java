@@ -824,4 +824,6 @@ public class QuanLyXePanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtsearch;
     private javax.swing.JLabel txttennv;
     // End of variables declaration//GEN-END:variables
+
+
 }
