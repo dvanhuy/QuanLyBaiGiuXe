@@ -5,17 +5,27 @@
  */
 package jForm;
 
+import define.User;
+import quanlybaigiuxe.QuanLyNguoiDung;
+
 /**
  *
  * @author ADMIN
  */
 public class ForgotPasswordFrame extends javax.swing.JFrame {
 
+    QuanLyNguoiDung quanLyNguoiDung;
+    User user;
     /**
      * Creates new form ForgotPasswordFrame
      */
     public ForgotPasswordFrame() {
         initComponents();
+        quanLyNguoiDung = new QuanLyNguoiDung();
+        user= new User();
+        txtmess.setText(" ");
+        txttextso1.setEchoChar((char)0);
+        txttextso2.setEchoChar((char)0);
     }
 
     /**
@@ -29,54 +39,39 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
 
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtusername = new customcp.TextFieldCustom();
-        txtpassword = new customcp.PasswordFieldCustom();
-        txtpassword1 = new customcp.PasswordFieldCustom();
+        txttextso1 = new customcp.PasswordFieldCustom();
+        txttextso2 = new customcp.PasswordFieldCustom();
         btlogiin = new customcp.Buttonshine();
+        btlsubmit = new customcp.Buttonshine();
+        txtmess = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Forgot Password");
 
-        txtusername.setToolTipText("Nhập tên tài khoản");
-        txtusername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtusername.setLabelText("User name");
-        txtusername.setName(""); // NOI18N
-        txtusername.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtusernameKeyTyped(evt);
+        txttextso1.setToolTipText("Nhập mã nhân viên");
+        txttextso1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txttextso1.setLabelText("Mã nhân viên");
+        txttextso1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txttextso1FocusGained(evt);
             }
         });
 
-        txtpassword.setToolTipText("Nhập mật khẩu");
-        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtpassword.setLabelText("New Password");
-        txtpassword.setShowAndHide(true);
-        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+        txttextso2.setToolTipText("Nhập tên tài khoản");
+        txttextso2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txttextso2.setLabelText("Tên tài khoản");
+        txttextso2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txttextso2FocusGained(evt);
+            }
+        });
+        txttextso2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpasswordActionPerformed(evt);
-            }
-        });
-        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtpasswordKeyTyped(evt);
-            }
-        });
-
-        txtpassword1.setToolTipText("Nhập mật khẩu");
-        txtpassword1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtpassword1.setLabelText("Confirm New Password");
-        txtpassword1.setShowAndHide(true);
-        txtpassword1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpassword1ActionPerformed(evt);
-            }
-        });
-        txtpassword1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtpassword1KeyTyped(evt);
+                txttextso2ActionPerformed(evt);
             }
         });
 
@@ -91,37 +86,57 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
             }
         });
 
+        btlsubmit.setBackground(new java.awt.Color(51, 153, 255));
+        btlsubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btlsubmit.setText("Search");
+        btlsubmit.setEffectColor(new java.awt.Color(51, 209, 249));
+        btlsubmit.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
+        btlsubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlsubmitActionPerformed(evt);
+            }
+        });
+
+        txtmess.setForeground(new java.awt.Color(255, 255, 255));
+        txtmess.setText("Không tồn tại !!!");
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(123, 123, 123))
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtusername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtpassword1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btlogiin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
-                .addGap(38, 38, 38))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addComponent(txtmess, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txttextso1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txttextso2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btlogiin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btlsubmit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(38, 38, 38))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(46, Short.MAX_VALUE))))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtpassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txttextso1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtmess)
+                .addGap(7, 7, 7)
+                .addComponent(txttextso2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btlsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btlogiin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,35 +147,12 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtusernameKeyTyped
-
-    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
-        // TODO add your handling code here:
-        btlogiinActionPerformed(evt);
-    }//GEN-LAST:event_txtpasswordActionPerformed
-
-    private void txtpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpasswordKeyTyped
-
-    private void txtpassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassword1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpassword1ActionPerformed
-
-    private void txtpassword1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpassword1KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpassword1KeyTyped
 
     private void btlogiinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlogiinActionPerformed
         // TODO add your handling code here:
@@ -168,14 +160,86 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btlogiinActionPerformed
 
+    private void txttextso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttextso2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttextso2ActionPerformed
+
+    private void btlsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlsubmitActionPerformed
+        // TODO add your handling code here:
+        Boolean duocchay=true;
+        String chuoiso1=String.valueOf(txttextso1.getPassword());
+        String chuoiso2=String.valueOf(txttextso2.getPassword());
+        if (chuoiso1.equals(""))
+        {
+            txttextso1.requestFocus();
+            duocchay=false;
+        }
+        
+        if (chuoiso2.equals("") && duocchay)
+        {
+            txttextso2.requestFocus();
+            duocchay=false;
+        }
+        
+        if (btlsubmit.getText().equals("Search") && duocchay)
+        {
+            user=quanLyNguoiDung.checkIdUserName(chuoiso1, chuoiso2);
+            if (user==null){
+                txtmess.setText("Không tồn tại !!!");
+            }
+            else
+            {
+                txttextso1.setText("");
+                txttextso1.setLabelText("Mật khẩu mới");
+                txttextso1.setShowAndHide(true);
+                txttextso1.setToolTipText("Nhập mật khẩu mới");
+                txttextso1.setEchoChar('*');
+                
+                txttextso2.setText("");
+                txttextso2.setLabelText("Xác nhận mật khẩu");
+                txttextso2.setShowAndHide(true);
+                txttextso2.setToolTipText("Nhập lại mật khẩu");
+                txttextso2.setEchoChar('*');
+                
+                btlsubmit.setText("Submit");
+            }
+        }
+        
+        if (btlsubmit.getText().equals("Submit") && duocchay)
+        {
+            if (chuoiso1.equals(chuoiso2))
+            {
+                quanLyNguoiDung.updatePassword(user.getIdUser(), chuoiso1);
+                new LogInFrame().setVisible(true);
+                this.dispose();
+            }
+            else
+            {
+                txtmess.setText("Xác nhận sai !!!");
+            }
+        }
+        
+    }//GEN-LAST:event_btlsubmitActionPerformed
+
+    private void txttextso1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txttextso1FocusGained
+        // TODO add your handling code here:
+        txtmess.setText(" ");
+    }//GEN-LAST:event_txttextso1FocusGained
+
+    private void txttextso2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txttextso2FocusGained
+        // TODO add your handling code here:
+        txtmess.setText(" ");
+    }//GEN-LAST:event_txttextso2FocusGained
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customcp.Buttonshine btlogiin;
+    private customcp.Buttonshine btlsubmit;
     private javax.swing.JLabel jLabel1;
     private keeptoo.KGradientPanel kGradientPanel1;
-    private customcp.PasswordFieldCustom txtpassword;
-    private customcp.PasswordFieldCustom txtpassword1;
-    private customcp.TextFieldCustom txtusername;
+    private javax.swing.JLabel txtmess;
+    private customcp.PasswordFieldCustom txttextso1;
+    private customcp.PasswordFieldCustom txttextso2;
     // End of variables declaration//GEN-END:variables
 }

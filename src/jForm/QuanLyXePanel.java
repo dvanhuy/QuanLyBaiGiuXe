@@ -663,8 +663,9 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 String idXe = String.valueOf(tbXe.getValueAt(row, 0));
                 xe = new Xe();
                 xe = quanLyXe.getXeById(idXe);
-                new ThanhToanFrame(xe).setVisible(true);
-//                this.setEnabled(false);
+                ThanhToanFrame thanhToanFrame=new ThanhToanFrame(xe);
+                thanhToanFrame.setVisible(true);
+                thanhToanFrame.setAlwaysOnTop(true);
             }
             else 
             {
