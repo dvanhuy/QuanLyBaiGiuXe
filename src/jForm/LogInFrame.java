@@ -213,6 +213,11 @@ public class LogInFrame extends javax.swing.JFrame {
         buttonshine1.setText("Quên mật khẩu");
         buttonshine1.setEffectColor(new java.awt.Color(230, 230, 230));
         buttonshine1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        buttonshine1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonshine1ActionPerformed(evt);
+            }
+        });
 
         wrusername.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
         wrusername.setForeground(new java.awt.Color(255, 0, 51));
@@ -366,6 +371,12 @@ public class LogInFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         btlogiinActionPerformed(evt);
     }//GEN-LAST:event_txtpasswordActionPerformed
+
+    private void buttonshine1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonshine1ActionPerformed
+        // TODO add your handling code here:
+        new ForgotPasswordFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonshine1ActionPerformed
 
     /**
      * @param args the command line arguments
