@@ -31,6 +31,7 @@ public class QuanLyNguoiDung {
                newUser.setSdt(rs.getString("soDT"));
                newUser.setDinhDanh(rs.getString("dinhDanh"));
                newUser.setChucVu(rs.getString("chucVu"));
+               newUser.setQueQuan(rs.getString("queQuan"));
                
                listUser.add(newUser);
            }
@@ -223,4 +224,53 @@ public class QuanLyNguoiDung {
             return null;
         }
     }
+   
+   public void addUser(User user)
+   {
+        Connection connection = GetConnectServer.getConnection();
+        String sql;
+        
+        if (user.getChucVu().equals("Admin")){
+             sql="INSERT INTO NguoiDung "
+                + "VALUES (dbo.getIdUserADNext(),?,?,?,?,?,?,?,?)";
+        }
+        else 
+            sql="INSERT INTO NguoiDung "
+                + "VALUES (dbo.getIdUserNVNext(),?,?,?,?,?,?,?,?)";
+        
+        
+        try {
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user.getHoTen());
+            preparedStatement.setString(2, user.getTenTK());
+            preparedStatement.setString(3, user.getMatKhau());
+            preparedStatement.setString(4, user.getGioiTinh());
+            preparedStatement.setString(5, user.getQueQuan());
+            preparedStatement.setString(6, user.getSdt());
+            preparedStatement.setString(7, user.getDinhDanh());
+            preparedStatement.setString(8, user.getChucVu());
+            
+            preparedStatement.execute();
+        } catch(SQLException e){
+            System.out.println(e);
+            System.out.println("Sai tại add user");
+        }
+   }
+   
+   public void delUser(String id)
+    {
+        Connection con = GetConnectServer.getConnection();
+        String sql = "DELETE NguoiDung "
+                + "where idUser=?";
+        try{
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+        }
+        catch(SQLException e){
+            System.out.println("lỗi tại xóa theo id");
+        }
+    }
+   
 }

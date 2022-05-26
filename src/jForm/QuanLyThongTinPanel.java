@@ -45,20 +45,7 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
 
         
         //set avatar
-        try
-        {
-            String sourceImg="./src/img/"+user.getIdUser()+".png";
-            File newFile = new File(sourceImg);
-            xulyanh=ImageIO.read(newFile);
-            ImageIcon imageIcon = new ImageIcon(xulyanh);
-            imageAvatar.setIcon(imageIcon);
-            imageAvatar.setBorderSize(3);
-        }
-        catch(Exception e)
-        {
-            imageAvatar.setIcon(new ImageIcon("./src/img/quanlyuser.png"));
-        }
-        
+        setAvatar();
         
         //set nhắc nhở
         txtnhacnho.setText("");
@@ -776,6 +763,23 @@ public class QuanLyThongTinPanel extends javax.swing.JPanel {
             }
         });
         progress.start();
+    }
+    
+    public void setAvatar(){
+        try
+        {
+            String sourceImg="./src/img/"+user.getIdUser()+".png";
+            File newFile = new File(sourceImg);
+            xulyanh=ImageIO.read(newFile);
+            ImageIcon imageIcon = new ImageIcon(xulyanh);
+            imageAvatar.setIcon(imageIcon);
+            imageAvatar.setBorderSize(3);
+        }
+        catch(Exception e)
+        {
+            imageAvatar.setIcon(new ImageIcon("./src/img/quanlyuser.png"));
+            imageAvatar.setBorderSize(0);
+        }
     }
 
 

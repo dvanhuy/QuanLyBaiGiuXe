@@ -203,6 +203,7 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
                 
                 btlsubmit.setText("Submit");
             }
+            duocchay=false;
         }
         
         if (btlsubmit.getText().equals("Submit") && duocchay)

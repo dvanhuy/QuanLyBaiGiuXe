@@ -56,7 +56,11 @@ insert into NguoiDung values
 	('AD00003',N'Nguyễn Trí Đức','duc','12345','Nam',N'Đà Nẵng','0999999999',null,'Admin'),
 	('NV00001',N'Nhân viên 1','a1','1','Nam',N'Đà Nẵng','0987654321',null,'User'),
 	('NV00002',N'Nhân viên 2','a2','1','Nam',N'Quảng Nam','0733554466',null,'User'),
-	('NV00003',N'Nhân viên 3','a3','1','Nam',N'Quảng Nam','0733554466',null,'User')
+	('NV00003',N'Nhân viên 3','a3','1','Nam',N'Quảng Nam','0733554466',null,'User'),
+	('NV00004',N'Nhân viên 4','a4','1','Nam',N'Đà Nẵng','0987654321',null,'User'),
+	('NV00005',N'Nhân viên 5','a5','1','Nam',N'Quảng Nam','0733554466',null,'User'),
+	('NV00006',N'Nhân viên 6','a6','1','Nam',N'Quảng Nam','0733554466',null,'User')
+
 
 insert into Xe(idXe,bienSo, timeVao,timeRa,tienDaThu,trangThai,loaiXe,nvThucHien)
 values	('XE00001','78-S18569','2020/9/8 7:8:00','2020/9/8 7:8:00',3000,N'Đã rời','OTOO','AD00001'),
@@ -119,9 +123,9 @@ values	('XE00001','78-S18569','2020/9/8 7:8:00','2020/9/8 7:8:00',3000,N'Đã r�
 Select * 
 from Xe 
 where (idXe like '%4%') or (bienSo like '%4%') or (loaiXe like '%4%')
-
+--hàm lấy id cho xe tiếp theo
 go
-create function getIdXeNext
+create or alter function getIdXeNext
 (
 )
 returns char(7)
@@ -137,7 +141,47 @@ end
 go
 select dbo.getIdXeNext()
 
+--hàm lấy id cho người dùng (2 hàm: 1 ad 1 nv)tiếp theo
 go
+create or alter function getIdUserADNext
+(
+)
+returns char(7)
+as
+begin
+	declare @idNextInt int;
+	select @idNextInt = max(right(idUser,5))+1
+	from NguoiDung
+	where chucVu='Admin'
+	declare @idNextChar char(7);
+	select @idNextChar = CONCAT('AD',FORMAT(@idNextInt,'D5'))
+	return @idNextChar
+end
+go
+select dbo.getIdUserADNext()
+
+go
+create or alter function getIdUserNVNext
+(
+)
+returns char(7)
+as
+begin
+	declare @idNextInt int;
+	select @idNextInt = max(right(idUser,5))+1
+	from NguoiDung
+	where chucVu='User'
+	declare @idNextChar char(7);
+	select @idNextChar = CONCAT('NV',FORMAT(@idNextInt,'D5'))
+	return @idNextChar
+end
+go
+select dbo.getIdUserNVNext()
+
+
+
+
+
 /*set dateformat dmy
 select DATEDIFF(hour,timeVao,getdate())
 from Xe
@@ -164,5 +208,5 @@ begin
 	return @timeTongCong * @tienLoaiXe - @tienDaThu
 end
 
-go
-select dbo.thanhToan('XE00052')
+--go
+--select dbo.thanhToan('XE00052')

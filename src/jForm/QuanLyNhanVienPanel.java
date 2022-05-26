@@ -12,11 +12,19 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import quanlybaigiuxe.QuanLyNguoiDung;
@@ -26,10 +34,25 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
 
     DefaultTableModel defaultTableModel;
     QuanLyNguoiDung quanLyNguoiDung;
+    User user,userdangchinh;
+    BufferedImage xulyanh;
+    JFileChooser changeAvatar;
     
     public QuanLyNhanVienPanel() {
         initComponents();
+    }
+    
+    public QuanLyNhanVienPanel(User usernv) {
+        initComponents();
+        
         quanLyNguoiDung = new QuanLyNguoiDung();
+        userdangchinh = new User();
+        user = new User(usernv);
+        changeAvatar = new JFileChooser();
+        changeAvatar.setDialogTitle("Chọn tấm ảnh bạn muốn");
+        changeAvatar.setCurrentDirectory(new File("./MotSoAvatar"));// ./ là thư mục hiện tại
+        changeAvatar.setFileFilter(new FileNameExtensionFilter("PNG images","png","jpg"));
+        
         defaultTableModel = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -47,6 +70,13 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         setDataTable(quanLyNguoiDung.getAllNguoiDung());
         
         customTable(ScrollPane1, tabledata);
+        btxacnhan.setVisible(false);
+        setDatainPanel(user);
+        
+        setAvatar(user);
+        
+        
+        
     }
     
     public void setDataTable(List<User> listusUser){
@@ -68,35 +98,35 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txthoten = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtsodienthoai = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txttentk = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtpass = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtmadinhdanh = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtquequan = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        ckchucvu = new javax.swing.JComboBox<>();
+        ckgioitinh = new javax.swing.JComboBox<>();
         ScrollPane1 = new javax.swing.JScrollPane();
         tabledata = new javax.swing.JTable();
         txtsearch = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        buttonshine4 = new customcp.Buttonshine();
-        buttonshine1 = new customcp.Buttonshine();
-        buttonshine2 = new customcp.Buttonshine();
-        buttonshine3 = new customcp.Buttonshine();
+        btthem = new customcp.Buttonshine();
+        btxoa = new customcp.Buttonshine();
+        btsuauser = new customcp.Buttonshine();
+        btdatlai = new customcp.Buttonshine();
         btsearch = new customcp.Buttonshine();
-        buttonshine5 = new customcp.Buttonshine();
+        btxacnhan = new customcp.Buttonshine();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        imageAvatar1 = new customcp.ImageAvatar();
+        txtmanv = new javax.swing.JLabel();
+        imageAvatar = new customcp.ImageAvatar();
+        lbdoianhdd = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 153, 255));
         setMinimumSize(new java.awt.Dimension(947, 680));
@@ -108,29 +138,27 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Họ tên");
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txthoten.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Giới tính");
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtsodienthoai.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Số điện thoại");
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txttentk.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Tên tài khoản");
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtpass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Mật khẩu");
 
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtmadinhdanh.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Mã định danh");
@@ -138,12 +166,16 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Quê quán");
 
-        jTextField8.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtquequan.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Chức vụ");
 
-        jTextField9.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        ckchucvu.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        ckchucvu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
+
+        ckgioitinh.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        ckgioitinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Khác" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,10 +190,10 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField8)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtquequan)
+                    .addComponent(txtsodienthoai)
+                    .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ckgioitinh, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -171,10 +203,10 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField9)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtmadinhdanh, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtpass, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txttentk, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(ckchucvu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -182,29 +214,31 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txttentk, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7))
+                    .addComponent(ckgioitinh))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtsodienthoai, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmadinhdanh, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtquequan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel10))
+                    .addComponent(ckchucvu))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         tabledata.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -241,29 +275,49 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 30, 0));
 
-        buttonshine4.setBackground(new java.awt.Color(51, 253, 15));
-        buttonshine4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
-        buttonshine4.setText("Thêm");
-        buttonshine4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel2.add(buttonshine4);
+        btthem.setBackground(new java.awt.Color(51, 253, 15));
+        btthem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
+        btthem.setText("Thêm");
+        btthem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btthem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btthemActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btthem);
 
-        buttonshine1.setBackground(new java.awt.Color(51, 253, 15));
-        buttonshine1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
-        buttonshine1.setText("Xóa");
-        buttonshine1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel2.add(buttonshine1);
+        btxoa.setBackground(new java.awt.Color(51, 253, 15));
+        btxoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        btxoa.setText("Xóa");
+        btxoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btxoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btxoaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btxoa);
 
-        buttonshine2.setBackground(new java.awt.Color(51, 253, 15));
-        buttonshine2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit.png"))); // NOI18N
-        buttonshine2.setText("Sửa");
-        buttonshine2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel2.add(buttonshine2);
+        btsuauser.setBackground(new java.awt.Color(51, 253, 15));
+        btsuauser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit.png"))); // NOI18N
+        btsuauser.setText("Sửa");
+        btsuauser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btsuauser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btsuauserActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btsuauser);
 
-        buttonshine3.setBackground(new java.awt.Color(51, 253, 15));
-        buttonshine3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/refresh.png"))); // NOI18N
-        buttonshine3.setText("Đặt lại");
-        buttonshine3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel2.add(buttonshine3);
+        btdatlai.setBackground(new java.awt.Color(51, 253, 15));
+        btdatlai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/refresh.png"))); // NOI18N
+        btdatlai.setText("Đặt lại");
+        btdatlai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btdatlai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btdatlaiActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btdatlai);
 
         btsearch.setBackground(new java.awt.Color(51, 253, 15));
         btsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
@@ -275,20 +329,39 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
             }
         });
 
-        buttonshine5.setBackground(new java.awt.Color(51, 253, 15));
-        buttonshine5.setText("Xác nhận");
-        buttonshine5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btxacnhan.setBackground(new java.awt.Color(51, 253, 15));
+        btxacnhan.setText("Xác nhận");
+        btxacnhan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btxacnhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btxacnhanActionPerformed(evt);
+            }
+        });
 
         jPanel3.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Mã NV:");
+        txtmanv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtmanv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtmanv.setText("Mã NV:");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        imageAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/NV00001.png"))); // NOI18N
 
-        imageAvatar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/NV00001.png"))); // NOI18N
+        lbdoianhdd.setBackground(new java.awt.Color(51, 253, 15));
+        lbdoianhdd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbdoianhdd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbdoianhdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbdoianhddMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbdoianhddMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbdoianhddMouseExited(evt);
+            }
+        });
+        imageAvatar.add(lbdoianhdd);
+        lbdoianhdd.setBounds(60, 60, 70, 30);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -297,24 +370,17 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imageAvatar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 40, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)))
+                    .addComponent(imageAvatar, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addComponent(txtmanv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imageAvatar1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addComponent(imageAvatar, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtmanv)
                 .addContainerGap())
         );
 
@@ -341,8 +407,8 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonshine5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)))))
+                                .addComponent(btxacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -353,9 +419,9 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonshine5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btxacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -404,6 +470,201 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btsearchActionPerformed
 
+    private void btthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemActionPerformed
+        // TODO add your handling code here:
+        btxacnhan.setVisible(true);
+        txtmanv.setText("Nhập thông tin");
+        txthoten.setText("");
+        txttentk.setText("");
+        txtsodienthoai.setText("");
+        txtquequan.setText("");
+        txtmadinhdanh.setText("");
+        txtpass.setText("");
+        ckgioitinh.setSelectedIndex(0);
+        ckchucvu.setSelectedIndex(0);
+        txttentk.setEditable(true);
+        txtpass.setEditable(true);
+        ckchucvu.setEnabled(true);
+        
+        txthoten.requestFocus();
+    }//GEN-LAST:event_btthemActionPerformed
+
+    private void btdatlaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btdatlaiActionPerformed
+        // TODO add your handling code here:
+        setDatainPanel(user);
+        defaultTableModel.setRowCount(0);
+        txttentk.setEditable(true);
+        txtpass.setEditable(true);
+        ckchucvu.setEditable(true);
+        ckchucvu.setEnabled(true);
+        setDataTable(quanLyNguoiDung.getAllNguoiDung());
+        btxacnhan.setVisible(false);
+    }//GEN-LAST:event_btdatlaiActionPerformed
+
+    private void btxacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxacnhanActionPerformed
+        // TODO add your handling code here:
+        boolean duocchay=true;
+        if(txthoten.getText().equals("") && duocchay)
+        {
+            txthoten.requestFocus();
+            duocchay=false;
+        }
+        if(txttentk.getText().equals("") && duocchay)
+        {
+            txttentk.requestFocus();
+            duocchay=false;
+        }
+        if(txtpass.getText().equals("") && duocchay)
+        {
+            txtpass.requestFocus();
+            duocchay=false;
+        }
+        
+        
+        
+        if (txtmanv.getText().equals("Nhập thông tin") && duocchay)
+        {
+            User usercanthem=new User();
+            usercanthem.setIdUser("NV00000");
+            usercanthem.setHoTen(txthoten.getText());
+            usercanthem.setTenTK(txttentk.getText());
+            usercanthem.setMatKhau(txtpass.getText());
+            usercanthem.setQueQuan(txtquequan.getText());
+            usercanthem.setDinhDanh(txtmadinhdanh.getText());
+            usercanthem.setSdt(txtsodienthoai.getText());
+            usercanthem.setChucVu((String) ckchucvu.getSelectedItem());
+            usercanthem.setGioiTinh((String) ckgioitinh.getSelectedItem());
+            quanLyNguoiDung.addUser(usercanthem);
+            
+            txtmanv.setText("Đã thêm");
+            txthoten.setText("");
+            txttentk.setText("");
+            txtsodienthoai.setText("");;
+            txtquequan.setText("");
+            txtpass.setText("");
+            txtmadinhdanh.setText("");
+            ckgioitinh.setSelectedIndex(0);
+            ckchucvu.setSelectedIndex(0);
+            
+            btxacnhan.setVisible(false);
+            
+        }
+        if (txtmanv.getText().contains("Mã NV:") && duocchay)
+        {
+            userdangchinh.setHoTen(txthoten.getText());
+            userdangchinh.setTenTK(txttentk.getText());
+            userdangchinh.setMatKhau(txtpass.getText());
+            userdangchinh.setQueQuan(txtquequan.getText());
+            userdangchinh.setDinhDanh(txtmadinhdanh.getText());
+            userdangchinh.setSdt(txtsodienthoai.getText());
+            userdangchinh.setChucVu((String) ckchucvu.getSelectedItem());
+            userdangchinh.setGioiTinh((String) ckgioitinh.getSelectedItem());        
+            
+            quanLyNguoiDung.updateUser(userdangchinh);
+            txttentk.setEditable(true);
+            txtpass.setEditable(true);
+            ckchucvu.setEnabled(true);
+            btxacnhan.setVisible(false);
+        }
+    }//GEN-LAST:event_btxacnhanActionPerformed
+
+    private void btxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxoaActionPerformed
+        // TODO add your handling code here:
+        int row = tabledata.getSelectedRow();
+        if(row == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn người dùng trước!","Lỗi",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            String iddel =String.valueOf(defaultTableModel.getValueAt(row, 0));
+            quanLyNguoiDung.delUser(String.valueOf(iddel));
+            defaultTableModel.removeRow(row);
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
+        }
+    }//GEN-LAST:event_btxoaActionPerformed
+
+    private void btsuauserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuauserActionPerformed
+        // TODO add your handling code here:
+        int row = tabledata.getSelectedRow();
+        if(row == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn người dùng trước!","Lỗi",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            String iddel =String.valueOf(defaultTableModel.getValueAt(row, 0));
+            userdangchinh=quanLyNguoiDung.getUserbyId(String.valueOf(iddel));
+            setDatainPanel(userdangchinh);
+            btxacnhan.setVisible(true);
+            txttentk.setEditable(false);
+            txtpass.setEditable(false);
+            ckchucvu.setEnabled(false);
+            setAvatar(userdangchinh);
+        }
+    }//GEN-LAST:event_btsuauserActionPerformed
+
+    private void lbdoianhddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbdoianhddMouseEntered
+        // TODO add your handling code here:
+        lbdoianhdd.setText("Đổi ảnh");
+        lbdoianhdd.setOpaque(true);
+    }//GEN-LAST:event_lbdoianhddMouseEntered
+
+    private void lbdoianhddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbdoianhddMouseExited
+        // TODO add your handling code here:
+        lbdoianhdd.setText("");
+        lbdoianhdd.setOpaque(false);
+    }//GEN-LAST:event_lbdoianhddMouseExited
+
+    private void lbdoianhddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbdoianhddMouseClicked
+        // TODO add your handling code here:
+        int returnValue=changeAvatar.showDialog(this, "Chọn ảnh");
+        
+        if (returnValue == JFileChooser.APPROVE_OPTION)
+        {
+            try { 
+                xulyanh=ImageIO.read(changeAvatar.getSelectedFile());
+                System.out.println("load dc anh");
+            } 
+            catch (IOException ex) {
+                System.out.println("Load anh fail");
+            }
+            
+            File outputfile = new File("./src/img/"+user.getIdUser()+".png");
+            if (outputfile.exists())
+                outputfile.delete();
+            try 
+            {
+                ImageIO.write(xulyanh, "png", outputfile);
+                System.out.println("Tạo ảnh thành công");
+                ImageIcon imageIcon = new ImageIcon(xulyanh);
+                imageAvatar.setIcon(imageIcon);
+            }
+            catch (IOException ex)
+            {
+                System.out.println("Không dc");
+            }
+            
+        }
+        else
+        {
+            System.out.println("Khong chọn ảnh");
+        }
+    }//GEN-LAST:event_lbdoianhddMouseClicked
+
+    
+    public void setDatainPanel(User user)
+    {
+        txtmanv.setText("Mã NV: "+user.getIdUser());
+        txthoten.setText(user.getHoTen());
+        txttentk.setText(user.getTenTK());
+        txtsodienthoai.setText(user.getSdt());
+        txtquequan.setText(user.getQueQuan());
+        txtpass.setText(user.getMatKhau());
+        ckgioitinh.setSelectedItem(user.getGioiTinh());
+        ckchucvu.setSelectedItem(user.getChucVu());
+        txtmadinhdanh.setText(user.getDinhDanh());
+    }
     
     public final void customTable(JScrollPane scroll,JTable table)
     {
@@ -472,17 +733,35 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
       
 //        table.getTableHeader().setFont(new Font("Segoe UI", 30, 30));
     }
+    
+    public void setAvatar(User user){
+        try
+        {
+            String sourceImg="./src/img/"+user.getIdUser()+".png";
+            File newFile = new File(sourceImg);
+            xulyanh=ImageIO.read(newFile);
+            ImageIcon imageIcon = new ImageIcon(xulyanh);
+            imageAvatar.setIcon(imageIcon);
+            imageAvatar.setBorderSize(3);
+        }
+        catch(Exception e)
+        {
+            imageAvatar.setIcon(new ImageIcon("./src/img/quanlyuser.png"));
+            imageAvatar.setBorderSize(0);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane1;
+    private customcp.Buttonshine btdatlai;
     private customcp.Buttonshine btsearch;
-    private customcp.Buttonshine buttonshine1;
-    private customcp.Buttonshine buttonshine2;
-    private customcp.Buttonshine buttonshine3;
-    private customcp.Buttonshine buttonshine4;
-    private customcp.Buttonshine buttonshine5;
-    private customcp.ImageAvatar imageAvatar1;
-    private javax.swing.JLabel jLabel1;
+    private customcp.Buttonshine btsuauser;
+    private customcp.Buttonshine btthem;
+    private customcp.Buttonshine btxacnhan;
+    private customcp.Buttonshine btxoa;
+    private javax.swing.JComboBox<String> ckchucvu;
+    private javax.swing.JComboBox<String> ckgioitinh;
+    private customcp.ImageAvatar imageAvatar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -494,16 +773,15 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lbdoianhdd;
     private javax.swing.JTable tabledata;
+    private javax.swing.JTextField txthoten;
+    private javax.swing.JTextField txtmadinhdanh;
+    private javax.swing.JLabel txtmanv;
+    private javax.swing.JTextField txtpass;
+    private javax.swing.JTextField txtquequan;
     private javax.swing.JTextField txtsearch;
+    private javax.swing.JTextField txtsodienthoai;
+    private javax.swing.JTextField txttentk;
     // End of variables declaration//GEN-END:variables
 }
