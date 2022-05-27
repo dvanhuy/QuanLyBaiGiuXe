@@ -344,11 +344,13 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         txtmanv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtmanv.setText("Mã NV:");
 
+        imageAvatar.setToolTipText("");
         imageAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/NV00001.png"))); // NOI18N
 
         lbdoianhdd.setBackground(new java.awt.Color(51, 253, 15));
         lbdoianhdd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbdoianhdd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbdoianhdd.setToolTipText("");
         lbdoianhdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbdoianhddMouseClicked(evt);
@@ -482,9 +484,12 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         txtpass.setText("");
         ckgioitinh.setSelectedIndex(0);
         ckchucvu.setSelectedIndex(0);
-        txttentk.setEditable(true);
-        txtpass.setEditable(true);
+        txttentk.setEnabled(true);
+        txtpass.setEnabled(true);
         ckchucvu.setEnabled(true);
+        lbdoianhdd.setVisible(false);
+        imageAvatar.setIcon(new ImageIcon("./src/img/quanlyuser.png"));
+        imageAvatar.setBorderSize(0);
         
         txthoten.requestFocus();
     }//GEN-LAST:event_btthemActionPerformed
@@ -493,12 +498,12 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         setDatainPanel(user);
         defaultTableModel.setRowCount(0);
-        txttentk.setEditable(true);
-        txtpass.setEditable(true);
-        ckchucvu.setEditable(true);
+        txttentk.setEnabled(true);
+        txtpass.setEnabled(true);
         ckchucvu.setEnabled(true);
         setDataTable(quanLyNguoiDung.getAllNguoiDung());
         btxacnhan.setVisible(false);
+        lbdoianhdd.setVisible(true);
     }//GEN-LAST:event_btdatlaiActionPerformed
 
     private void btxacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxacnhanActionPerformed
@@ -545,6 +550,7 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
             txtmadinhdanh.setText("");
             ckgioitinh.setSelectedIndex(0);
             ckchucvu.setSelectedIndex(0);
+            lbdoianhdd.setVisible(false);
             
             btxacnhan.setVisible(false);
             
@@ -561,10 +567,13 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
             userdangchinh.setGioiTinh((String) ckgioitinh.getSelectedItem());        
             
             quanLyNguoiDung.updateUser(userdangchinh);
-            txttentk.setEditable(true);
-            txtpass.setEditable(true);
+            txttentk.setEnabled(true);
+            txtpass.setEnabled(true);
             ckchucvu.setEnabled(true);
             btxacnhan.setVisible(false);
+            
+            setDatainPanel(user);
+            setAvatar(user);
         }
     }//GEN-LAST:event_btxacnhanActionPerformed
 
@@ -597,9 +606,10 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
             userdangchinh=quanLyNguoiDung.getUserbyId(String.valueOf(iddel));
             setDatainPanel(userdangchinh);
             btxacnhan.setVisible(true);
-            txttentk.setEditable(false);
-            txtpass.setEditable(false);
+            txttentk.setEnabled(false);
+            txtpass.setEnabled(false);
             ckchucvu.setEnabled(false);
+            lbdoianhdd.setVisible(true);
             setAvatar(userdangchinh);
         }
     }//GEN-LAST:event_btsuauserActionPerformed
@@ -629,8 +639,14 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
             catch (IOException ex) {
                 System.out.println("Load anh fail");
             }
+            String iduseranh;
+            if(btxacnhan.isVisible()){
+                iduseranh=userdangchinh.getIdUser();
+            }
+            else 
+                iduseranh=user.getIdUser();
             
-            File outputfile = new File("./src/img/"+user.getIdUser()+".png");
+            File outputfile = new File("./src/img/"+iduseranh+".png");
             if (outputfile.exists())
                 outputfile.delete();
             try 
@@ -668,8 +684,7 @@ public class QuanLyNhanVienPanel extends javax.swing.JPanel {
     
     public final void customTable(JScrollPane scroll,JTable table)
     {
-//        scroll.getViewport().setOpaque(true);
-        scroll.getViewport().setBackground(Color.WHITE);
+        scroll.getViewport().setBackground(new Color(230,230,230));
         scroll.setViewportBorder(null);
         setBorder(null);
         scroll.setBorder(null);

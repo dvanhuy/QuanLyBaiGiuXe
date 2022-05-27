@@ -517,6 +517,7 @@
         </Component>
         <Container class="customcp.ImageAvatar" name="imageAvatar">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/img/NV00001.png"/>
             </Property>
@@ -535,6 +536,7 @@
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbdoianhddMouseClicked"/>
