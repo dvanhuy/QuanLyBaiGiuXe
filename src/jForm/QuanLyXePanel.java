@@ -130,8 +130,8 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         txtdinhdanh1 = new javax.swing.JLabel();
         ComboBoxsx = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        btThanhToan = new customcp.Buttonshine();
         btthem = new customcp.Buttonshine();
+        btThanhToan = new customcp.Buttonshine();
         buttonshine2 = new customcp.Buttonshine();
         btsua = new customcp.Buttonshine();
         buttonshine4 = new customcp.Buttonshine();
@@ -395,18 +395,6 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 30, 0));
 
-        btThanhToan.setBackground(new java.awt.Color(51, 253, 15));
-        btThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pay.png"))); // NOI18N
-        btThanhToan.setText("Thanh toán");
-        btThanhToan.setEffectColor(new java.awt.Color(240, 240, 240));
-        btThanhToan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btThanhToan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btThanhToanActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btThanhToan);
-
         btthem.setBackground(new java.awt.Color(51, 253, 15));
         btthem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
         btthem.setText("Thêm");
@@ -418,6 +406,18 @@ public class QuanLyXePanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btthem);
+
+        btThanhToan.setBackground(new java.awt.Color(51, 253, 15));
+        btThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pay.png"))); // NOI18N
+        btThanhToan.setText("Thanh toán");
+        btThanhToan.setEffectColor(new java.awt.Color(240, 240, 240));
+        btThanhToan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThanhToanActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btThanhToan);
 
         buttonshine2.setBackground(new java.awt.Color(51, 253, 15));
         buttonshine2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
@@ -708,9 +708,9 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 String idXe = String.valueOf(tbXe.getValueAt(row, 0));
                 xe = new Xe();
                 xe = quanLyXe.getXeById(idXe);
-                ThanhToanFrame thanhToanFrame=new ThanhToanFrame(xe);
-                thanhToanFrame.setVisible(true);
-                thanhToanFrame.setAlwaysOnTop(true);
+                In inframe=new In(xe);
+                inframe.setVisible(true);
+                inframe.setAlwaysOnTop(true);
             }
             else 
             {

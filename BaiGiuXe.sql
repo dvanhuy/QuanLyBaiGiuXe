@@ -47,7 +47,7 @@ values	('DAP',N'Xe đạp',200),
 		('GANMAY',N'Xe gắn máy',400),
 		('MOTO',N'Xe mô tô',500),
 		('OTOO',N'Xe ô tô',1000),
-		('BANTAI',N'Xe bán tải',1000)
+		('BANTAI',N'Xe bán tải',2000)
 
 --------------------------------------------------
 insert into NguoiDung values
