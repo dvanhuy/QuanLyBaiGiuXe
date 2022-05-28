@@ -99,6 +99,11 @@ public class HelpPanel extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
         cauhoi2 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         txtcauhoi2 = new javax.swing.JLabel();
@@ -111,7 +116,6 @@ public class HelpPanel extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         cauhoi3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         txtcauhoi3 = new javax.swing.JLabel();
@@ -124,7 +128,6 @@ public class HelpPanel extends javax.swing.JPanel {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
         cauhoi4 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         txtcauhoi4 = new javax.swing.JLabel();
@@ -137,7 +140,6 @@ public class HelpPanel extends javax.swing.JPanel {
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
         cauhoi5 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         txtcauhoi5 = new javax.swing.JLabel();
@@ -148,9 +150,6 @@ public class HelpPanel extends javax.swing.JPanel {
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(70, 70, 70));
         setMinimumSize(new java.awt.Dimension(947, 680));
@@ -342,13 +341,25 @@ public class HelpPanel extends javax.swing.JPanel {
 
         tlcauhoi1.setBackground(new java.awt.Color(245, 245, 245));
 
-        jLabel13.setText("1.");
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setText("1. Admin:");
 
-        jLabel16.setText("1.");
+        jLabel16.setText("1. Vào tab Quản lí nhân viên.");
 
-        jLabel17.setText("1.");
+        jLabel17.setText("2. Chọn nhân viên cần thay đổi trên table.");
 
-        jLabel18.setText("1.");
+        jLabel18.setText("3. Nhấn sửa.");
+
+        jLabel1.setText("4. Thay đổi thông tin và xác nhận.");
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setText("2. Nhân viên:");
+
+        jLabel19.setText("1. Vào tab Quản lí thông tin.");
+
+        jLabel29.setText("2. Thay đổi thông tin cá nhân.");
+
+        jLabel39.setText("3. Nhấn cập nhập dữ liệu");
 
         javax.swing.GroupLayout tlcauhoi1Layout = new javax.swing.GroupLayout(tlcauhoi1);
         tlcauhoi1.setLayout(tlcauhoi1Layout);
@@ -356,25 +367,44 @@ public class HelpPanel extends javax.swing.JPanel {
             tlcauhoi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tlcauhoi1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tlcauhoi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
+                .addGroup(tlcauhoi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tlcauhoi1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(tlcauhoi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(tlcauhoi1Layout.createSequentialGroup()
+                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tlcauhoi1Layout.setVerticalGroup(
             tlcauhoi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tlcauhoi1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel18)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel39)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout cauhoi1Layout = new javax.swing.GroupLayout(cauhoi1);
@@ -389,7 +419,8 @@ public class HelpPanel extends javax.swing.JPanel {
             .addGroup(cauhoi1Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(tlcauhoi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tlcauhoi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         cauhoi2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -397,7 +428,7 @@ public class HelpPanel extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(245, 245, 245));
 
         txtcauhoi2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtcauhoi2.setText("Cách đổi mật khẩu ?");
+        txtcauhoi2.setText("Cách lấy lại mật khẩu?");
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/xemcauhoi.png"))); // NOI18N
@@ -428,21 +459,19 @@ public class HelpPanel extends javax.swing.JPanel {
 
         tlcauhoi2.setBackground(new java.awt.Color(245, 245, 245));
 
-        jLabel21.setText("1.");
+        jLabel21.setText("1. Vào trang đăng nhập.");
 
-        jLabel22.setText("1.");
+        jLabel22.setText("2. Nhấn quên mật khẩu.");
 
-        jLabel23.setText("1.");
+        jLabel23.setText("3. Nhập mã nhân viên và tên tài khoản.");
 
-        jLabel24.setText("1.");
+        jLabel24.setText("4. Nhấn search để hệ thống xác nhận có tài khoản sẽ cho phép đổi mật khẩu");
 
-        jLabel25.setText("1.");
+        jLabel25.setText("5. Thay đổi mật khẩu.");
 
-        jLabel26.setText("1.");
+        jLabel26.setText("6. Xác nhận thay đổi.");
 
-        jLabel27.setText("1.");
-
-        jLabel28.setText("1.");
+        jLabel27.setText("7. Tiến hành đăng nhập với mật khẩu mới.");
 
         javax.swing.GroupLayout tlcauhoi2Layout = new javax.swing.GroupLayout(tlcauhoi2);
         tlcauhoi2.setLayout(tlcauhoi2Layout);
@@ -450,16 +479,15 @@ public class HelpPanel extends javax.swing.JPanel {
             tlcauhoi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tlcauhoi2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tlcauhoi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel28))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(tlcauhoi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         tlcauhoi2Layout.setVerticalGroup(
             tlcauhoi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,9 +506,7 @@ public class HelpPanel extends javax.swing.JPanel {
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel28)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout cauhoi2Layout = new javax.swing.GroupLayout(cauhoi2);
@@ -504,7 +530,7 @@ public class HelpPanel extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(245, 245, 245));
 
         txtcauhoi3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtcauhoi3.setText("Những lưu ý cần nhớ ?");
+        txtcauhoi3.setText("Cách nhập thông tin xe mới ?");
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/xemcauhoi.png"))); // NOI18N
@@ -535,21 +561,19 @@ public class HelpPanel extends javax.swing.JPanel {
 
         tlcauhoi3.setBackground(new java.awt.Color(245, 245, 245));
 
-        jLabel31.setText("1.");
+        jLabel31.setText("1. Vào tab Quản lí xe.");
 
-        jLabel32.setText("1.");
+        jLabel32.setText("2. Nhấn thêm.");
 
-        jLabel33.setText("1.");
+        jLabel33.setText("3. Nhập biển số xe.");
 
-        jLabel34.setText("1.");
+        jLabel34.setText("4. Chọn loại xe.");
 
-        jLabel35.setText("1.");
+        jLabel35.setText("5. Nhập vào số tiền đã thu (nếu có)");
 
-        jLabel36.setText("1.");
+        jLabel36.setText("6. Nhấn cấp mã giữ xe.");
 
-        jLabel37.setText("1.");
-
-        jLabel38.setText("1.");
+        jLabel37.setText("7. Hệ thống sẽ tiến hành thêm xe (thời gian bắt đầu từ lúc thêm).");
 
         javax.swing.GroupLayout tlcauhoi3Layout = new javax.swing.GroupLayout(tlcauhoi3);
         tlcauhoi3.setLayout(tlcauhoi3Layout);
@@ -557,16 +581,15 @@ public class HelpPanel extends javax.swing.JPanel {
             tlcauhoi3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tlcauhoi3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tlcauhoi3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel32)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel34)
-                    .addComponent(jLabel35)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel37)
-                    .addComponent(jLabel38))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(tlcauhoi3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         tlcauhoi3Layout.setVerticalGroup(
             tlcauhoi3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -585,9 +608,7 @@ public class HelpPanel extends javax.swing.JPanel {
                 .addComponent(jLabel36)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel37)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel38)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout cauhoi3Layout = new javax.swing.GroupLayout(cauhoi3);
@@ -611,7 +632,7 @@ public class HelpPanel extends javax.swing.JPanel {
         jPanel9.setBackground(new java.awt.Color(245, 245, 245));
 
         txtcauhoi4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtcauhoi4.setText("Cách nhập thông tin xe mới ?");
+        txtcauhoi4.setText("Cách tính tiền xe?");
 
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/xemcauhoi.png"))); // NOI18N
@@ -642,21 +663,19 @@ public class HelpPanel extends javax.swing.JPanel {
 
         tlcauhoi4.setBackground(new java.awt.Color(245, 245, 245));
 
-        jLabel41.setText("1.");
+        jLabel41.setText("1. Vào tab Quản lí xe.");
 
-        jLabel42.setText("1.");
+        jLabel42.setText("2. Chọn xe cần thanh toán.");
 
-        jLabel43.setText("1.");
+        jLabel43.setText("3. Nhấn thanh toán.");
 
-        jLabel44.setText("1.");
+        jLabel44.setText("4. Hệ thống sẽ tính tiền dựa trên loại xe và giờ đã đỗ.");
 
-        jLabel45.setText("1.");
+        jLabel45.setText("5. Nhân viên tiến hành thu tiền.");
 
-        jLabel46.setText("1.");
+        jLabel46.setText("6. Kiểm tra đủ thì xác nhận thanh toán.");
 
-        jLabel47.setText("1.");
-
-        jLabel48.setText("1.");
+        jLabel47.setText("7. Hệ thống sẽ cập nhập số tiền đã thu.");
 
         javax.swing.GroupLayout tlcauhoi4Layout = new javax.swing.GroupLayout(tlcauhoi4);
         tlcauhoi4.setLayout(tlcauhoi4Layout);
@@ -664,16 +683,15 @@ public class HelpPanel extends javax.swing.JPanel {
             tlcauhoi4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tlcauhoi4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tlcauhoi4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel41)
-                    .addComponent(jLabel42)
-                    .addComponent(jLabel43)
-                    .addComponent(jLabel44)
-                    .addComponent(jLabel45)
-                    .addComponent(jLabel46)
-                    .addComponent(jLabel47)
-                    .addComponent(jLabel48))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(tlcauhoi4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         tlcauhoi4Layout.setVerticalGroup(
             tlcauhoi4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -692,9 +710,7 @@ public class HelpPanel extends javax.swing.JPanel {
                 .addComponent(jLabel46)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel47)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel48)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout cauhoi4Layout = new javax.swing.GroupLayout(cauhoi4);
@@ -718,7 +734,7 @@ public class HelpPanel extends javax.swing.JPanel {
         jPanel10.setBackground(new java.awt.Color(245, 245, 245));
 
         txtcauhoi5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtcauhoi5.setText("Cách tính tiền xe ?");
+        txtcauhoi5.setText("Những lưu ý cho nhân viên!");
 
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/xemcauhoi.png"))); // NOI18N
@@ -749,21 +765,15 @@ public class HelpPanel extends javax.swing.JPanel {
 
         tlcauhoi5.setBackground(new java.awt.Color(245, 245, 245));
 
-        jLabel51.setText("1.");
+        jLabel51.setText("1. Nhập chính xác BIỂN SỐ và TIỀN ĐÃ THU khi thêm xe.");
 
-        jLabel52.setText("1.");
+        jLabel52.setText("2. Kiểm toán cẩn thận khi tiến hành THANH TOÁN.");
 
-        jLabel53.setText("1.");
+        jLabel53.setText("3. CẬP NHẬP thông tin và ảnh đại diện ngay khi được cấp tài khoản.");
 
-        jLabel54.setText("1.");
+        jLabel54.setText("4. KHÔNG đưa tài khoản cho người khác.");
 
-        jLabel55.setText("1.");
-
-        jLabel56.setText("1.");
-
-        jLabel57.setText("1.");
-
-        jLabel58.setText("1.");
+        jLabel55.setText("5. Mọi vấn đề khi thêm xe, thanh toán sẽ do nhân viên CHỊU TRÁCH NHIỆM.");
 
         javax.swing.GroupLayout tlcauhoi5Layout = new javax.swing.GroupLayout(tlcauhoi5);
         tlcauhoi5.setLayout(tlcauhoi5Layout);
@@ -771,22 +781,19 @@ public class HelpPanel extends javax.swing.JPanel {
             tlcauhoi5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tlcauhoi5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tlcauhoi5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel51)
-                    .addComponent(jLabel52)
-                    .addComponent(jLabel53)
-                    .addComponent(jLabel54)
-                    .addComponent(jLabel55)
-                    .addComponent(jLabel56)
-                    .addComponent(jLabel57)
-                    .addComponent(jLabel58))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(tlcauhoi5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         tlcauhoi5Layout.setVerticalGroup(
             tlcauhoi5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tlcauhoi5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel51)
+                .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel52)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -795,13 +802,7 @@ public class HelpPanel extends javax.swing.JPanel {
                 .addComponent(jLabel54)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel55)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel56)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel57)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel58)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout cauhoi5Layout = new javax.swing.GroupLayout(cauhoi5);
@@ -847,7 +848,7 @@ public class HelpPanel extends javax.swing.JPanel {
                 .addComponent(cauhoi4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cauhoi5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(526, Short.MAX_VALUE))
+                .addContainerGap(471, Short.MAX_VALUE))
         );
 
         ScrollPane.setViewportView(listcauhoi);
@@ -995,14 +996,17 @@ public class HelpPanel extends javax.swing.JPanel {
     private javax.swing.JPanel cauhoi3;
     private javax.swing.JPanel cauhoi4;
     private javax.swing.JPanel cauhoi5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -1012,7 +1016,7 @@ public class HelpPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -1022,7 +1026,7 @@ public class HelpPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
@@ -1032,7 +1036,6 @@ public class HelpPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
@@ -1040,9 +1043,6 @@ public class HelpPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
