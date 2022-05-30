@@ -5,11 +5,10 @@
  */
 package jForm;
 
+import chartbar.BarChart;
+import chartline.LineChart;
 import java.awt.CardLayout;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
+import java.awt.Color;
 
 /**
  *
@@ -20,20 +19,20 @@ public class ThongKePanel extends javax.swing.JPanel {
     /**
      * Creates new form ThongKePanel
      */
+    BarChart barchart;
+    LineChart lineChart;
+    
     public ThongKePanel() {
         initComponents();
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Xe ô tô", 25.0);
-        dataset.setValue("Xe máy", 57.0);
-        dataset.setValue("Xe bán tải", 9.0);
-        dataset.setValue("Xe đạp", 9.0);
-        
-        JFreeChart chart = ChartFactory.createPieChart(
-                "CƠ CẤU XE THEO TIỀN", dataset, true, true, true);
-        ChartPanel chartPanel = new ChartPanel(chart);
+        barchart = new BarChart();
+        lineChart = new LineChart();
+        setBarChart(barchart);
+        setLineChart(lineChart);
         
         mypn.setLayout(new CardLayout());
-        mypn.add(chartPanel);
+        mypn.add(barchart);
+        barchart.start();
+
 
     }
 
@@ -68,6 +67,11 @@ public class ThongKePanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        switchButton1 = new customcp.SwitchButton();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setMinimumSize(new java.awt.Dimension(947, 680));
@@ -261,13 +265,62 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
+        switchButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                switchButton1MouseClicked(evt);
+            }
+        });
+
+        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2022", "2021", "2020" }));
+        jComboBox3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox3ItemStateChanged(evt);
+            }
+        });
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Năm:");
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/linechart.png"))); // NOI18N
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barchar.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(switchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel14))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
@@ -275,19 +328,10 @@ public class ThongKePanel extends javax.swing.JPanel {
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(mypn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 540, Short.MAX_VALUE))
+                    .addComponent(mypn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(110, 110, 110))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,23 +351,98 @@ public class ThongKePanel extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mypn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(switchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mypn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void switchButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_switchButton1MouseClicked
+        // TODO add your handling code here:
+        if (switchButton1.isSelected())
+        {
+            mypn.removeAll();
+            mypn.setLayout(new CardLayout());
+            mypn.add(lineChart);
+            mypn.revalidate();
+            mypn.repaint();
+            lineChart.start();
+        }
+        else
+        {
+            mypn.removeAll();
+            mypn.setLayout(new CardLayout());
+            mypn.add(barchart);
+            mypn.revalidate();
+            mypn.repaint();
+            barchart.start();
+        }
+        
+    }//GEN-LAST:event_switchButton1MouseClicked
+
+    private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
+        // TODO add your handling code here:
+        lineChart.start();
+        barchart.start();
+    }//GEN-LAST:event_jComboBox3ItemStateChanged
+
+    
+    public void setBarChart(BarChart chart)
+    {
+        chart.addLegend("Xe mô tô", new Color(245, 189, 135));
+        chart.addLegend("Xe ô tô", new Color(135, 189, 245));
+        chart.addLegend("Xe đạp", new Color(189, 135, 245));
+        chart.addLegend("Xe bán tải", new Color(139, 229, 222));
+        chart.addLegend("Xe gắn máy", new Color(255,51,102));
+        chart.addData(new chartbar.ModelChart("Quý 1", new double[]{500, 200, 80, 89,100}));
+        chart.addData(new chartbar.ModelChart("Quý 2", new double[]{600, 750, 90, 150,200}));
+        chart.addData(new chartbar.ModelChart("Quý 3", new double[]{200, 350, 460, 900,300}));
+        chart.addData(new chartbar.ModelChart("Quý 4", new double[]{480, 150, 750, 700,300}));
+
+    }
+    
+    public void setLineChart(LineChart lineChart)
+    {
+        lineChart.addLegend("Xe mô tô", new Color(245, 189, 135), new Color(245, 189, 135));
+        lineChart.addLegend("Xe ô tô", new Color(135, 189, 245), new Color(135, 189, 245));
+        lineChart.addLegend("Xe đạp", new Color(189, 135, 245), new Color(189, 135, 245));
+        lineChart.addLegend("Xe bán tải", new Color(139, 229, 222), new Color(139, 229, 222));
+        lineChart.addLegend("Xe gắn máy", new Color(255,51,102), new Color(255,51,102));
+        lineChart.addData(new chartline.ModelChart("Quý 1", new double[]{500, 200, 80, 89,100}));
+        lineChart.addData(new chartline.ModelChart("Quý 2", new double[]{600, 750, 90, 150,200}));
+        lineChart.addData(new chartline.ModelChart("Quý 3", new double[]{200, 350, 460, 900,300}));
+        lineChart.addData(new chartline.ModelChart("Quý 4", new double[]{480, 150, 750, 700,300}));
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -336,5 +455,6 @@ public class ThongKePanel extends javax.swing.JPanel {
     private customcp.PanelRoundGraCus panelRoundGraCus1;
     private customcp.PanelRoundGraCus panelRoundGraCus2;
     private customcp.PanelRoundGraCus panelRoundGraCus3;
+    private customcp.SwitchButton switchButton1;
     // End of variables declaration//GEN-END:variables
 }

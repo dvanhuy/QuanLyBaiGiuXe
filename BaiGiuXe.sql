@@ -186,27 +186,27 @@ select dbo.getIdUserNVNext()
 select DATEDIFF(hour,timeVao,getdate())
 from Xe
 */
-go
-create or alter function thanhToan
-(
-@id char(7)
-)
-returns money
-as
-begin
-	declare @timeTongCong int
-	select @timeTongCong = DATEDIFF(hour,timeVao,getdate())
-	from Xe
-	declare @tienLoaiXe money
-	select @tienLoaiXe = donGia
-	from Xe, LoaiXe
-	where @id = idXe
-		and loaiXe = idLoai
-	declare @tienDaThu money
-	select @tienDaThu = tienDaThu
-	from Xe
-	return @timeTongCong * @tienLoaiXe - @tienDaThu
-end
+--go
+--create or alter function thanhToan
+--(
+--@id char(7)
+--)
+--returns money
+--as
+--begin
+--	declare @timeTongCong int
+--	select @timeTongCong = DATEDIFF(hour,timeVao,getdate())
+--	from Xe
+--	declare @tienLoaiXe money
+--	select @tienLoaiXe = donGia
+--	from Xe, LoaiXe
+--	where @id = idXe
+--		and loaiXe = idLoai
+--	declare @tienDaThu money
+--	select @tienDaThu = tienDaThu
+--	from Xe
+--	return @timeTongCong * @tienLoaiXe - @tienDaThu
+--end
 
 --go
 --select dbo.thanhToan('XE00052')

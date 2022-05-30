@@ -77,10 +77,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         
         ComboBoxsx.setSelectedIndex(2);
 
-        
-        
         customTable(jScrollPane1,tbXe);
-        
     }
 
     public void setDataTable(List<Xe> listXe){
@@ -143,6 +140,11 @@ public class QuanLyXePanel extends javax.swing.JPanel {
 
         kGradientPanel1.setkEndColor(new java.awt.Color(204, 204, 255));
         kGradientPanel1.setkStartColor(new java.awt.Color(240, 240, 240));
+        kGradientPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kGradientPanel1MouseClicked(evt);
+            }
+        });
 
         lbIdNext.setFont(new java.awt.Font("Segoe UI", 0, 80)); // NOI18N
         lbIdNext.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -179,14 +181,14 @@ public class QuanLyXePanel extends javax.swing.JPanel {
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addComponent(lbIdNext)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -708,7 +710,7 @@ public class QuanLyXePanel extends javax.swing.JPanel {
                 String idXe = String.valueOf(tbXe.getValueAt(row, 0));
                 xe = new Xe();
                 xe = quanLyXe.getXeById(idXe);
-                In inframe=new In(xe);
+                ThanhToanFrame inframe=new ThanhToanFrame(xe);
                 inframe.setVisible(true);
                 inframe.setAlwaysOnTop(true);
             }
@@ -718,6 +720,11 @@ public class QuanLyXePanel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btThanhToanActionPerformed
+
+    private void kGradientPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kGradientPanel1MouseClicked
+        // TODO add your handling code here:
+        jDialog1.setVisible(false);
+    }//GEN-LAST:event_kGradientPanel1MouseClicked
 
     public void settabledataif(){
         if (ckboxdaroi.isSelected() && ckboxdangdo.isSelected())
