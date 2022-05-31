@@ -273,4 +273,39 @@ public class QuanLyNguoiDung {
         }
     }
    
+   public int demSoLuongAdmin (){
+        int dem = 0;
+        Connection con = GetConnectServer.getConnection();
+        try{
+            String sql = "select count(idUser) from NguoiDung where chucVu like 'Admin' ";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            String countUser = rs.getString(1);
+            dem = Integer.parseInt(countUser);
+            return dem;
+        }
+        catch (Exception e){
+            return dem;
+        }
+    }
+   
+   public int demSoLuongNhanVien (){
+        int dem = 0;
+        Connection con = GetConnectServer.getConnection();
+        try{
+            String sql = "select count(idUser) from NguoiDung";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            String countUser = rs.getString(1);
+            dem = Integer.parseInt(countUser);
+            return dem;
+        }
+        catch (Exception e){
+            return dem;
+        }
+    }
 }

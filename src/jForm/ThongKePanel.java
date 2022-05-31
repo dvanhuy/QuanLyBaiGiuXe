@@ -7,15 +7,23 @@ package jForm;
 
 import chartbar.BarChart;
 import chartline.LineChart;
+import connect.GetConnectServer;
 import java.awt.CardLayout;
 import java.awt.Color;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
+import quanlybaigiuxe.QuanLyBaiGiuXe;
+import quanlybaigiuxe.QuanLyNguoiDung;
 /**
  *
  * @author ADMIN
  */
 public class ThongKePanel extends javax.swing.JPanel {
 
+    QuanLyBaiGiuXe quanLyXe;
+    QuanLyNguoiDung users;
     /**
      * Creates new form ThongKePanel
      */
@@ -24,6 +32,7 @@ public class ThongKePanel extends javax.swing.JPanel {
     
     public ThongKePanel() {
         initComponents();
+        
         barchart = new BarChart();
         lineChart = new LineChart();
         setBarChart(barchart);
@@ -33,7 +42,12 @@ public class ThongKePanel extends javax.swing.JPanel {
         mypn.add(barchart);
         barchart.start();
 
-
+        quanLyXe = new QuanLyBaiGiuXe();
+        soLuongXeLabel.setText(String.valueOf(quanLyXe.demSoLuongXe()));
+        doanhThuLabel.setText(String.valueOf(quanLyXe.doanhThu()));
+        
+        users = new QuanLyNguoiDung();
+        soLuongNhanVienLabel.setText(String.valueOf(users.demSoLuongNhanVien()));
     }
 
 
@@ -50,13 +64,13 @@ public class ThongKePanel extends javax.swing.JPanel {
         panelRoundGraCus1 = new customcp.PanelRoundGraCus();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        soLuongXeLabel = new javax.swing.JLabel();
         panelRoundGraCus2 = new customcp.PanelRoundGraCus();
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        soLuongNhanVienLabel = new javax.swing.JLabel();
         panelRoundGraCus3 = new customcp.PanelRoundGraCus();
-        jLabel7 = new javax.swing.JLabel();
+        doanhThuLabel = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -72,6 +86,7 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        refreshBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setMinimumSize(new java.awt.Dimension(947, 680));
@@ -94,9 +109,9 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Lượng Xe");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("30");
+        soLuongXeLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        soLuongXeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        soLuongXeLabel.setText("30");
 
         javax.swing.GroupLayout panelRoundGraCus1Layout = new javax.swing.GroupLayout(panelRoundGraCus1);
         panelRoundGraCus1.setLayout(panelRoundGraCus1Layout);
@@ -107,7 +122,7 @@ public class ThongKePanel extends javax.swing.JPanel {
                 .addGroup(panelRoundGraCus1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(panelRoundGraCus1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel13)
+                        .addComponent(soLuongXeLabel)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(40, 40, 40)
                     .addComponent(jLabel10)
@@ -122,7 +137,7 @@ public class ThongKePanel extends javax.swing.JPanel {
                     .addGroup(panelRoundGraCus1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelRoundGraCus1Layout.createSequentialGroup()
                             .addGap(13, 13, 13)
-                            .addComponent(jLabel13)
+                            .addComponent(soLuongXeLabel)
                             .addGap(6, 6, 6)
                             .addComponent(jLabel12))
                         .addComponent(jLabel10))
@@ -145,9 +160,9 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nhân viên");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("6");
+        soLuongNhanVienLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        soLuongNhanVienLabel.setForeground(new java.awt.Color(255, 255, 255));
+        soLuongNhanVienLabel.setText("6");
 
         javax.swing.GroupLayout panelRoundGraCus2Layout = new javax.swing.GroupLayout(panelRoundGraCus2);
         panelRoundGraCus2.setLayout(panelRoundGraCus2Layout);
@@ -158,7 +173,7 @@ public class ThongKePanel extends javax.swing.JPanel {
                 .addGroup(panelRoundGraCus2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(panelRoundGraCus2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
+                        .addComponent(soLuongNhanVienLabel)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(40, 40, 40)
                     .addComponent(jLabel9)
@@ -173,7 +188,7 @@ public class ThongKePanel extends javax.swing.JPanel {
                     .addGroup(panelRoundGraCus2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelRoundGraCus2Layout.createSequentialGroup()
                             .addGap(13, 13, 13)
-                            .addComponent(jLabel5)
+                            .addComponent(soLuongNhanVienLabel)
                             .addGap(6, 6, 6)
                             .addComponent(jLabel6))
                         .addComponent(jLabel9))
@@ -190,9 +205,9 @@ public class ThongKePanel extends javax.swing.JPanel {
         panelRoundGraCus3.setRoundTopLeft(50);
         panelRoundGraCus3.setRoundTopRight(50);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("24,430,000");
+        doanhThuLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        doanhThuLabel.setForeground(new java.awt.Color(255, 255, 255));
+        doanhThuLabel.setText("24,430,000");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,11 +222,11 @@ public class ThongKePanel extends javax.swing.JPanel {
             .addGap(0, 212, Short.MAX_VALUE)
             .addGroup(panelRoundGraCus3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelRoundGraCus3Layout.createSequentialGroup()
-                    .addGap(0, 10, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(panelRoundGraCus3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7)
+                        .addComponent(doanhThuLabel)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 12, Short.MAX_VALUE))
+                    .addGap(0, 21, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundGraCus3Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11)
@@ -226,7 +241,7 @@ public class ThongKePanel extends javax.swing.JPanel {
                     .addGroup(panelRoundGraCus3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelRoundGraCus3Layout.createSequentialGroup()
                             .addGap(13, 13, 13)
-                            .addComponent(jLabel7)
+                            .addComponent(doanhThuLabel)
                             .addGap(6, 6, 6)
                             .addComponent(jLabel8))
                         .addComponent(jLabel11))
@@ -238,6 +253,11 @@ public class ThongKePanel extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quý 1", "Quý 2", "Quý 3", "Quý 4" }));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2022", "2021", "2020" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Năm:");
@@ -284,12 +304,22 @@ public class ThongKePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Năm:");
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/linechart.png"))); // NOI18N
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barchar.png"))); // NOI18N
+
+        refreshBtn.setBackground(new java.awt.Color(153, 153, 255));
+        refreshBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        refreshBtn.setForeground(new java.awt.Color(255, 255, 255));
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -298,22 +328,17 @@ public class ThongKePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabel1)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel15)
@@ -328,9 +353,11 @@ public class ThongKePanel extends javax.swing.JPanel {
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 540, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(refreshBtn)
+                        .addGap(18, 18, 18))
                     .addComponent(mypn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE))
                 .addGap(110, 110, 110))
         );
         layout.setVerticalGroup(
@@ -340,11 +367,12 @@ public class ThongKePanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(refreshBtn))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -400,6 +428,15 @@ public class ThongKePanel extends javax.swing.JPanel {
         barchart.start();
     }//GEN-LAST:event_jComboBox3ItemStateChanged
 
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_refreshBtnActionPerformed
+
     
     public void setBarChart(BarChart chart)
     {
@@ -430,6 +467,7 @@ public class ThongKePanel extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel doanhThuLabel;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -437,15 +475,12 @@ public class ThongKePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -455,6 +490,9 @@ public class ThongKePanel extends javax.swing.JPanel {
     private customcp.PanelRoundGraCus panelRoundGraCus1;
     private customcp.PanelRoundGraCus panelRoundGraCus2;
     private customcp.PanelRoundGraCus panelRoundGraCus3;
+    private javax.swing.JButton refreshBtn;
+    private javax.swing.JLabel soLuongNhanVienLabel;
+    private javax.swing.JLabel soLuongXeLabel;
     private customcp.SwitchButton switchButton1;
     // End of variables declaration//GEN-END:variables
 }

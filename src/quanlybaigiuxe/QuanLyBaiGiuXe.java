@@ -229,4 +229,39 @@ public class QuanLyBaiGiuXe {
         }
     }
     
+    public int demSoLuongXe (){
+        int dem = 0;
+        Connection con = GetConnectServer.getConnection();
+        try{
+            String sql = "select count(idXe) from Xe";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            String countXe = rs.getString(1);
+            dem = Integer.parseInt(countXe);
+            return dem;
+        }
+        catch (Exception e){
+            return dem;
+        }
+    }
+
+    public float doanhThu (){
+        float tien = 0;
+        Connection con = GetConnectServer.getConnection();
+        try{
+            String sql = "select sum(tienDaThu) from Xe";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            String doanhThu = rs.getString(1);
+            tien = Float.valueOf(doanhThu);
+            return tien;
+        }
+        catch (Exception e){
+            return tien;
+        }
+    }
 }
