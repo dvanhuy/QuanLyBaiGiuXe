@@ -251,7 +251,7 @@ public class QuanLyBaiGiuXe {
         float tien = 0;
         Connection con = GetConnectServer.getConnection();
         try{
-            String sql = "select sum(tienDaThu) from Xe";
+            String sql = "select sum(tienDaThu) from Xe where trangThai = N'Đã rời'";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
             
@@ -264,4 +264,38 @@ public class QuanLyBaiGiuXe {
             return tien;
         }
     }
+    
+    public double getDataChartDoanhThu(int nam,int quy,String loaixe)
+    {
+        Connection con = GetConnectServer.getConnection();
+        try{
+            String sql = "select dbo.getDoanhThuTheoQuy(?,?,?) ";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, nam);
+            preparedStatement.setInt(2, quy);
+            preparedStatement.setString(3, loaixe);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            double doanhThu = rs.getFloat(1);
+            return doanhThu;
+        }
+        catch (SQLException e){
+            System.out.println("Sai tai getDataChartDoanhThu");
+        }
+        return 0;
+    }
+    
+    public double[] getDataChartDoanhThu(int nam,int quy)
+    {
+        double[] x = new double[5];
+        x[0]=getDataChartDoanhThu(nam,quy,"MOTO");
+        x[1]=getDataChartDoanhThu(nam,quy,"OTOO");
+        x[2]=getDataChartDoanhThu(nam,quy,"DAP");
+        x[3]=getDataChartDoanhThu(nam,quy,"BANTAI");
+        x[4]=getDataChartDoanhThu(nam,quy,"GANMAY");
+        return x;
+    }
+    
 }

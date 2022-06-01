@@ -7,13 +7,10 @@ package jForm;
 
 import chartbar.BarChart;
 import chartline.LineChart;
-import connect.GetConnectServer;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.table.DefaultTableModel;
+import java.text.NumberFormat;
+import java.util.Locale;
 import quanlybaigiuxe.QuanLyBaiGiuXe;
 import quanlybaigiuxe.QuanLyNguoiDung;
 /**
@@ -32,22 +29,39 @@ public class ThongKePanel extends javax.swing.JPanel {
     
     public ThongKePanel() {
         initComponents();
+        //Thong ke
+        quanLyXe = new QuanLyBaiGiuXe();
+        soLuongXeLabel.setText(String.valueOf(quanLyXe.demSoLuongXe()));
         
+        NumberFormat formatTien=NumberFormat.getInstance(new Locale("vi", "VN"));
+        doanhThuLabel.setText(formatTien.format(quanLyXe.doanhThu()));
+        
+        users = new QuanLyNguoiDung();
+        soLuongNhanVienLabel.setText(String.valueOf(users.demSoLuongNhanVien()));
+        
+        //Bieu Do
         barchart = new BarChart();
         lineChart = new LineChart();
-        setBarChart(barchart);
-        setLineChart(lineChart);
+        //add legend barchart
+        barchart.addLegend("Xe mô tô", new Color(245, 189, 135));
+        barchart.addLegend("Xe ô tô", new Color(135, 189, 245));
+        barchart.addLegend("Xe đạp", new Color(189, 135, 245));
+        barchart.addLegend("Xe bán tải", new Color(139, 229, 222));
+        barchart.addLegend("Xe gắn máy", new Color(255,51,102));
+        //add legend linechart
+        lineChart.addLegend("Xe mô tô", new Color(245, 189, 135), new Color(245, 189, 135));
+        lineChart.addLegend("Xe ô tô", new Color(135, 189, 245), new Color(135, 189, 245));
+        lineChart.addLegend("Xe đạp", new Color(189, 135, 245), new Color(189, 135, 245));
+        lineChart.addLegend("Xe bán tải", new Color(139, 229, 222), new Color(139, 229, 222));
+        lineChart.addLegend("Xe gắn máy", new Color(255,51,102), new Color(255,51,102));
+        
+        setBarChart(barchart,2022);
+        setLineChart(lineChart,2022);
         
         mypn.setLayout(new CardLayout());
         mypn.add(barchart);
         barchart.start();
-
-        quanLyXe = new QuanLyBaiGiuXe();
-        soLuongXeLabel.setText(String.valueOf(quanLyXe.demSoLuongXe()));
-        doanhThuLabel.setText(String.valueOf(quanLyXe.doanhThu()));
         
-        users = new QuanLyNguoiDung();
-        soLuongNhanVienLabel.setText(String.valueOf(users.demSoLuongNhanVien()));
     }
 
 
@@ -73,20 +87,16 @@ public class ThongKePanel extends javax.swing.JPanel {
         doanhThuLabel = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         mypn = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         switchButton1 = new customcp.SwitchButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        txtnambieudo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        refreshBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setMinimumSize(new java.awt.Dimension(947, 680));
@@ -250,18 +260,6 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jPanel1.add(panelRoundGraCus3);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quý 1", "Quý 2", "Quý 3", "Quý 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2022", "2021", "2020" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Năm:");
-
         mypn.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout mypnLayout = new javax.swing.GroupLayout(mypn);
@@ -291,16 +289,16 @@ public class ThongKePanel extends javax.swing.JPanel {
             }
         });
 
-        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2022", "2021", "2020" }));
-        jComboBox3.addItemListener(new java.awt.event.ItemListener() {
+        txtnambieudo.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtnambieudo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2022", "2021" }));
+        txtnambieudo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox3ItemStateChanged(evt);
+                txtnambieudoItemStateChanged(evt);
             }
         });
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        txtnambieudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                txtnambieudoActionPerformed(evt);
             }
         });
 
@@ -310,16 +308,6 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/linechart.png"))); // NOI18N
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barchar.png"))); // NOI18N
-
-        refreshBtn.setBackground(new java.awt.Color(153, 153, 255));
-        refreshBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        refreshBtn.setForeground(new java.awt.Color(255, 255, 255));
-        refreshBtn.setText("Refresh");
-        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshBtnActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -339,23 +327,13 @@ public class ThongKePanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtnambieudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(switchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(refreshBtn)
-                        .addGap(18, 18, 18))
                     .addComponent(mypn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE))
                 .addGap(110, 110, 110))
@@ -367,37 +345,30 @@ public class ThongKePanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(refreshBtn))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(switchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mypn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(switchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtnambieudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mypn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void txtnambieudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnambieudoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_txtnambieudoActionPerformed
 
     private void switchButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_switchButton1MouseClicked
         // TODO add your handling code here:
@@ -422,62 +393,49 @@ public class ThongKePanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_switchButton1MouseClicked
 
-    private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
+    private void txtnambieudoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtnambieudoItemStateChanged
         // TODO add your handling code here:
+
+        String nam= String.valueOf(txtnambieudo.getSelectedItem());
+        setBarChart(barchart, Integer.parseInt(nam));
+        setLineChart(lineChart, Integer.parseInt(nam));
+
         lineChart.start();
         barchart.start();
-    }//GEN-LAST:event_jComboBox3ItemStateChanged
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_refreshBtnActionPerformed
+    }//GEN-LAST:event_txtnambieudoItemStateChanged
 
     
-    public void setBarChart(BarChart chart)
+    public void setBarChart(BarChart chart,int nam)
     {
-        chart.addLegend("Xe mô tô", new Color(245, 189, 135));
-        chart.addLegend("Xe ô tô", new Color(135, 189, 245));
-        chart.addLegend("Xe đạp", new Color(189, 135, 245));
-        chart.addLegend("Xe bán tải", new Color(139, 229, 222));
-        chart.addLegend("Xe gắn máy", new Color(255,51,102));
-        chart.addData(new chartbar.ModelChart("Quý 1", new double[]{500, 200, 80, 89,100}));
-        chart.addData(new chartbar.ModelChart("Quý 2", new double[]{600, 750, 90, 150,200}));
-        chart.addData(new chartbar.ModelChart("Quý 3", new double[]{200, 350, 460, 900,300}));
-        chart.addData(new chartbar.ModelChart("Quý 4", new double[]{480, 150, 750, 700,300}));
+        chart.clear();
+
+        chart.addData(new chartbar.ModelChart("Quý 1", quanLyXe.getDataChartDoanhThu(nam, 1)));
+        chart.addData(new chartbar.ModelChart("Quý 2", quanLyXe.getDataChartDoanhThu(nam, 2)));
+        chart.addData(new chartbar.ModelChart("Quý 3", quanLyXe.getDataChartDoanhThu(nam, 3)));
+        chart.addData(new chartbar.ModelChart("Quý 4", quanLyXe.getDataChartDoanhThu(nam, 4)));
 
     }
     
-    public void setLineChart(LineChart lineChart)
+    public void setLineChart(LineChart lineChart,int nam)
     {
-        lineChart.addLegend("Xe mô tô", new Color(245, 189, 135), new Color(245, 189, 135));
-        lineChart.addLegend("Xe ô tô", new Color(135, 189, 245), new Color(135, 189, 245));
-        lineChart.addLegend("Xe đạp", new Color(189, 135, 245), new Color(189, 135, 245));
-        lineChart.addLegend("Xe bán tải", new Color(139, 229, 222), new Color(139, 229, 222));
-        lineChart.addLegend("Xe gắn máy", new Color(255,51,102), new Color(255,51,102));
-        lineChart.addData(new chartline.ModelChart("Quý 1", new double[]{500, 200, 80, 89,100}));
-        lineChart.addData(new chartline.ModelChart("Quý 2", new double[]{600, 750, 90, 150,200}));
-        lineChart.addData(new chartline.ModelChart("Quý 3", new double[]{200, 350, 460, 900,300}));
-        lineChart.addData(new chartline.ModelChart("Quý 4", new double[]{480, 150, 750, 700,300}));
+        lineChart.clear();
+
+        lineChart.addData(new chartline.ModelChart("Quý 1", quanLyXe.getDataChartDoanhThu(nam, 1)));
+        lineChart.addData(new chartline.ModelChart("Quý 2", quanLyXe.getDataChartDoanhThu(nam, 2)));
+        lineChart.addData(new chartline.ModelChart("Quý 3", quanLyXe.getDataChartDoanhThu(nam, 3)));
+        lineChart.addData(new chartline.ModelChart("Quý 4", quanLyXe.getDataChartDoanhThu(nam, 4)));
     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel doanhThuLabel;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -490,9 +448,9 @@ public class ThongKePanel extends javax.swing.JPanel {
     private customcp.PanelRoundGraCus panelRoundGraCus1;
     private customcp.PanelRoundGraCus panelRoundGraCus2;
     private customcp.PanelRoundGraCus panelRoundGraCus3;
-    private javax.swing.JButton refreshBtn;
     private javax.swing.JLabel soLuongNhanVienLabel;
     private javax.swing.JLabel soLuongXeLabel;
     private customcp.SwitchButton switchButton1;
+    private javax.swing.JComboBox<String> txtnambieudo;
     // End of variables declaration//GEN-END:variables
 }
